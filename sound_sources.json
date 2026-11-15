@@ -1,0 +1,93 @@
+[
+  {
+    "name": "pickup",
+    "generation_id": "4kPBVrzHZa1M62slHcQA",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "A single short collectible power-up sound for a polished playful robot factory video game: bright rising crystalline electronic arpeggio, soft magnetic whoosh, satisfying sparkling finish. Dry close s",
+    "duration": 1.0
+  },
+  {
+    "name": "move",
+    "generation_id": "8GiJQND8qnQpA338JBZf",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Single compact robot motor movement: warm electric servo whirr, tiny tread rattle, gentle mechanical stop. Playful precision machinery, dry game sound, no background, no music or speech, about one sec",
+    "duration": 1.2
+  },
+  {
+    "name": "laser",
+    "generation_id": "2Mjm3OgnAFhSdyiu6pZa",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One short futuristic robot laser shot, tight electronic zap with bright attack and short sizzling tail. Polished playful industrial game, not harsh, dry isolated, no music or speech, half a second.",
+    "duration": 0.55
+  },
+  {
+    "name": "impact",
+    "generation_id": "0sFJXbgFgWmrr4pX4HCk",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Single metallic robot armor damage impact, crunchy clank and short electrical crackle. Clear punchy but not explosive, dry isolated game sound, no music or speech, half a second.",
+    "duration": 0.65
+  },
+  {
+    "name": "crusher",
+    "generation_id": "W8nZXtk1geT87xqV1SDh",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Single heavy hydraulic factory press stroke: short piston hiss then solid low metallic thump. Compact satisfying mechanical game sound, dry, no ambience music speech, under one second.",
+    "duration": 0.85
+  },
+  {
+    "name": "destroy",
+    "generation_id": "XsGsznL65OmWjWC2BBs3",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Single small robot breaking down: metallic crunch, scattered tiny parts, descending electronic power-down chirp. Playful sci-fi game, dry isolated, no music speech ambience, about one second.",
+    "duration": 1.0
+  },
+  {
+    "name": "music_menu",
+    "generation_id": "WOIpEjicfYIKYrymBrtH",
+    "model": "eleven_music_v2",
+    "prompt": "Original instrumental minimal techno loop for a playful robot factory strategy game menu. About 60 seconds, 112 BPM, warm rounded bass, restrained four-on-the-floor kick, soft ticking hats, sparse gla",
+    "duration": 49.285645833333334
+  },
+  {
+    "name": "music_game",
+    "generation_id": "LU6WZclp478FhWfWx7Bp",
+    "model": "eleven_music_v2",
+    "prompt": "Original instrumental understated dub techno background loop for a turn-based robot factory puzzle game. About 60 seconds, 104 BPM, soft muted kick, warm sub bass, subtle filtered chord pulses, sparse",
+    "duration": 53.0768125
+  },
+  {
+    "name": "ui_click",
+    "generation_id": "LacxgGkga3YMKHwxXcAz",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Single very short soft tactile electronic menu button click, warm muted mechanical tick with tiny digital blip. Friendly precise futuristic robot game UI, unobtrusive, dry isolated, no ambience, no mu",
+    "duration": 0.28
+  },
+  {
+    "name": "blink",
+    "generation_id": "HQUjolvmRzGG0WZsg94r",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Single short sci-fi phase teleport: soft rising electrical shimmer, quick airy spatial pop, delicate descending tail. Polished robot strategy game, dry isolated, no speech music ambience. Under one se",
+    "duration": 0.9
+  },
+  {
+    "name": "shield",
+    "generation_id": "11fEu5nmGZ9S8fGCx7hN",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Single energy shield absorbing a laser hit: soft glassy resonant ping and tight electric fizz, protective rounded tone rather than breaking glass. Dry isolated robot game effect, no music speech ambie",
+    "duration": 0.6
+  },
+  {
+    "name": "turn",
+    "generation_id": "wcfbQErJVkpUwKsgTzSh",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Single small robot turning ninety degrees: precise servo zip and short mechanical ratchet locking into position. Gentle compact dry game effect, no music speech ambience. Half a second.",
+    "duration": 0.48
+  },
+  {
+    "name": "success",
+    "generation_id": "o3ypWCNLhgG3HNTwRYuS",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Single short understated mission-complete notification, three warm ascending synth bell notes with a soft sparkling tail. Optimistic robotic factory strategy game UI, restrained and elegant, no speech",
+    "duration": 1.0
+  }
+]

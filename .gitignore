@@ -1,0 +1,19 @@
+# Local caches and editor files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.blend1
+*.blend2
+*.swp
+# Runtime data and local secrets (authored game assets remain tracked)
+worlds/
+debug.txt
+*.log
+.env
+.env.*
+!.env.example

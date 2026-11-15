@@ -1,0 +1,3 @@
+newmtl ghost
+Kd 1 1 1
+map_Kd ../textures/sc_ghost.png
