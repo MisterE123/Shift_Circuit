@@ -1,0 +1,12 @@
+Algate
+Author: James Gargette (cinameng)
+Source: https://opengameart.org/content/algate
+Original download: https://opengameart.org/sites/default/files/algate.zip
+License: CC0 1.0 Universal
+https://creativecommons.org/publicdomain/zero/1.0/
+Verified on the original submission on 2026-11-16.
+Submission description: dub techno loop pack.
+The source page credits James Gargette and explicitly identifies the license as CC0.
+Used WAV loops: algate.wav, algate_low.wav, algate_no_kick.wav, algate_bass.wav.
+Adapted into a 181-second menu arrangement and 242-second quieter gameplay arrangement using gradual circular stem envelopes, beat-synchronous stereo reflections, periodic seam smoothing and level adjustments.
+Attribution retained voluntarily; not an added condition on CC0 reuse.

@@ -2,7 +2,7 @@
 
 
 
-Playable Luanti 5.18+ factory-programming game, development build 0.19.1. Original artwork, models, maps, text, and working title; sound effects generated with ElevenLabs.
+Playable Luanti 5.18+ factory-programming game, development build 0.19.1. Original artwork, models, maps, text, and working title; CC0 sound effects by Kenney and Algate music by James Gargette (cinameng).
 
 
 
@@ -126,7 +126,7 @@ Crusher Even activates on registers 2 and 4; Crusher Odd activates on 1, 3 and 5
 
 Loot crates show a floating three-segment health bar, including after steel crates are crushed into loot. Edit `sc_crate_health_0.png` through `sc_crate_health_3.png` to theme it. Puzzle Settings > Details includes an optional 180-character HUD hint. During play it appears in a pixel panel at the bottom right; it is hidden while building and when blank. The hint is saved in puzzle data and included in mod exports. Edit `sc_puzzle_hint.png` to theme the panel.
 
-Puzzle execution fast-forwards at 6x after a 0.7-second destruction pause, resolving every remaining phase before normal-speed reboot and planning. Successful puzzles play a dedicated ElevenLabs completion chime once, including workshop playtests; it respects the effects volume setting. Replace `mods/shift_circuit/sounds/sc_puzzle_complete.ogg` to customize it.
+Puzzle execution fast-forwards at 6x after a 0.7-second destruction pause, resolving every remaining phase before normal-speed reboot and planning. Successful puzzles play a dedicated Kenney confirmation cue once, including workshop playtests; it respects the effects volume setting. Replace `mods/shift_circuit/sounds/sc_puzzle_complete.ogg` to customize it.
 
 Ram Bots show an editable pixel cycle strip beneath their floating health bar: watching eye (green), wind-up spring (amber), and charge arrows (red). Point at the bot for its next action. Artwork: `textures/sc_ram_cycle_watch.png`, `sc_ram_cycle_wind.png`, and `sc_ram_cycle_charge.png`.
 
@@ -142,7 +142,7 @@ Puzzle and tutorial selection screens contain only play/navigation and lesson in
 
 Tutorial lessons appear only in Tutorial. The Puzzles play menu shows installed non-tutorial packs and enabled server puzzles, excluding disabled/private entries even for admins and authors. Private work remains in the Workshop library.
 
-Luanti game selection now has a custom editable pixel robot icon and the existing ElevenLabs techno menu track in `menu/theme.ogg`. The in-game main menu groups solo/multiplayer play above Workshop/community tools, with robot choice beneath the solo modes.
+Luanti game selection now has a custom editable pixel robot icon and the Algate techno menu arrangement in `menu/theme.ogg`. The in-game main menu groups solo/multiplayer play above Workshop/community tools, with robot choice beneath the solo modes.
 
 Network updates: HUD values and entity appearance properties are sent only when they change. Card-selection feedback remains immediate; register overlays are composed before sending to avoid repeatedly resetting the highlighted texture. Position/animation updates continue normally.
 
@@ -169,3 +169,7 @@ Each crusher stroke advances only one stage: steel crate -> loot crate -> random
 Destroyed human and AI racers drop one owned collectible (including a loaded non-default weapon), or a shield if they have none. Non-racing enemies drop one random powerup. A Blueprint Archive's preserved copy is excluded from the drop. Pit-death loot falls away. Existing supplies are never overwritten: a drop uses its death square or an accessible adjacent square, waiting if all are occupied. Drops can then travel through the same conveyor/pusher system.
 
 Menu collections scroll to their actual content length. Audio speaker icons offer mute, low and normal levels, with the selected level outlined green. Enemy commands with independent movement paths animate together; conflicting commands retain their Priority ID order.
+
+## Credits and asset licensing
+
+Code, 3D models, animations and textures: **Codex GPT-6 Astra Medium**. Sound effects: **Kenney**. Music: **James Gargette (cinameng), Algate**. See [credits](CREDITS.md). Visual assets and all current audio are **CC0-1.0**, with author attribution preserved. See [asset licensing](LICENSE-ASSETS.md).

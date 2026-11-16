@@ -68,7 +68,7 @@ The model generator preserves existing `sc_surface_*.png` files. Other generated
 
 
 
-Sound files are mono Ogg Vorbis under `mods/shift_circuit/sounds`. Replace a file using its existing name to customize a sound. `sound_sources.json` records the six ElevenLabs generation IDs and prompts. Runtime event volumes are set in `runtime.lua`.
+Sound files are mono Ogg Vorbis under `mods/shift_circuit/sounds`. Replace a file using its existing name to customize a sound. `sound_sources.json` records each CC0 source, author, filename, processing and SHA-256 hash. Rebuild with `python tools/cc0_audio.py SOURCE_DIRECTORY` using the credited extracted Kenney packs and Algate WAV loops. Runtime event volumes are set in `runtime.lua`.
 
 
 
@@ -116,7 +116,7 @@ Phase sequence: `art/ui/sc_phase_order_0.png` is neutral; `_1` through `_8` high
 
 Course previews use editable `art/ui/sc_map_*.png` symbols, composed directly from saved tile data. Keep these symbols at their native pixel dimensions: tiles are 8x8, edge walls 8x1 or 1x8. `tools/builder_assets.py` and `tools/export_theme.py` preserve edited sources and export map symbols at 1x. Workshop buttons use `sc_editor_*.png`; course inventory frames use `sc_build_*.png`.
 
-Game-selection icon: `menu/icon.png` (128px), with editable 64px source `art/ui/sc_game_icon.png` and generator `tools/game_icon.py`. The in-game menu uses `mods/shift_circuit/textures/sc_game_icon.png`. Game-selection music: `menu/theme.ogg`, using the existing ElevenLabs menu techno track. In-game Audio settings continue to control the in-game mix; Luanti controls game-selection volume.
+Game-selection icon: `menu/icon.png` (128px), with editable 64px source `art/ui/sc_game_icon.png` and generator `tools/game_icon.py`. The in-game menu uses `mods/shift_circuit/textures/sc_game_icon.png`. Game-selection music: `menu/theme.ogg`, using the Algate menu techno arrangement. In-game Audio settings continue to control the in-game mix; Luanti controls game-selection volume.
 
 ## Shared menu theme and lobby robots
 

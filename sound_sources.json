@@ -1,100 +1,285 @@
 [
   {
-    "name": "pickup",
-    "generation_id": "4kPBVrzHZa1M62slHcQA",
-    "model": "eleven_text_to_sound_v2",
-    "prompt": "A single short collectible power-up sound for a polished playful robot factory video game: bright rising crystalline electronic arpeggio, soft magnetic whoosh, satisfying sparkling finish. Dry close s",
-    "duration": 1.0
-  },
-  {
-    "name": "move",
-    "generation_id": "8GiJQND8qnQpA338JBZf",
-    "model": "eleven_text_to_sound_v2",
-    "prompt": "Single compact robot motor movement: warm electric servo whirr, tiny tread rattle, gentle mechanical stop. Playful precision machinery, dry game sound, no background, no music or speech, about one sec",
-    "duration": 1.2
-  },
-  {
-    "name": "laser",
-    "generation_id": "2Mjm3OgnAFhSdyiu6pZa",
-    "model": "eleven_text_to_sound_v2",
-    "prompt": "One short futuristic robot laser shot, tight electronic zap with bright attack and short sizzling tail. Polished playful industrial game, not harsh, dry isolated, no music or speech, half a second.",
-    "duration": 0.55
-  },
-  {
-    "name": "impact",
-    "generation_id": "0sFJXbgFgWmrr4pX4HCk",
-    "model": "eleven_text_to_sound_v2",
-    "prompt": "Single metallic robot armor damage impact, crunchy clank and short electrical crackle. Clear punchy but not explosive, dry isolated game sound, no music or speech, half a second.",
-    "duration": 0.65
-  },
-  {
-    "name": "crusher",
-    "generation_id": "W8nZXtk1geT87xqV1SDh",
-    "model": "eleven_text_to_sound_v2",
-    "prompt": "Single heavy hydraulic factory press stroke: short piston hiss then solid low metallic thump. Compact satisfying mechanical game sound, dry, no ambience music speech, under one second.",
-    "duration": 0.85
-  },
-  {
-    "name": "destroy",
-    "generation_id": "XsGsznL65OmWjWC2BBs3",
-    "model": "eleven_text_to_sound_v2",
-    "prompt": "Single small robot breaking down: metallic crunch, scattered tiny parts, descending electronic power-down chirp. Playful sci-fi game, dry isolated, no music speech ambience, about one second.",
-    "duration": 1.0
-  },
-  {
-    "name": "music_menu",
-    "generation_id": "WOIpEjicfYIKYrymBrtH",
-    "model": "eleven_music_v2",
-    "prompt": "Original instrumental minimal techno loop for a playful robot factory strategy game menu. About 60 seconds, 112 BPM, warm rounded bass, restrained four-on-the-floor kick, soft ticking hats, sparse gla",
-    "duration": 49.285645833333334
-  },
-  {
-    "name": "music_game",
-    "generation_id": "LU6WZclp478FhWfWx7Bp",
-    "model": "eleven_music_v2",
-    "prompt": "Original instrumental understated dub techno background loop for a turn-based robot factory puzzle game. About 60 seconds, 104 BPM, soft muted kick, warm sub bass, subtle filtered chord pulses, sparse",
-    "duration": 53.0768125
-  },
-  {
     "name": "ui_click",
-    "generation_id": "LacxgGkga3YMKHwxXcAz",
-    "model": "eleven_text_to_sound_v2",
-    "prompt": "Single very short soft tactile electronic menu button click, warm muted mechanical tick with tiny digital blip. Friendly precise futuristic robot game UI, unobtrusive, dry isolated, no ambience, no mu",
-    "duration": 0.28
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "interface",
+        "file": "click_001.ogg",
+        "source_url": "https://kenney.nl/assets/interface-sounds",
+        "sha256": "ccfb7fa0cccdd9faec0eb16033c732b1e308d139d80f799161495d58f7adcdb9"
+      }
+    ],
+    "processing": "Mono; trimmed to at most 0.2s; pitch ratio 1; short edge fades and level normalization.",
+    "file": "mods/shift_circuit/sounds/sc_ui_click.ogg",
+    "sha256": "40e72d8a08b0e854cc88b47f070dc07f69a12e44193d515ca4a59ccb456ec378"
   },
   {
-    "name": "blink",
-    "generation_id": "HQUjolvmRzGG0WZsg94r",
-    "model": "eleven_text_to_sound_v2",
-    "prompt": "Single short sci-fi phase teleport: soft rising electrical shimmer, quick airy spatial pop, delicate descending tail. Polished robot strategy game, dry isolated, no speech music ambience. Under one se",
-    "duration": 0.9
-  },
-  {
-    "name": "shield",
-    "generation_id": "11fEu5nmGZ9S8fGCx7hN",
-    "model": "eleven_text_to_sound_v2",
-    "prompt": "Single energy shield absorbing a laser hit: soft glassy resonant ping and tight electric fizz, protective rounded tone rather than breaking glass. Dry isolated robot game effect, no music speech ambie",
-    "duration": 0.6
-  },
-  {
-    "name": "turn",
-    "generation_id": "wcfbQErJVkpUwKsgTzSh",
-    "model": "eleven_text_to_sound_v2",
-    "prompt": "Single small robot turning ninety degrees: precise servo zip and short mechanical ratchet locking into position. Gentle compact dry game effect, no music speech ambience. Half a second.",
-    "duration": 0.48
+    "name": "pickup",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "interface",
+        "file": "maximize_001.ogg",
+        "source_url": "https://kenney.nl/assets/interface-sounds",
+        "sha256": "fd3e75e1de2f2fda90aceeacaeb0427ac8bddd3b07a6ce2a8f9ba923df3771f9"
+      }
+    ],
+    "processing": "Mono; trimmed to at most 0.5s; pitch ratio 1; short edge fades and level normalization.",
+    "file": "mods/shift_circuit/sounds/sc_pickup.ogg",
+    "sha256": "d0c9fd79a66341af3b148d5926473d55b131dc56d317f489fd4df1bc6707153e"
   },
   {
     "name": "success",
-    "generation_id": "o3ypWCNLhgG3HNTwRYuS",
-    "model": "eleven_text_to_sound_v2",
-    "prompt": "Single short understated mission-complete notification, three warm ascending synth bell notes with a soft sparkling tail. Optimistic robotic factory strategy game UI, restrained and elegant, no speech",
-    "duration": 1.0
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "interface",
+        "file": "confirmation_001.ogg",
+        "source_url": "https://kenney.nl/assets/interface-sounds",
+        "sha256": "063564703b6094d70718a3e787a55cc9141611e4ecd6b6637f8828f79b4a8c3a"
+      }
+    ],
+    "processing": "Mono; trimmed to at most 0.5s; pitch ratio 1; short edge fades and level normalization.",
+    "file": "mods/shift_circuit/sounds/sc_success.ogg",
+    "sha256": "d18da7c4b8b97430ff2ca71ddff9cab32eff701dbb1d9ab98a0cd6e509097969"
   },
   {
     "name": "puzzle_complete",
-    "generation_id": "IGp1qrYB8YZKn6TGgYUH",
-    "model": "eleven_text_to_sound_v2",
-    "prompt": "One short polished puzzle-complete sound for a pixel-art robot factory game. About 1.5 seconds total: a bright rising three-note electronic chiptune arpeggio resolves into a warm satisfying major synt",
-    "duration": 1.0
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "interface",
+        "file": "confirmation_002.ogg",
+        "source_url": "https://kenney.nl/assets/interface-sounds",
+        "sha256": "33b17a9a9a2397c62b285c52c33a907fdffb476909c99e42dde603f6a7a8b12c"
+      }
+    ],
+    "processing": "Mono; trimmed to at most 1.1s; pitch ratio 0.85; short edge fades and level normalization.",
+    "file": "mods/shift_circuit/sounds/sc_puzzle_complete.ogg",
+    "sha256": "c1eae0e60ac2dd47dadb318df50efc79dae4a147be4e041ffe1b26e811689893"
+  },
+  {
+    "name": "laser",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "sci-fi",
+        "file": "laserSmall_000.ogg",
+        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
+        "sha256": "72b589eadd41781257ac859e4f4d030222e623390e4a1a83f6d05329a6e026f1"
+      }
+    ],
+    "processing": "Mono; trimmed to at most 0.5s; pitch ratio 1; short edge fades and level normalization.",
+    "file": "mods/shift_circuit/sounds/sc_laser.ogg",
+    "sha256": "9bcd58dcd9a7bfcf4e413dda1448e47f054f4602c91c95e3735c1efa61508f9b"
+  },
+  {
+    "name": "shield",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "sci-fi",
+        "file": "forceField_000.ogg",
+        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
+        "sha256": "c2916f2a062c8ddd1aca2826d134fe90847037db31342726ffb0f9097afe339c"
+      }
+    ],
+    "processing": "Mono; trimmed to at most 1.1s; pitch ratio 1; short edge fades and level normalization.",
+    "file": "mods/shift_circuit/sounds/sc_shield.ogg",
+    "sha256": "8878d22f3bd8531093b592ffa9c76683c8f65a9997f68574bc0378031f3523bf"
+  },
+  {
+    "name": "blink",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "sci-fi",
+        "file": "forceField_003.ogg",
+        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
+        "sha256": "15e3fe971ffd3415e5ab641d3a4d043fb31f6712b0956315b524ba29c3889cda"
+      }
+    ],
+    "processing": "Mono; trimmed to at most 1.15s; pitch ratio 1.15; short edge fades and level normalization.",
+    "file": "mods/shift_circuit/sounds/sc_blink.ogg",
+    "sha256": "d097adc5b2c0612e237119bfc5bf9fe7214d3628b4a64178830a3e0cf2499cd8"
+  },
+  {
+    "name": "move",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "sci-fi",
+        "file": "engineCircular_000.ogg",
+        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
+        "sha256": "8ab85f9fa85e9e692287f98acb36b9ac3ba15313b007c039055e286b736f4e3a"
+      }
+    ],
+    "processing": "Mono; trimmed to at most 0.65s; pitch ratio 1; short edge fades and level normalization.",
+    "file": "mods/shift_circuit/sounds/sc_move.ogg",
+    "sha256": "17fc330f096916e78e61dfaf2372e60c3f0b80403364d065bee9845caed7125e"
+  },
+  {
+    "name": "turn",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "sci-fi",
+        "file": "engineCircular_001.ogg",
+        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
+        "sha256": "e1df3a942842a24f7c4056db3177e8008edd73d4f3985fd95f55362bc85058bc"
+      }
+    ],
+    "processing": "Mono; trimmed to at most 0.35s; pitch ratio 1.3; short edge fades and level normalization.",
+    "file": "mods/shift_circuit/sounds/sc_turn.ogg",
+    "sha256": "b3b0a298c121ecc5aff15638d545a216c0b4874928f9f8eb3f31a6f793770f27"
+  },
+  {
+    "name": "impact",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "impact",
+        "file": "impactMetal_medium_001.ogg",
+        "source_url": "https://kenney.nl/assets/impact-sounds",
+        "sha256": "e8a9eaba7c4d27422e4eeb3e6c7100d5d7dc0f83e005efc98c960adcc5265337"
+      }
+    ],
+    "processing": "Mono; trimmed to at most 0.7s; pitch ratio 1; short edge fades and level normalization.",
+    "file": "mods/shift_circuit/sounds/sc_impact.ogg",
+    "sha256": "67d40d8fc529e4a76d6979c2f670b335b3bcb8d00376f01e46410e716f94b2c5"
+  },
+  {
+    "name": "destroy",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "sci-fi",
+        "file": "explosionCrunch_000.ogg",
+        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
+        "sha256": "4b597d658d0ae101f0a030fbeea5fc3a4292ab85f017470a8254a8e7959cbd69"
+      }
+    ],
+    "processing": "Mono; trimmed to at most 1.2s; pitch ratio 0.9; short edge fades and level normalization.",
+    "file": "mods/shift_circuit/sounds/sc_destroy.ogg",
+    "sha256": "a1b6a6f29063be8c8f275ef97e8663659087e2133880f58096fb1e0f8bede921"
+  },
+  {
+    "name": "crusher",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "sci-fi",
+        "file": "doorClose_000.ogg",
+        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
+        "sha256": "c9134651ebbd7c016f90393aee495ff8120bd343bb7569b689a7506987ebd6c2"
+      }
+    ],
+    "processing": "Mono; trimmed to at most 1.1s; pitch ratio 0.75; short edge fades and level normalization.",
+    "file": "mods/shift_circuit/sounds/sc_crusher.ogg",
+    "sha256": "6c1df22d141642b2b9a1083b1790433265a7e7e5f3fec770c07f02afc985a50b"
+  },
+  {
+    "name": "music_menu",
+    "author": "James Gargette (cinameng)",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "algate",
+        "file": "algate.wav",
+        "source_url": "https://opengameart.org/content/algate",
+        "sha256": "314c44c33d0cc0e909e1629941b1bdf7de3241a6ab51915c2043a5b58b517474"
+      },
+      {
+        "pack": "algate",
+        "file": "algate_low.wav",
+        "source_url": "https://opengameart.org/content/algate",
+        "sha256": "3e321cd0f2999af0f02ceb010b0a2bb4ab955978ac2b9f0986967bd7fa0fd0e3"
+      },
+      {
+        "pack": "algate",
+        "file": "algate_no_kick.wav",
+        "source_url": "https://opengameart.org/content/algate",
+        "sha256": "689269cfd4464f5880bbc4591d268031c2648ae40813c0e424947197bda60a52"
+      },
+      {
+        "pack": "algate",
+        "file": "algate_bass.wav",
+        "source_url": "https://opengameart.org/content/algate",
+        "sha256": "358bf1363374f0ea7b5e5a5317b500ee9bc984b4660814629e40ec4cdbdc6166"
+      }
+    ],
+    "processing": "Continuous beat-aligned Algate stem arrangement: 12 phrases, circular instrumentation envelopes, quiet beat-synchronous stereo reflections, no phrase fades or gaps, periodic end seam. CC0 adaptation.",
+    "file": "mods/shift_circuit/sounds/sc_music_menu.ogg",
+    "sha256": "1f7a184d8456b1c0c9e4e7bcf0b02b053a0447e1185f1a5074910798bdca663e"
+  },
+  {
+    "name": "music_game",
+    "author": "James Gargette (cinameng)",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "algate",
+        "file": "algate.wav",
+        "source_url": "https://opengameart.org/content/algate",
+        "sha256": "314c44c33d0cc0e909e1629941b1bdf7de3241a6ab51915c2043a5b58b517474"
+      },
+      {
+        "pack": "algate",
+        "file": "algate_low.wav",
+        "source_url": "https://opengameart.org/content/algate",
+        "sha256": "3e321cd0f2999af0f02ceb010b0a2bb4ab955978ac2b9f0986967bd7fa0fd0e3"
+      },
+      {
+        "pack": "algate",
+        "file": "algate_no_kick.wav",
+        "source_url": "https://opengameart.org/content/algate",
+        "sha256": "689269cfd4464f5880bbc4591d268031c2648ae40813c0e424947197bda60a52"
+      },
+      {
+        "pack": "algate",
+        "file": "algate_bass.wav",
+        "source_url": "https://opengameart.org/content/algate",
+        "sha256": "358bf1363374f0ea7b5e5a5317b500ee9bc984b4660814629e40ec4cdbdc6166"
+      }
+    ],
+    "processing": "Continuous beat-aligned Algate stem arrangement: 16 phrases, circular instrumentation envelopes, quiet beat-synchronous stereo reflections, no phrase fades or gaps, periodic end seam. CC0 adaptation.",
+    "file": "mods/shift_circuit/sounds/sc_music_game.ogg",
+    "sha256": "abb11bcef57beb15a4a63dd2793b9092e9cc7006b9a90d7137bc5efbf035d46c"
+  },
+  {
+    "name": "game_selection_theme",
+    "author": "James Gargette (cinameng)",
+    "license": "CC0-1.0",
+    "source_url": "https://opengameart.org/content/algate",
+    "derived_from": "music_menu",
+    "file": "menu/theme.ogg",
+    "sha256": "1f7a184d8456b1c0c9e4e7bcf0b02b053a0447e1185f1a5074910798bdca663e"
   }
 ]

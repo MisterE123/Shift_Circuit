@@ -27,7 +27,24 @@ for name in ['music_menu','music_game','ui_click','blink','shield','turn','succe
  p=root/'mods/shift_circuit/sounds'/('sc_'+name+'.ogg');data,rate=sf.read(p)
  assert np.isfinite(data).all() and np.max(np.abs(data))>.02 and np.max(np.abs(data))<1
  if name.startswith('music'):
-  assert len(data)/rate>40 and data.ndim==2
-  assert np.max(np.abs(data[0]-data[-1]))<.15,'loop discontinuity'
+  assert len(data)/rate>=(180 if name=='music_menu'else 240) and data.ndim==2
+  assert np.max(np.abs(data[0]-data[-1]))<.015,'loop discontinuity'
+  phrase=666709
+  assert max(np.max(np.abs(data[i]-data[i-1])) for i in range(phrase,len(data),phrase))<.02,'phrase seam'
+  assert np.sqrt(np.mean((data[:phrase]-data[phrase:2*phrase])**2))>.005,'arrangement should evolve'
  else:assert len(data)/rate<=1.3
 print('PASS decoded music/effects, duration, levels, and loop boundaries')
+
+# Every shipped audio file must have verified provenance, including the launcher theme.
+import json,hashlib
+sources=json.loads((root/'sound_sources.json').read_text())
+files={p.relative_to(root).as_posix() for p in root.rglob('*') if p.suffix.lower() in {'.ogg','.wav','.mp3','.flac'}}
+assert files=={entry['file'] for entry in sources}
+for entry in sources:
+ assert entry['license']=='CC0-1.0' and entry['author'] in {'Kenney','James Gargette (cinameng)'}
+ assert hashlib.sha256((root/entry['file']).read_bytes()).hexdigest()==entry['sha256']
+ for source in entry.get('sources',[]):assert source['source_url'].startswith(('https://kenney.nl/assets/','https://opengameart.org/content/algate'))
+for file in files:
+ data,rate=sf.read(root/file);assert len(data)>0 and np.isfinite(data).all() and .02<np.max(np.abs(data))<1
+ if 'music_' not in file and file!='menu/theme.ogg':assert data.ndim==1,'positional effects must be mono'
+print('PASS complete CC0 audio provenance, credited authors, file hashes, no untracked audio and playable levels')

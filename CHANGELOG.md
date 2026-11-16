@@ -478,3 +478,10 @@ Verification: 10 original rule tests and 16 expansion tests pass. Two real local
 ## Weapon power on contact
 
 - Powered weapons and the Pulse command spend energy only when their ray hits a robot or crate. Empty shots, out-of-range targets and walls cost nothing. Shielded target hits still cost power. Affordability checks and Remote Control round limits remain unchanged.
+
+## CC0 audio replacement
+
+- Replaced every sound effect with credited Kenney audio; replaced both music tracks and game-selection theme with credited Algate arrangements by James Gargette (cinameng).
+- Retained author credits, original license notices, source filenames, processing recipes and hashes. All current audio is CC0; earlier ElevenLabs audio referenced in historical entries is no longer shipped.
+
+- Extended Algate into evolving 181-second menu and 242-second gameplay arrangements. Preserved phrase timing, removed silent phrase fades and smoothed the complete loop seam. Added explicit attribution for all original 3D models, animations, textures and UI artwork.
