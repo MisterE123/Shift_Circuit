@@ -115,7 +115,6 @@ for count in range(1,10):
  for n in range(1,count+1):goal('flag_'+str(n)+'_'+str(count),'CHECKPOINT '+str(n)+' / '+str(count),'REACH THE MARKER')
 for item in ['cell','blink','range','repair','shield','cache','jammer']:goal('collect_'+item,'COLLECT '+item.upper(),'THEN FINISH ROUTE')
 for name,title,detail in [('start','START A GAME','OPEN THE MAIN MENU'),('reboot','REBOOT PENDING','AFTER THIS ROUND'),('complete','ROUTE COMPLETE','OPEN THE RESULTS'),('observe','WATCH THE RACE','FOLLOW THE ROBOTS'),('editor','BUILD YOUR FACTORY','RIGHT CLICK: TOOLS')]:goal(name,title,detail)
-im=Image.new('RGBA',(16,20));d=ImageDraw.Draw(im);d.rectangle((2,1,13,13),outline=P['gold'],width=2);d.line((7,4,7,11),fill=P['light']);d.polygon([(8,4),(12,4),(10,7),(8,7)],fill=P['light']);d.polygon([(4,16),(11,16),(8,19)],fill=P['gold']);save(im,'sc_goal_marker')
 
 for name,label,color in [('electroshield','ESHLD','#7bd2f0'),('titanium_hull','TITAN',P['light']),('none','EMPTY',P['edge']),('green_laser','LASER',P['light']),('double_laser','DOUBLE',P['gold']),('remote_control','REMOTE','#b9a3f0'),('tractor_beam','PULL','#7bd2f0'),('repulsor_beam','PUSH','#ef9f63'),('mechanical_arm','ARM',P['gold']),('turret_gearbox','AIM',P['light']),('hard_disk','DISK',P['gold']),('holographic_memory','HOLO','#b9a3f0'),('gyro_stabilizer','GYRO',P['light'])]:
  im,d=plate(32,32)
@@ -132,3 +131,6 @@ im=Image.new('RGBA',(32,32));d=ImageDraw.Draw(im);d.rectangle((1,1,30,30),outlin
 
 im=Image.new('RGBA',(8,8));d=ImageDraw.Draw(im);d.polygon([(1,1),(6,2),(4,7)],fill='#b7cbd2');save(im,'sc_fx_metal',1)
 
+
+# The waypoint has its own editable silhouette generator.
+exec(compile((ROOT/'tools/goal_marker_assets.py').read_text(),str(ROOT/'tools/goal_marker_assets.py'),'exec'),{'__file__':str(ROOT/'tools/goal_marker_assets.py')})

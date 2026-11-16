@@ -7,7 +7,7 @@ local original=core.add_entity;core.add_entity=function(p)local o=original(p);fu
 local api=dofile(modpath..'/runtime.lua')(core,{test_lab=true});callbacks.on_mods_loaded();flush();newplayer('Admin');flush()
 assert(not api.lab('Admin','weapons'),'lab requires server privilege')
 core.get_player_privs=function(n)return {server=n=='Admin'}end
-for _,scenario in ipairs({'weapons','remote','arm','armor','spawners'})do
+for _,scenario in ipairs({'weapons','remote','arm','armor','spawners','factories'})do
  assert(api.lab('Admin',scenario));local s=api.snapshot().state;assert(s.test_scenario==scenario)
  for i=1,5 do api.queue('Admin',i)end;api.commit('Admin')
  for i=1,160 do tick(.2)end

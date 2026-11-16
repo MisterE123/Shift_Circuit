@@ -8,8 +8,8 @@ local function bot(id,x,z) return {id=id,x=x,z=z,dir=1,next=1,damage=0,home={x=x
 local function fixture() local s=R.arena(); s.board={}; for x=1,11 do for z=1,11 do s.board[R.key(x,z)]={kind='floor'} end end; return s end
 local n=0
 local function test(name,fn) fn(); n=n+1; print('PASS '..name) end
-test('push chain',function() local s=fixture(); local a,b,c=bot('a',2,2),bot('b',3,2),bot('c',4,2); s.bots={a,b,c}; assert(R.move(s,a,1)); assert(a.x==3 and b.x==4 and c.x==5) end)
-test('blocked chain is atomic',function() local s=fixture(); local a,b=bot('a',2,2),bot('b',3,2); s.bots={a,b}; s.board['4,2']={kind='wall'}; assert(not R.move(s,a,1)); assert(a.x==2 and b.x==3) end)
+test('push chain',function() local s=fixture();s.round=2; local a,b,c=bot('a',2,2),bot('b',3,2),bot('c',4,2); s.bots={a,b,c}; assert(R.move(s,a,1)); assert(a.x==3 and b.x==4 and c.x==5) end)
+test('blocked chain is atomic',function() local s=fixture();s.round=2; local a,b=bot('a',2,2),bot('b',3,2); s.bots={a,b}; s.board['4,2']={kind='wall'}; assert(not R.move(s,a,1)); assert(a.x==2 and b.x==3) end)
 test('pit and dash stop',function() local s=fixture(); local a=bot('a',2,2); s.bots={a}; s.board['3,2']={kind='pit'}; R.command(s,a,'DASH'); assert(a.down and a.x==3 and a.damage==1) end)
 test('turn and reverse',function() local s=fixture(); local a=bot('a',3,3); s.bots={a}; R.command(s,a,'LEFT'); assert(a.dir==0); R.command(s,a,'BACK'); assert(a.z==2); R.command(s,a,'RIGHT'); assert(a.dir==1) end)
 test('belts move once',function() local s=fixture(); local a,b=bot('a',2,2),bot('b',3,2); s.bots={a,b}; s.board['2,2']={kind='belt',dir=1}; s.board['3,2']={kind='belt',dir=1}; R.belts(s); assert(a.x==3 and b.x==4) end)

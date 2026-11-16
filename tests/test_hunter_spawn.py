@@ -18,7 +18,7 @@ end
 local s=L.blank(15);s.round=1;s.mode='race';s.bots={{id='human',x=2,z=2,dir=0,hp=5,next=1,program={}}};s.enemy_count=1;s.racer_count=0
 C.enemies(s,R);local hunter=s.bots[2];hunter.hunt_radius=2;hunter.difficulty=1;C.deal_round(s)
 assert(math.abs(hunter.x-2)+math.abs(hunter.z-2)>2)
-local program=C.plan(R,s,hunter);assert(#program==5);hunter.program=program
+local program=C.plan(R,s,hunter);assert(#program==5);hunter.program=program;hunter.start_direction=program.start_direction;R.start_facing(s,hunter)
 for i=1,5 do R.command(s,hunter,program[i])end
 assert(math.abs(hunter.x-hunter.home.x)+math.abs(hunter.z-hunter.home.z)<=5,'out-of-range patrol remains near its post')
 print('PASS suitable hunter spawns across board sizes, racer-only shared starts, local patrol planning')

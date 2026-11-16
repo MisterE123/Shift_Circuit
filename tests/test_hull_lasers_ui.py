@@ -5,7 +5,7 @@ root=Path(__file__).resolve().parents[1];lua=LuaRuntime(unpack_returned_tuples=T
 lua.execute('''
 local R=dofile(modpath..'/rules.lua');local C=dofile(modpath..'/campaign.lua')
 for hp=1,5 do for _,enemy in ipairs({false,true})do local b={id='test',hp=hp,max_hp=5,enemy=enemy,parts={}};C.deal(b);assert(#b.hand==hp+4 and b.allowance==hp+4,'hull loss reduces human and AI hands equally')end end
-local b={id='test',hp=1,max_hp=5,parts={cache=2,blink=1,hard_disk=8},disruption=4};C.deal(b);assert(#b.hand==5 and b.hull_penalty==4 and b.last_penalty==4,'bonuses and penalties retain five-card floor');b.keep={1,2,3,4,5};b.hp=5;C.deal(b);assert(#b.hand==11 and b.hull_penalty==0,'repair restores allowance next deal')
+local b={id='test',hp=1,max_hp=5,parts={cache=2,blink=1,hard_disk=8},disruption=4};C.deal(b);assert(#b.hand==5 and b.hull_penalty==4 and b.last_penalty==4,'bonuses and penalties retain five-card floor');b.keep={1,2,3,4,5};b.hp=5;C.deal(b);assert(#b.hand==12 and b.hull_penalty==0,'repair restores allowance next deal')
 for power=1,3 do for dir=0,3 do
  local s={size=40,board={},walls={},bots={},round=1};local d=R.dirs[dir+1];local x,z=dir==1 and 1 or(dir==3 and 40 or 20),dir==0 and 1 or(dir==2 and 40 or 20)
  local q={x=x,z=z,dir=dir,power=power};s.lasers={q};R.lasers(s);assert(s.shots[1].range==40,'full board boundary in every direction')
@@ -26,7 +26,7 @@ api.edit_level(L.blank(20),false);assert(nodes['28,12,12']=='air','upper old wal
 api.edit_level(L.blank(10),false);assert(nodes['48,12,12']=='air'and nodes['48,23,12']=='air','old outer wall and ceiling removed on shrink')
 local data=L.blank(40);data.lasers={{x=1,z=20,dir=1,power=3}};api.edit_level(data,true);tick(.4)
 local beams=0;for _,o in ipairs(objects)do if o.p and o.e.preview_tint=='#804232'then beams=beams+1;assert(o.e.preview_length==40 and o.props.visual_size.z>78,'preview reaches far boundary')end end;assert(beams==3)
-local panel=false;for _,h in ipairs(p.hud)do if h.text=='sc_register_terminal.png'then panel=true end end;assert(panel,'playtest restores static gameplay HUD')
+local panel=false;for _,h in ipairs(p.hud)do if h.text=='sc_register_terminal_start.png'then panel=true end end;assert(panel,'playtest restores static gameplay HUD')
 local s;for i=1,30 do local key,v=debug.getupvalue(api.snapshot,i);if key=='S'then s=v;break end end;local b=s.bots[1];b.parts.double_laser=1;b.parts.electroshield=1
 callbacks.on_player_receive_fields(p,'',{weapon='2'});assert(b.weapon=='double_laser','inventory weapon selection applies immediately')
 assert(not p.form:find(';aim;')and p.form:find('Front / LOCKED')and not p.form:find('APPLY CHANGES'),'gearbox absent: no direction dropdown or Apply button')

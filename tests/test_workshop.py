@@ -11,8 +11,8 @@ s.walls[R.edge(4,2,1)]=true;a.dir=1;R.command(s,a,'MOVE3');assert(a.x==4,'move 3
 s.board['6,2']={kind='pit'};R.command(s,a,'MOVE3');assert(a.down and a.x==6,'move 3 stops at pit')
 a.down=nil;a.hp=5;s.board['6,2']={kind='floor'};R.shared_start(s,{x=2,z=2,dir=1});assert(a.ghost and b.ghost)
 b.x=3;local len,target=R.trace(s,2,2,1,5,a);assert(target==nil,'ghost weapons skip ghosts');b.x=2
-R.command(s,a,'STEP');assert(a.x==3 and b.x==2 and not a.ghost and not b.ghost,'no push; both become solid when separated')
-R.shared_start(s,{x=2,z=2,dir=0});R.ghosts(s,true);assert(not a.ghost and not b.ghost and (a.x~=b.x or a.z~=b.z),'round end separates stacked robots')
+R.command(s,a,'STEP');assert(a.x==3 and b.x==2 and a.ghost and b.ghost,'no push; first round remains ghosted after separation')
+R.shared_start(s,{x=2,z=2,dir=0});s.round=2;R.ghosts(s);assert(a.ghost and b.ghost and a.x==b.x and a.z==b.z,'overlap survives round end without relocation');R.command(s,a,'STEP');assert(a.ghost and b.ghost,'ghosts last through the register');R.ghosts(s,true);assert(not a.ghost and not b.ghost,'separated ghosts become solid at register end')
 local bag={};local robot={draw_bonus=3};for seed=1,1000 do math.randomseed(seed);C.deal(robot);for _,card in ipairs(robot.hand)do bag[card]=(bag[card]or 0)+1 end end
 assert(bag.STEP>bag.DASH and bag.DASH>bag.MOVE3 and bag.BACK>bag.BACK2 and bag.LEFT>bag.UTURN,'weighted bag')
 print('PASS new commands, wall/pit stops, ghost start/separation/weapons/expiry, weighted cards, portable validation')
@@ -30,7 +30,7 @@ local function fields(f,form)callbacks.on_player_receive_fields(p,form or 'shift
 fields({b14=true});e.paint('Author',4,4);assert(room_data.overhead['4,4']and room_data.board['4,4'].kind=='floor','independent crusher layer')
 fields({undo=true});assert(not room_data.overhead['4,4']);fields({publish=true});assert(next(e.catalog)==nil,'non-admin cannot approve')
 fields({submit=true});assert(e.catalog['1']and not e.catalog['1'].approved,'player submission pending')
-admin=true;fields({publish=true});assert(e.catalog['2'].approved,'admin saves approved')
+admin=true;fields({publish=true});assert(e.catalog['1'].approved and not e.catalog['2'],'admin updates same entry')
 fields({test=true});assert(current=='program','playtest enters programming');fields({resume=true});assert(current=='editor','return restores draft')
 assert(e.draft('Author').data.board['8,3'].kind=='checkpoint','playtest never changes draft')
 fields({group_2=true,b5=true,dir_0=true});editor_form=clients.Author.shown;e.paint('Author',4,4)

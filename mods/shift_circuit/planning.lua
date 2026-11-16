@@ -14,7 +14,7 @@ return function(core,path,R,C,background)
     local snapshot=core.deserialize(core.serialize(state))
     for _,other in ipairs(snapshot.bots)do
      other.program={};other.selected={};other.ready=false
-     if other.id~=b.id then other.hand=nil;other.hand_ids=nil end;other.program_ids={}
+     if other.id~=b.id then other.hand=nil;other.hand_ids=nil;other.start_direction=nil end;other.program_ids={}
     end
     requests[#requests+1]={bot=b,snapshot=snapshot}
    end
@@ -28,6 +28,7 @@ return function(core,path,R,C,background)
     if type(card)~='string' or (remaining[card]or 0)==0 then valid=false;break end
     remaining[card]=remaining[card]-1
    end end
+   if state.round==1 then b.start_direction=valid and R.start_directions[program.start_direction]and program.start_direction or 'FORWARD'end
    b.program={};b.selected={};b.ready=false
    if valid then b.program_ids={};local used={};for i,card in ipairs(program)do b.program[i]=card;local best;for j,c in ipairs(b.hand)do if c==card and not used[j]and (not best or ((b.hand_ids or {})[j]or 0)>((b.hand_ids or {})[best]or 0))then best=j end end;used[best]=true;b.selected[i]=best;b.program_ids[i]=(b.hand_ids or {})[best]end;b.ready=true
    else C.autofill(b)end -- Failure still obeys the dealt hand, never grants cards.

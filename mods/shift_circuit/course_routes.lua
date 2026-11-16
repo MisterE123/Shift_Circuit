@@ -1,17 +1,21 @@
 local T={}
+local function position(p,size,x,z)
+ for _=1,(p.rotation or 0)%4 do x,z=z,size+1-x end
+ return p.x*10+x,p.z*10+z
+end
 function T.candidates(layout,choices)
  local byid={};for _,q in ipairs(choices)do byid[q.id]=q.data end
  local points,lookup={},{};local default
  for _,p in ipairs(layout.items)do local d=byid[p.id];if d then
   for z=1,d.size do for x=1,d.size do local t=d.board[x..','..z]
-   if t and (t.kind=='checkpoint'or t.kind=='station')then local q={x=p.x*10+x,z=p.z*10+z};points[#points+1]=q;lookup[q.x..','..q.z]=q
+   if t and (t.kind=='checkpoint'or t.kind=='station')then local rx,rz=position(p,d.size,x,z);local q={x=rx,z=rz};points[#points+1]=q;lookup[q.x..','..q.z]=q
     if not default then default=q end
    end
   end end
   if not default then default=nil end
  end end
  local first=layout.items[1];local d=first and byid[first.id]
- if d and d.start then local key=(first.x*10+d.start.x)..','..(first.z*10+d.start.z);default=lookup[key]or default end
+ if d and d.start then local x,z=position(first,d.size,d.start.x,d.start.z);local key=x..','..z;default=lookup[key]or default end
  return points,lookup,default
 end
 function T.validate(route,layout,choices)

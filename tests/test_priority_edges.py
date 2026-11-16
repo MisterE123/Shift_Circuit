@@ -26,7 +26,7 @@ local first=s.bots[1];first.keep={1};local retained=first.hand[1];C.deal_round(s
 -- Same move, head-on: higher priority pushes first, independent of robot ID/list order.
 local a={id='A',x=2,z=2,dir=1,hp=5,program={'STEP'},program_ids={10}}
 local b={id='Z',x=3,z=2,dir=3,hp=5,program={'STEP'},program_ids={90}}
-s.bots={a,b};assert(R.program_order(s,1)[1]==b);R.programs(s,1)
+s.round=2;s.bots={a,b};assert(R.program_order(s,1)[1]==b);R.programs(s,1)
 assert(a.x==2 and b.x==3,'low priority moves after the high-priority push')
 a.x=2;b.x=3;a.program_ids[1]=100;R.programs(s,1)
 assert(a.x==2 and b.x==3)

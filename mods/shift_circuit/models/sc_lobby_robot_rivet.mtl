@@ -1,0 +1,3 @@
+newmtl editable
+Kd 1 1 1
+map_Kd ../textures/sc_surface_robot_rivet.png

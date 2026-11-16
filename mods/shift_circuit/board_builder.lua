@@ -10,13 +10,12 @@ function B.connected(items)
  while queue[head]do local i=queue[head];head=head+1;for j,q in ipairs(items)do if not seen[j]and adjacent(items[i],q)then seen[j]=true;queue[#queue+1]=j end end end
  return #queue==#items
 end
-function B.new(limit)return {limit=math.max(1,math.min(16,math.floor(tonumber(limit)or 4))),items={},revision=0}end
+function B.new(limit)return {limit=16,items={},revision=0}end
 function B.at(layout,x,z)
  for i,q in ipairs(layout.items)do if x>=q.x and x<q.x+q.w and z>=q.z and z<q.z+q.w then return i,q end end
 end
 function B.place(layout,id,size,x,z)
  if size~=10 and size~=20 then return false,'Invalid board size'end
- if #layout.items>=layout.limit then return false,'Board limit reached'end
  local w=size/10
  if type(x)~='number'or type(z)~='number'or x~=math.floor(x)or z~=math.floor(z)or x<0 or z<0 or x+w>B.width or z+w>B.width then return false,'This board does not fit inside the grid'end
  for dx=0,w-1 do for dz=0,w-1 do if B.at(layout,x+dx,z+dz)then return false,'Those inventory squares are occupied'end end end
@@ -29,5 +28,10 @@ function B.remove(layout,x,z)
  local q=table.remove(layout.items,i)
  if not B.connected(layout.items)then table.insert(layout.items,i,q);return false,'Removing that board would disconnect the course'end
  layout.revision=layout.revision+1;return true
+end
+function B.rotate(layout,x,z)
+ local _,q=B.at(layout,x,z);if not q then return false,'Select a placed board to rotate'end
+ q.rotation=((q.rotation or 0)+1)%4;layout.revision=layout.revision+1
+ return true
 end
 return B

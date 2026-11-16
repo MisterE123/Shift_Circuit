@@ -12,7 +12,7 @@ assert(not e.catalog['1']and e.catalog['2']);assert(store:get_string('retired_ge
 e=dofile(modpath..'/editor.lua')(core,store,function()end,function()end);assert(not e.catalog['1']and e.catalog['2'],'migration is repeatable')
 dofile(modpath..'/online.lua');callbacks.on_mods_loaded();flush();local a=newplayer('Author');flush()
 local function fields(f)callbacks.on_player_receive_fields(a,'shift_circuit:online',f);flush()end
-fields({solo=true});assert(a.shown:find('No campaign missions selected'));fields({play_solo=true});assert(not shift_circuit.member.Author)
+fields({solo=true});assert(a.shown:find('No puzzles yet'));fields({play_solo=true});assert(not shift_circuit.member.Author)
 fields({setup_back=true});fields({solo_race=true});assert(a.shown:find('No enabled boards'));fields({course=true});fields({cell_0_0=true});assert(a.shown:find('No enabled boards available'));assert(not a.shown:find('Assembly Line')and not a.shown:find('Reactor Hall'))
 print('PASS generated imports retired, player copies/drafts/configs preserved, repeatable migration, empty catalog and campaign handled')
 ''')

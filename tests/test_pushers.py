@@ -24,3 +24,32 @@ for name in ['pusher','pushram']:
  vertices=[list(map(float,line.split()[1:]))for line in (root/'mods/shift_circuit/models'/('sc_'+name+'.obj')).read_text().splitlines()if line.startswith('v ')]
  assert max(v[1]for v in vertices)-min(v[1]for v in vertices)<=4.8+1e-8
 print('PASS pusher and plate remain under half a node tall')
+
+# Live machine poses must not mix client-interpolated positions and immediate scales.
+lua.execute("""
+local G=dofile(modpath..'/geometry.lua');local checked=0
+for _,o in ipairs(objects)do local e=o.e;if o.p and (e.pusher_rod or e.hydraulic_rod)then
+ checked=checked+1
+ local oldmove=o.move_to;o.move_to=function()error('machine plate must share the rod update timing')end
+ if e.pusher_rod then
+  local rod=e.pusher_rod;rod.move_to=function()error('rod cannot independently interpolate')end
+  for _,travel in ipairs({0,.45,.9,.45,0})do
+   local base=e.pusher_base;local dir=({{x=0,z=1},{x=1,z=0},{x=0,z=-1},{x=-1,z=0}})[e.pusher_dir+1]
+   e.target={x=base.x+dir.x*travel,y=base.y,z=base.z+dir.z*travel}
+   for i=1,20 do callbacks.entity.on_step(e,.05);local anchor,length=G.pusher_rod(base,o.p,e.pusher_dir);assert(same(rod.p,anchor)and math.abs(rod.props.visual_size.z-length)<1e-8)end
+  end
+ else
+  local rod=e.hydraulic_rod;rod.move_to=function()error('crusher rod cannot independently interpolate')end
+  for _,height in ipairs({4.3,2.65,1,2.65,4.3})do
+   e.target={x=o.p.x,y=height,z=o.p.z}
+   for i=1,20 do callbacks.entity.on_step(e,.05)
+    assert(rod.p.y>o.p.y-.25 and rod.p.y<o.p.y+.125,'rod bottom recessed within platen')
+    assert(math.abs(rod.p.y+rod.props.visual_size.y-e.hydraulic_ceiling)<1e-8,'rod top stays embedded in gantry')
+   end
+  end
+ end
+ o.move_to=oldmove
+end end
+assert(checked>0)
+print('PASS synchronized machine poses, recessed crusher ends and no independent rod/plate interpolation')
+""")

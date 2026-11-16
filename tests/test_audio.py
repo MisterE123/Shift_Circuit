@@ -23,7 +23,7 @@ m.leave('A');assert(m.settings('A').music==0 and m.settings('A').effects==.5,'se
 m.shutdown();assert(stopped[3],'disconnect/shutdown stops loops')
 print('PASS personal music loops, crossfade, ducking, mute, gain, debounce, persistence, cleanup')
 ''')
-for name in ['music_menu','music_game','ui_click','blink','shield','turn','success']:
+for name in ['music_menu','music_game','ui_click','blink','shield','turn','success','puzzle_complete']:
  p=root/'mods/shift_circuit/sounds'/('sc_'+name+'.ogg');data,rate=sf.read(p)
  assert np.isfinite(data).all() and np.max(np.abs(data))>.02 and np.max(np.abs(data))<1
  if name.startswith('music'):

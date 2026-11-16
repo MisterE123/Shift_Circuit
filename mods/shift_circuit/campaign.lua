@@ -37,6 +37,28 @@ function C.setup(R,level,mode,board)
   end
   return s
 end
+-- Draw from the same round deck so IDs remain globally unique.
+function C.reset_hand(s,b,random)
+ random=random or math.random
+ if b.ready or b.down or b.finished then return false,'Reset unavailable now'end
+ if ((b.parts or {}).reset_button or 0)<1 then return false,'Collect a Reset Button first'end
+ if s.puzzle and ((s.puzzle.hands or {})[tostring(s.round)]or (s.puzzle.hands or {})[s.round])then return false,'This puzzle uses a fixed hand'end
+ local slots={};local candidates={}
+ for i,c in ipairs(b.hand or {})do if c~='BLINK'then slots[#slots+1]=i end end
+ for i,c in ipairs(s.draw_pile or {})do if c.command~='BLINK'then candidates[#candidates+1]=i end end
+ if #slots==0 or #candidates<#slots then return false,'No replacement hand available'end
+ for i=#candidates,2,-1 do local j=random(i);candidates[i],candidates[j]=candidates[j],candidates[i]end
+ local removed={};local returned={}
+ for n,index in ipairs(slots)do
+  local at=candidates[n];local card=s.draw_pile[at];removed[at]=true
+  returned[#returned+1]={command=b.hand[index],id=b.hand_ids[index]}
+  b.hand[index]=card.command;b.hand_ids[index]=card.id
+ end
+ local deck={};for i,c in ipairs(s.draw_pile)do if not removed[i]then deck[#deck+1]=c end end
+ for _,c in ipairs(returned)do deck[#deck+1]=c end;s.draw_pile=deck
+ b.parts.reset_button=b.parts.reset_button-1;b.selected={};b.program={};b.program_ids={};b.keep={};b.keep_ids={};b.retained_count=0
+ return true,'Hand reset / One Reset Button consumed'
+end
 function C.deal(b,random) C.deal_round({bots={b}},random)end
 -- Build the whole round's weighted deck, number it, shuffle it, then deal.
 -- Disk reservations consume cards from this same deck; they do not add draws.
@@ -45,13 +67,15 @@ function C.deal_round(s,random)
  local recipients={};local deck={}
  for _,b in ipairs(s.bots)do if not b.finished and not b.pattern then
   b.blink=b.blink or ((b.parts or {}).blink or 0)>0;b.blink_left=b.blink and 1 or 0
-  b.draw_bonus=math.min(3,(b.parts or {}).cache or b.draw_bonus or 0)
+  b.draw_bonus=math.min(3,(b.parts or {}).cache and 2*b.parts.cache or b.draw_bonus or 0)
   b.last_penalty=b.disruption or 0;b.disruption=0
   b.hull_penalty=math.max(0,(b.max_hp or 5)-(b.hp or b.max_hp or 5))
   b.allowance=math.max(5,math.min(12,9+(b.draw_bonus or 0)-b.hull_penalty-b.last_penalty))
   local retained={};local seen={};for _,index in ipairs(b.keep or {})do local card=(b.hand or {})[index]
-   if card and card~='WAIT'and card~='BLINK'and not seen[index]and #retained<math.min(b.allowance,(b.parts or {}).hard_disk or 0)then retained[#retained+1]=card;seen[index]=true end
+   if card and card~='BLINK'and not seen[index]and #retained<math.min(b.allowance,(b.parts or {}).hard_disk or 0)then retained[#retained+1]=card;seen[index]=true end
   end
+  b.start_direction_available=s.round==1
+  if s.round~=1 then b.start_direction=nil end
   b.hand=retained;b.retained_count=#retained;b.keep={};b.selected={};b.program={};b.program_ids={};b.hand_ids={};b.ready=false;b.remote_from=nil;b.remote_slots=nil
   if b.enabled then b.enabled.gyro_stabilizer=false end
   recipients[#recipients+1]=b
@@ -77,6 +101,11 @@ function C.deal_round(s,random)
    b.hand[#b.hand+1]=card.command;b.hand_ids[#b.hand_ids+1]=card.id;table.remove(deck,i);break
   end end
  end end end
+ if s.puzzle then local hand=(s.puzzle.hands or {})[tostring(s.round)]or (s.puzzle.hands or {})[s.round]
+  if hand then local id=0;for _,b in ipairs(s.bots)do for _,n in ipairs(b.hand_ids or {})do id=math.max(id,n)end end;for _,card in ipairs(deck)do id=math.max(id,card.id)end
+   for _,b in ipairs(recipients)do if not b.enemy then b.hand={};b.hand_ids={};b.retained_count=0;b.allowance=#hand;for i,c in ipairs(hand)do id=id+1;b.hand[i]=c;b.hand_ids[i]=id end end end
+  end
+ end
  s.draw_pile=deck
 end
 function C.enemies(s,R)
@@ -152,6 +181,13 @@ function C.plan(R,s,b,yield_step)
  local indices={};for i in ipairs(b.hand)do indices[#indices+1]=i end
  table.sort(indices,function(a,c)return ((b.hand_ids or {})[a]or 0)>((b.hand_ids or {})[c]or 0)end)
  local beam={{s=base,program={},used={},score=0}};local initial={}
+ if s.round==1 and not b.start_direction_applied then
+  beam={}
+  for _,choice in ipairs({'FORWARD','LEFT','RIGHT','UTURN'})do
+   local oriented=copy(base);local me=find(oriented,b.id);me.start_direction=choice;R.start_facing(oriented,me)
+   beam[#beam+1]={s=oriented,program={start_direction=choice},used={},score=0}
+  end
+ end
  for _,p in ipairs(s.bots)do initial[p.id]={hp=p.hp or 5,shield=p.shield or 0,next=p.next or 1}end
  for pulse=1,5 do
   local candidates={}
@@ -161,7 +197,7 @@ function C.plan(R,s,b,yield_step)
     local sim=copy(branch.s);sim.shots={};sim.collections={};local me=find(sim,b.id)
     me.program_ids=me.program_ids or {};me.program_ids[pulse]=(b.hand_ids or {})[index]
     sim.register=pulse;for _,p in ipairs(R.program_order(sim,pulse))do R.command(sim,p,p.id==b.id and card or (not p.enemy and p.program[pulse] or 'WAIT'))end
-    R.ghosts(sim);R.collect_phase(sim);R.arms(sim);R.belts(sim);R.pushers(sim,pulse);R.collect_phase(sim);R.rotators(sim);R.robot_weapons(sim,pulse);R.collect_phase(sim);R.lasers(sim);R.hazards(sim,pulse);if pulse==5 then R.repairs(sim);R.ghosts(sim,true)end
+    R.ghosts(sim);R.collect_phase(sim);R.arms(sim);R.belts(sim);R.pushers(sim,pulse);R.plates(sim);R.collect_phase(sim);R.rotators(sim);R.robot_weapons(sim,pulse);R.collect_phase(sim);R.lasers(sim);R.hazards(sim,pulse);R.register_repairs(sim);R.ghosts(sim,true);if pulse==5 then R.repairs(sim)end
     local score=(me.hp or 0)*5+(me.shield or 0)*2-(me.down and 150 or 0)
     if b.racing then
       score=score+((me.next or 1)-1)*120
@@ -197,6 +233,7 @@ function C.autofill(b)
    local at=math.random(#remaining);local i=table.remove(remaining,at)
    b.selected[#b.selected+1]=i;b.program[#b.program+1]=b.hand[i];b.program_ids=b.program_ids or {};b.program_ids[#b.program]=(b.hand_ids or {})[i]
  end
+ if b.start_direction_available then b.start_direction=b.start_direction or 'FORWARD'end
  b.ready=#b.program==5
 end
 return C

@@ -1,3 +1,22 @@
+## 0.19.1 - Workshop hints and robot health
+
+- Added descriptive, wrapped hover text over Workshop icons and labels.
+- Added floating pixel health bars to all robots, with damage colors, smooth movement following and observer-matched ghost views.
+
+## 0.19.0 - Standalone puzzle authoring and packs
+
+- Added Workshop Puzzle type, click-selected objectives, starting loadout/facing, per-round card editor, turn limits and destruction failure option.
+- Added puzzle playtests, fresh retries, target HUDs, completion records, main-menu browser and existing approval workflow integration.
+- Added admin single/multi-puzzle mod export, validated manifests, built-in-first ordering and protected copying from installed packs.
+- Fixed inspection beams incorrectly appearing on non-firing Patrollers and Ram Bots.
+- Fixed inspection beams incorrectly appearing on non-firing Patrollers and Ram Bots.
+
+## 0.18.0 - Pushable crates and predictable map obstacles
+
+- Added loot/steel crates, pressure plates, animated trapdoors, three predictable enemies and visibly mounted Battering Ram equipment.
+- Added Workshop brushes, rotation, persistence, portable validation and course-preview icons.
+- Documented the revised standalone Puzzle editor and ordered mod export design; that editor is not implemented in this release.
+
 ## 0.17.6 - Authored arenas only
 
 - Removed generated Assembly Line, Crossroads and Reactor Hall choices and bundled Service Yard. Existing bundled Service Yard records are retired with a storage backup; player copies, drafts and configurations are preserved.
@@ -362,3 +381,96 @@ Verification: 10 original rule tests and 16 expansion tests pass. Two real local
 
 
 
+
+### Menu clarity and grouped enemy movement
+- Corrected nine-slice borders; selected buttons use green outlined states and editable fields have visible backgrounds.
+- Content-sized scrolling replaces pages in course boards, saved courses, robot previews, puzzle lists, workshop library, room browser, reviews and leaderboard. Scroll gestures preserve position without action sounds.
+- Audio controls use editable pixel speaker icons and hover descriptions; workshop captions wrap inside their cells.
+- Floating goal flags are green, twice as large and raised above the board.
+- Independent enemy commands animate together; overlapping paths, pushed chains and scripted sight checks retain priority order in separate movement updates.
+
+- Multiplayer programming grants 180 seconds in round one and 90 seconds thereafter; each countdown has a proportional HUD bar with warnings at 20 and 10 seconds.
+
+### Pickup rewards and board readability
+- Repair and power-cell pickups fully restore their respective resource; shields provide three charges. Range upgrades add five squares each; caches add two cards each, capped at three bonus cards.
+- Remote Control costs one power; tractor and repulsor beams have no power cost. Battering Ram pushes deal two damage.
+- One camera orbit tool: left-click left, right-click right.
+- Nearby names are per-viewer and limited to the nearest six: enemies, machines and supplies within 8 nodes, racers within 16, jam warnings within 10. Full descriptions remain available on pointing. World labels stay below interface panels.
+- Free-flight movement is 25% faster (speed multiplier 1.2 to 1.5).
+
+### Robot showroom and distinct chassis
+- Robot selection now has a large selected-body preview and a fixed 4-by-4 gallery, with immediate saving and green selection outlines. Removed overflowing scrolling background panels.
+- Replaced twelve similar chassis with distinct knuckle-walker, tripod, insect, single-wheel, forklift, tower, cargo-safe, crab, pyramid, balancing-wheel, shell and dish-receiver shapes. Existing selection IDs and editable textures are preserved; lobby bodies and rotating previews regenerated.
+- Extended the Workshop palette panel to contain second-row captions.
+
+- Floating pixel activation badges: crushers/pushers show their five-step schedule and current register; powerup spawners show the next three scheduled round chances. Per-viewer visibility is limited to six nearby badges within 14 nodes. Editable source images are in art/ui/schedules.
+
+- Factories now have editable and exportable round schedules, defaulting to every three rounds from round one. Each outlet attempts once per due round; jams retry only when next due. Floating round badges and the Workshop Factory Timing form share the schedule.
+
+- Revised factories to produce one or two crates total every round, rotating across clear outlets. Removed the factory timing control; legacy schedule fields no longer delay production. Factory badges now read 1–2 CRATES / EVERY ROUND.
+- Redrew the checkpoint waypoint as a shaded green flag silhouette with a small downward pointer; removed the chunky square frame and reduced pixel enlargement.
+
+- Lobby HUD now prompts Press I for main menu. Programming hotbar has an editable pixel-art Command Palette >_ surround sized to the available hand. Added bottom padding beneath the Workshop & Community buttons.
+
+## Match reconnects and ghost presentation
+
+- Leaving an active race now hands the same robot to a low-intelligence AI, including menu departures. Network reconnects reclaim the robot automatically; joining its room again also restores control. Committed programs, dealt hands, health, equipment and progress remain intact. Pending AI results cannot overwrite a returning player's program.
+- Reconnecting pilots get their controls and HUD back, with a view above their robot during planning or its follow camera during execution. Empty disconnected rooms allow a five-minute reconnect window before releasing the arena.
+- Each overlapping ghost group shows one full-size robot per viewer: their own when in the group, otherwise a stable representative. Others float at reduced size.
+- Non-ghost robots can hit ghosts with weapons, including automatic aim and beam effects. Ghost robots still cannot fire, and walls still block shots.
+
+## Shared respawn visual alignment
+
+- Ghost cones keep their pointed tip above the occupied square and follow the visible floating robot with their broad end. Rotation is applied before sending the position update, including changes with a stationary tip.
+- Rebooting clears leftover fall/conveyor movement, restores exact saved facing and resets both public and private robot views to their intended positions.
+- Regression coverage includes round-three shared respawns, all-axis cone endpoints, stationary-tip rotation publication and moving ghost groups.
+
+## Straight conveyor entity and network reduction
+
+- Replaced ten independently moved slat entities with one client-animated B3D tread. Straight conveyors now use four entities including floor, rails and arrow, down from thirteen. Turning conveyors remain at four.
+- Straight tread loops run on clients, with speed updates only at phase/rate changes. Normal and double conveyors retain half-speed inspection and pause outside their execution phases.
+- Clipped end slats prevent geometry extending into neighboring tiles; loop endpoints match. The existing sc_surface_conveyor.png texture remains editable.
+- Added a 100-conveyor regression fixture proving 400 entities rather than 1,300, with no ongoing tread movement/property updates during steady animation.
+
+## Arena entity lifetime and respawn recovery
+
+- Active arenas temporarily keep their bounded map area loaded, including distant machinery, respawn squares and falling robots. All references are released on room cleanup/rebuild; no persistent server setting is changed.
+- Inspection and execution skip missing machine visuals instead of crashing. Invalid preview beams and robot models are recreated, and living respawned robots explicitly regain visibility.
+- Added regression coverage for removed machine entities, lost public/private robot models, respawn visibility and balanced arena loading/release.
+
+## Dashboard layout and scrolling
+
+- Replaced dashboard card backgrounds with clipped nine-slice images so equipment panels stay inside the scroll area instead of spilling across the menu and board.
+- Equipment now uses full-width rows with icons, names and concise descriptions on the left, and toggles, archive selection or passive status aligned on the right.
+- Preserved immediate saving, hover details and locked loadout behavior. Added exact scroll-length and panel-clipping regression checks.
+
+## Visible mechanical arm, brake and equipment semantics
+
+- Installed arms now remain visible above other head equipment with a folded rest pose, articulated links and opening gripper fingers. Initial placement and following are applied before visibility, avoiding travel from stale spawn locations. Reach, grip and retraction are eased and pickup timing follows the grip.
+- Expanded the admin mechanical-arm scene with three supplies, an adjacent checkpoint across a wall, replenishing spawners and movement lanes.
+- Added collectible Electromagnetic Brake with editable pickup/icon/mounted assets. Enabled brakes block robot push chains, pushers and tractor/repulsor displacement; they do not stop commands or conveyors. Installed brakes remain visible while disabled.
+- Arm, Thermal Camera and Titanium Hull are passive; obsolete disable flags are ignored. Thermal Camera unlocks Automatic aim without forcing a change to the selected direction.
+- Unique equipment and duplicate weapon types no longer stack. Redundant pickups remain for other robots, and arms skip them. Extra arms, disks, range, Blink and titanium reserves keep useful stacking; Cache stops at two copies. Holographic Memory is unique because destruction discards unused equipment.
+
+## Powered weapons and equipment fixes
+
+- Triple Laser: three damage for one power per shot, with three visible barrels and beams.
+- EMP Generator: two power per shot; the first robot hit skips its remaining commands in that round. Walls and crates block it. Commands resume next round; board machinery and automatic weapons still operate. Existing special-weapon shield protection applies.
+- Insufficient weapon power automatically loads an affordable owned laser, or the free Green Laser, preserving the original weapon in inventory.
+- Blueprint Archive defaults to random eligible-item preservation; specific selections remain available.
+- Hard Disk can reserve Wait. Long menu tooltips wrap at word boundaries.
+
+## Mounted weapon movement
+
+- Weapon and equipment mounts now attach directly to their robot, sharing client movement and body rotation instead of receiving independent position updates.
+- Only relative turret aiming is smoothed; forward-facing weapons no longer lag behind body turns. Recoil, ghost sizing, visibility and respawn are retained.
+
+## Reset Button
+
+- New collectible consumable with an editable red-button pickup model and icon, random drops/spawns and puzzle starting-loadout support.
+- RESET HAND in the planning dashboard redraws movement cards from the round deck, clearing the queued program and Hard Disk reservations while keeping blue direction and Blink. Each use consumes one copy; fixed puzzle hands, committed programs and execution cannot be reset.
+
+## Articulated arm following
+
+- Attached both arm links, the claw and its fingers to the robot. Reach poses are solved relative to the robot while pickup targets remain world-fixed. Folded arm pieces no longer receive separate world-position updates during robot movement or turning.
+- Verified attached movement, target reach at full and ghost scale, existing reach/retract animation, destruction/respawn and admin lab lifecycle.

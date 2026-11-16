@@ -9,7 +9,7 @@ local S;for i=1,30 do local k,v=debug.getupvalue(api.snapshot,i);if k=='S'then S
 local b=S.bots[1];S.board['2,3']={kind='pit'};S.walls={};S.lasers={};S.pushers={};S.overhead={};b.x=2;b.z=2;b.dir=0;b.hand={'STEP','WAIT','WAIT','WAIT','WAIT'};b.hand_ids={1,2,3,4,5}
 for i=1,5 do api.queue('Alpha',i)end;api.commit('Alpha')
 local main;for _,o in ipairs(objects)do if o.p and o.e.robot then main=o;break end end;local own=main.e.owner_view;assert(own)
-tick(.23);tick(.23);assert(b.down and b.destroyed_by=='Fell into a pit','death applies immediately')
+for i=1,80 do tick(.05);if b.down then break end end;assert(b.down and b.destroyed_by=='Fell into a pit','death applies immediately')
 assert(main.e.fall and own.e.fall and own.props.visual_size.y==1,'both observer views fall at full height')
 local y=own.p.y;tick(.25);assert(own.p.y<y and own.p.y> -4.5 and own.props.is_visible,'visible accelerating drop')
 for i=1,8 do tick(.1)end

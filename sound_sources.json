@@ -89,5 +89,12 @@
     "model": "eleven_text_to_sound_v2",
     "prompt": "Single short understated mission-complete notification, three warm ascending synth bell notes with a soft sparkling tail. Optimistic robotic factory strategy game UI, restrained and elegant, no speech",
     "duration": 1.0
+  },
+  {
+    "name": "puzzle_complete",
+    "generation_id": "IGp1qrYB8YZKn6TGgYUH",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One short polished puzzle-complete sound for a pixel-art robot factory game. About 1.5 seconds total: a bright rising three-note electronic chiptune arpeggio resolves into a warm satisfying major synt",
+    "duration": 1.0
   }
 ]

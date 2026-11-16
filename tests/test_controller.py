@@ -5,6 +5,7 @@ root=Path(__file__).resolve().parents[1]
 lua=LuaRuntime(unpack_returned_tuples=True)
 lua.globals().modpath=str(root/'mods/shift_circuit').replace('\\','/')
 lua.execute(r'''
+math.atan2=math.atan2 or function(y,x)return math.atan(y,x)end
 function copy(t) if type(t)~='table' then return t end local r={};for k,v in pairs(t) do r[k]=copy(v) end;return r end
 function same(a,b) if type(a)~=type(b) then return false end;if type(a)~='table' then return a==b end;for k,v in pairs(a) do if not same(v,b[k]) then return false end end;for k in pairs(b) do if a[k]==nil then return false end end;return true end
 vector={new=copy,add=function(a,b) return {x=a.x+b.x,y=a.y+b.y,z=a.z+b.z} end,subtract=function(a,b) return {x=a.x-b.x,y=a.y-b.y,z=a.z-b.z} end,multiply=function(a,n) return {x=a.x*n,y=a.y*n,z=a.z*n} end}
@@ -19,6 +20,9 @@ core={sound_play=function(n,p) sounds[#sounds+1]={name=n,params=copy(p)} end,get
 for _,name in ipairs({'on_joinplayer','on_leaveplayer','on_player_receive_fields','on_mods_loaded','globalstep','on_shutdown','allow_player_inventory_action'}) do core['register_'..name]=function(f)callbacks[name]=f end end
 function core.add_entity(p)
  local o={p=copy(p),yaw=0,props={}};o.e={object=o}
+ function o:set_rotation(r)self.rotation=copy(r);self.yaw=r.y end
+ function o:set_animation(range,speed,blend,loop)self.animation={range=range,speed=speed,loop=loop}end
+ function o:set_animation_frame_speed(speed)self.animation.speed=speed;self.animation_updates=(self.animation_updates or 0)+1 end
  function o:get_luaentity()return self.e end
  function o:set_properties(t)for k,v in pairs(t)do self.props[k]=copy(v)end end
  function o:get_pos()return self.p and copy(self.p)end
@@ -64,7 +68,7 @@ local beams=0;local slat
 for _,o in ipairs(objects)do if o.p then if o.props.mesh=='sc_beam.obj' and o.props.glow==7 then beams=beams+1 end;if o.e.belt and o.e.speed==1 then slat=o end end end
 assert(beams==6,'fixed laser previews remain; ghost robot previews are hidden')
 local previous=slat.e.travel;tick(.1);assert(math.abs((slat.e.travel-previous)%1-.1/.85*.5)<.0001,'half-speed conveyor preview')
-assert(a.inv.list[1].name=='shift_circuit:commit' and a.hotbar==10,'visible commit plus nine cards')
+assert(a.inv.list[1].name=='shift_circuit:commit' and a.hotbar==14,'visible commit plus nine normal and four free direction cards')
 assert(a.form:find('POWER') and a.form:find('LOADED WEAPON') and a.form:find('EQUIPMENT') and not a.form:find('textarea%['),'inventory integrates status, one weapon and equipment')
 local gauges=0;for _,h in ipairs(a.hud)do if h.type=='image' and h.text:find('sc_stat_')then gauges=gauges+1 end;if h.type=='text'then assert(not h.text:find('ENERGY ') and not h.text:find('SHIELD '),'text stat HUD remains')end end
 assert(gauges==7,'visual HUD gauges')
@@ -74,10 +78,10 @@ assert(a.inv.list[1].m.inventory_image=='sc_commit_ready.png','gold commit tool 
 a.controls.aux1=true;tick(.1);a.controls.aux1=false;assert(shift_circuit.snapshot().phase=='program','E must not commit')
 local savedA={pos=copy(a.p),yaw=a.yaw,pitch=a.pitch};local savedB={pos={x=4,y=9,z=-2},yaw=1.2,pitch=.4};b:set_pos(savedB.pos);b:set_look_horizontal(savedB.yaw);b:set_look_vertical(savedB.pitch)
 tools['shift_circuit:commit'].on_use(a.inv.list[1],a);assert(shift_circuit.snapshot().phase=='program','wait for other pilot');assert(a.inv.list[1].m.inventory_image=='sc_commit_locked.png','locked commit tool')
-tools['shift_circuit:commit'].on_use(b.inv.list[1],b);assert(shift_circuit.snapshot().phase=='reading','explicit read phase')
+tools['shift_circuit:commit'].on_use(b.inv.list[1],b);assert(shift_circuit.snapshot().phase=='direction_reading','explicit read phase')
 assert(a.attached and b.attached and a.attached~=b.attached,'each pilot follows own robot')
 local initial=shift_circuit.snapshot().state;tick(.3);assert(same(initial,shift_circuit.snapshot().state),'reading should precede execution')
-local large=false;for _,h in ipairs(a.hud)do if h.type=='image' and h.scale and h.scale.x==1 and h.offset and h.offset.y>30 and h.text:find('sc_card_')then large=true end end;assert(large,'pixel-aligned card read animation')
+local large=false;for _,h in ipairs(a.hud)do if h.type=='image' and h.scale and h.scale.x==1 and h.offset and h.offset.y>30 and (h.text:find('sc_card_')or h.text:find('sc_direction_'))then large=true end end;assert(large,'pixel-aligned card read animation')
 local c=newplayer('Charlie');local savedC=copy(c.p);flush();assert(c.attached,'late observer also follows a robot')
 local tp=a.teleports;for i=1,900 do tick(.1);if shift_circuit.snapshot().state.round==2 then break end end
 assert(shift_circuit.snapshot().state.round==2,'full slowed round completed')
@@ -90,18 +94,18 @@ assert(#shift_circuit.snapshot().state.bots[1].hand>=5,'redeal')
 assert(shift_circuit.start('Alpha','race',1))
 shift_circuit.queue('Alpha',1);shift_circuit.queue('Alpha',2)
 local before=shift_circuit.snapshot().state.bots[1]
-for i=1,500 do tick(.1)end
+for i=1,1700 do tick(.1)end
 local warned=false;for _,h in ipairs(a.hud) do if h.type=='text' and h.text:find('Empty slots will be filled randomly')then warned=true end end
 assert(warned and shift_circuit.snapshot().phase=='program','countdown warns before filling')
 for i=1,100 do tick(.1)end
-assert(shift_circuit.snapshot().phase=='reading','deadline starts execution')
+assert(shift_circuit.snapshot().phase=='direction_reading','deadline starts execution')
 for _,robot in ipairs(shift_circuit.snapshot().state.bots)do
  assert(#robot.program==5 and robot.ready,'deadline completes and commits each program')
  local seen={};for j,k in ipairs(robot.selected)do assert(not seen[k] and robot.program[j]==robot.hand[k],'random cards must come from unused hand');seen[k]=true end
  if robot.id==before.id then assert(robot.selected[1]==before.selected[1] and robot.selected[2]==before.selected[2],'preserves chosen order') end
 end
 callbacks.on_leaveplayer(b);clients.Beta=nil;callbacks.on_leaveplayer(c);clients.Charlie=nil
-assert(shift_circuit.start('Alpha','race',1));for i=1,650 do tick(.1)end
+assert(shift_circuit.start('Alpha','race',1));for i=1,950 do tick(.1)end
 assert(shift_circuit.snapshot().phase=='program' and not shift_circuit.snapshot().planning_left,'solo has no deadline')
 print('PASS multiplayer deadline, warning, legal random fill, preserved choices, automatic commit, solo untimed')
 print('PASS runtime: visual gauges, dashboard, commit, preview isolation, multiplayer readiness, card reading, individual follow cameras, return above robot, full round')

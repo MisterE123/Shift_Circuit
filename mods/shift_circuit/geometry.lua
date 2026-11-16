@@ -4,10 +4,22 @@ local atan2=math.atan2 or math.atan
 local dirs={{x=0,z=1},{x=1,z=0},{x=0,z=-1},{x=-1,z=0}}
 -- Client updateNodePos negates ObjectRef rotation before applying its matrix.
 function G.yaw(dir) return -dir*math.pi/2 end
+-- Keep the entry heading while approaching a bend, then turn as the belt
+-- carries the robot onto the tile. Use the short arc across the angle seam.
+function G.conveyor_yaw(from,to,progress)
+ local t=math.max(0,math.min(1,(progress-.35)/.65));t=t*t*(3-2*t)
+ local delta=(to-from+math.pi)%(2*math.pi)-math.pi
+ return from+delta*t
+end
 -- The rod is anchored inside the housing and ends inside the moving plate.
 function G.pusher_rod(base,ram,dir)
  local d=dirs[dir+1];local travel=(ram.x-base.x)*d.x+(ram.z-base.z)*d.z
  return {x=base.x-d.x*.69,y=base.y-.24,z=base.z-d.z*.69},math.max(.01,.20+travel)
+end
+-- Both ends overlap solid geometry: the moving platen and the gantry header.
+function G.crusher_rod(ram,ceiling)
+ local bottom=ram.y+.05
+ return {x=ram.x,y=bottom,z=ram.z},math.max(.01,ceiling-bottom)
 end
 -- One short mesh on the solid side of each floor/pit boundary. No tile UV
 -- rotation or full-square overlays: the position is the actual shared edge.
@@ -29,7 +41,7 @@ function G.beam(x,z,dir,power,index,distance,robot,mount,kind,body_dir)
   local body=dirs[(body_dir or dir)+1];local mountside=0
   ox=ox+body.z*mountside+body.x*.05;oz=oz-body.x*mountside+body.z*.05
   muzzle=({remote_control=.4,tractor_beam=.42,repulsor_beam=.38})[kind]or .53
-  y=({remote_control=2.21,tractor_beam=2.17,repulsor_beam=2.185,double_laser=2.17})[kind]or 2.15
+  y=({remote_control=2.21,tractor_beam=2.17,repulsor_beam=2.185,triple_laser=2.17,emp_generator=2.17,double_laser=2.17})[kind]or 2.15
  end
  ox=ox+d.x*muzzle;oz=oz+d.z*muzzle
  return {x=x*2+.5+ox,y=y,z=z*2+.5+oz},math.max(0,distance*2-ox*d.x-oz*d.z)

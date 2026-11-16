@@ -18,12 +18,12 @@ source=(root/'tests/test_controller.py').read_text().split("lua.execute(r'''",1)
 lua.execute('''
 local api=dofile(modpath..'/runtime.lua')(core,{});callbacks.on_mods_loaded();flush();local a=newplayer('Alpha');flush();assert(api.start('Alpha','race',1))
 local S;for i=1,30 do local k,v=debug.getupvalue(api.snapshot,i);if k=='S'then S=v;break end end
-local b=S.bots[1];b.parts.turret_gearbox=1;b.hand={'WAIT','WAIT','WAIT','WAIT','WAIT'};b.hand_ids={1,2,3,4,5};callbacks.on_player_receive_fields(a,'shift_circuit:loadout',{apply=true})
+S.round=2;dofile(modpath..'/rules.lua').ghosts(S,true);local b=S.bots[1];b.parts.turret_gearbox=1;b.hand={'WAIT','WAIT','WAIT','WAIT','WAIT'};b.hand_ids={1,2,3,4,5};callbacks.on_player_receive_fields(a,'shift_circuit:loadout',{apply=true})
 local gear;for _,o in ipairs(objects)do if o.p and o.e.system_slot=='turret_gearbox'then gear=o end end;assert(gear);tick(.1);local yaw=gear.yaw;tick(.2);assert(gear.yaw==yaw and gear.props.visual_size.x==.55 and gear.p.y==1.88,'gearbox is compact, lower and stationary')
-for i=1,5 do api.queue('Alpha',i)end;api.commit('Alpha');assert(a.hotbar==2 and a.inv.list[1].name=='shift_circuit:orbit_left'and a.inv.list[2].name=='shift_circuit:orbit_right')
+for i=1,5 do api.queue('Alpha',i)end;api.commit('Alpha');assert(a.hotbar==1 and a.inv.list[1].name=='shift_circuit:orbit'and #a.inv.list==1)
 local anchor=a.attached;local start=anchor:get_pos();local program=copy(b.program)
-tools['shift_circuit:orbit_right'].on_use(a.inv.list[2],a);tick(.1);local mid=anchor:get_pos();assert(mid.x>start.x and mid.x<start.x+8 and same(program,b.program),'smooth camera orbit leaves program untouched')
-tools['shift_circuit:orbit_left'].on_use(a.inv.list[1],a);for i=1,8 do tick(.1)end;assert(math.abs(anchor.p.x-start.x)<.1,'opposite tool returns orbit')
+tools['shift_circuit:orbit'].on_secondary_use(a.inv.list[1],a);tick(.1);local mid=anchor:get_pos();assert(mid.x>start.x and mid.x<start.x+8 and same(program,b.program),'smooth camera orbit leaves program untouched')
+tools['shift_circuit:orbit'].on_use(a.inv.list[1],a);for i=1,8 do tick(.1)end;assert(math.abs(anchor.p.x-start.x)<.1,'opposite tool returns orbit')
 for _,h in ipairs(a.hud)do if h.type=='image'and h.text:find('sc_racer_',1,true)then assert(h.text~='sc_racer_planning.png','execution status is current')end end
 local expected={reading=1,commands=1,express=2,belts=3,pushers=4,rotators=5,weapons=6,lasers=7,presses=8};local seen={}
 for i=1,250 do
@@ -36,7 +36,7 @@ for i=1,250 do
 end
 for i=1,8 do assert(seen[i],'phase exercised '..i)end
 print('PASS all eight phase highlights in execution order')
-print('PASS execution-only orbit tools, smooth independent camera, unchanged program and lowered static gearbox')
+print('PASS single execution-only two-button orbit tool, smooth independent camera, unchanged program and lowered static gearbox')
 ''')
 
 lua.execute("""

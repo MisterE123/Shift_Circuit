@@ -61,8 +61,7 @@ local oldslot=ar.slot;fields(a,{leave=true});assert(not shift_circuit.rooms[ar.i
 fields(a,{create=true});tick(.1);flush();tick(.1);local reused=shift_circuit.rooms[shift_circuit.member.Alpha];assert(reused.slot==oldslot,'unclaimed owned slot reused')
 fields(a,{leave=true});fields(b,{leave=true});fields(c,{leave=true});fields(d,{leave=true});assert(next(shift_circuit.rooms)==nil,'all empty sessions released')
 fields(a,{tutorial=true});tick(.1);flush();tick(.1)
-local training=shift_circuit.rooms[shift_circuit.member.Alpha];local ts=training.api.snapshot().state
-assert(ts.mode=='tutorial' and #ts.bots==1 and #ts.lasers==0 and next(ts.overhead)==nil,'short safe tutorial')
+assert(not shift_circuit.member.Alpha and a.shown:find('TUTORIAL]'),'tutorial opens authored lesson chooser; fixture has no installed packs')
 fields(a,{leave=true});fields(a,{solo_race=true});assert(a.shown:find('HUNTER INTELLIGENCE')and a.shown:find('RACER INTELLIGENCE'),'separate intelligence choices')
 fields(a,{enemy_count='CHG:2',enemy_skill='CHG:3',racer_count='CHG:2',racer_skill='CHG:1'});fields(a,{play_solo=true});tick(.1);flush();tick(.1)
 local race=shift_circuit.rooms[shift_circuit.member.Alpha];local rs=race.api.snapshot().state;assert(rs.mode=='race' and #rs.bots==5)
