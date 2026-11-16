@@ -23,7 +23,7 @@ return function(core,R)
   {'gyro_stabilizer','Gyro Stabilizer','Skip forced turns this round.','toggle'},
   {'electroshield','Electroshield','Absorb hits for 1 power each.','toggle'},
   {'titanium_hull','Titanium Hull','Blocks one crush; breaks.','passive'}}
- local descriptions={green_laser='1 damage / no power cost',double_laser='2 damage / no power cost',triple_laser='3 damage / 1 power per shot',emp_generator='Disables commands / 2 power',remote_control='Copies commands / 1 power',tractor_beam='Pulls one square / no power cost',repulsor_beam='Pushes one square / no power cost'}
+ local descriptions={green_laser='1 damage / no power cost',double_laser='2 damage / no power cost',triple_laser='3 damage / 1 power per hit',emp_generator='Disables / 2 power on hit',remote_control='Copies commands / 1 power on hit',tractor_beam='Pulls one square / no power cost',repulsor_beam='Pushes one square / no power cost'}
  local details={
   reset_button='Use during planning to redraw your movement hand. Clears queued commands and Hard Disk reservations. Keeps your blue direction and Blink card. Consumes one Reset Button. Unavailable for fixed puzzle hands.',
   electromagnetic_brake='While enabled, blocks robot pushes, pushers and tractor/repulsor beams. Commands and conveyors still move you. No power cost. Extra copies do not increase resistance.',

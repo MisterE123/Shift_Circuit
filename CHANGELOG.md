@@ -474,3 +474,7 @@ Verification: 10 original rule tests and 16 expansion tests pass. Two real local
 
 - Attached both arm links, the claw and its fingers to the robot. Reach poses are solved relative to the robot while pickup targets remain world-fixed. Folded arm pieces no longer receive separate world-position updates during robot movement or turning.
 - Verified attached movement, target reach at full and ghost scale, existing reach/retract animation, destruction/respawn and admin lab lifecycle.
+
+## Weapon power on contact
+
+- Powered weapons and the Pulse command spend energy only when their ray hits a robot or crate. Empty shots, out-of-range targets and walls cost nothing. Shielded target hits still cost power. Affordability checks and Remote Control round limits remain unchanged.

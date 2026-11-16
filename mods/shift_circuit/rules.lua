@@ -157,6 +157,7 @@ function R.fire(s,x,z,dir,power,range,owner)
   if target and target.crate then R.crate_hit(s,target)
   elseif target then target.last_laser={source=owner and owner.id or 'Fixed laser',x=x,z=z,dir=dir,round=s.round};for _=1,power do if not target.down then R.hit(target,owner and "Robot weapon" or "Fixed laser") end end end
   s.shots=s.shots or {};s.shots[#s.shots+1]={x=x,z=z,dir=dir,range=length,power=power,wall=wall,hit=target~=nil or length<range}
+  return target
 end
 function R.collect(s,b,x,z,arm)
       x=x or b.x;z=z or b.z;local k=R.key(x,z); local pickup=s.pickups and s.pickups[k]
@@ -200,8 +201,7 @@ function R.command(s,b,c)
   if b.down or b.finished then return end
   b.action_serial=(b.action_serial or 0)+1;b.last_action=c
   if c=='PULSE' and (s.round or 1)>1 and not b.ghost and (b.energy or 0)>0 then
-    b.energy=b.energy-1
-    R.fire(s,b.x,b.z,b.dir,1,b.range or 4,b)
+    if R.fire(s,b.x,b.z,b.dir,1,b.range or 4,b)then b.energy=b.energy-1 end
   elseif c=='BLINK' and b.blink and (b.blink_left or 0)>0 and (b.energy or 0)>0 then
     local d=R.dirs[b.dir+1]; local x,z=b.x+d.x*2,b.z+d.z*2; local t=R.tile(s,x,z)
     if t.kind~='wall' and t.kind~='pit' and not R.at(s,x,z,b) then b.x,b.z=x,z; b.energy=b.energy-1;b.blink_left=0;b.parts.blink=math.max(0,(b.parts.blink or 0)-1);b.blink=b.parts.blink>0;R.ghosts(s) end
@@ -436,10 +436,11 @@ function R.robot_weapons(s,slot)
   R.thermal_aim(s,b);for _,mount in ipairs({'weapon'})do local kind=b.weapon;local weapon=R.weapons[kind]
    if weapon then local cost=weapon.cost
     if (b.energy or 0)>=cost and (kind~='remote_control'or b.remote_round~=s.round)then
-     b.energy=(b.energy or 0)-cost;if kind=='remote_control'then b.remote_round=s.round end
+     if kind=='remote_control'then b.remote_round=s.round end
      local dir=R.aim(b,mount);local length,target,wall=R.trace(s,b.x,b.z,dir,b.range or 4,b)
      s.shots[#s.shots+1]={x=b.x,z=b.z,dir=dir,range=length,power=weapon.power or 1,weapon=true,kind=kind,mount=mount,body_dir=b.dir,owner=b.id,wall=wall,hit=target~=nil or wall}
      if target then
+      b.energy=(b.energy or 0)-cost
       local commands={};for i=slot+1,5 do commands[i]=(b.program or {})[i]end
       effects[#effects+1]={target=target,owner=b,dir=dir,kind=kind,power=weapon.power,commands=commands}
      end
