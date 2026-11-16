@@ -485,3 +485,7 @@ Verification: 10 original rule tests and 16 expansion tests pass. Two real local
 - Retained author credits, original license notices, source filenames, processing recipes and hashes. All current audio is CC0; earlier ElevenLabs audio referenced in historical entries is no longer shipped.
 
 - Extended Algate into evolving 181-second menu and 242-second gameplay arrangements. Preserved phrase timing, removed silent phrase fades and smoothed the complete loop seam. Added explicit attribution for all original 3D models, animations, textures and UI artwork.
+
+## Code licensing
+
+- Licensed original game code, both bundled modules, tools, tests, configuration and project documentation under MIT. Assets retain CC0-1.0 and author credits. Reviewed bundled modules and found no third-party code modules or vendored libraries; external engine/development dependencies are not included or relicensed.

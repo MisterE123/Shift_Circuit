@@ -9,7 +9,7 @@ This covers the original textures, pixel art, icons, models, material definition
 The full legal text is available from Creative Commons:
 https://creativecommons.org/publicdomain/zero/1.0/legalcode.en
 
-Attribution is appreciated but not required. This dedication does not grant trademark rights or third-party rights. Executable source code, asset-generation scripts, and external dependencies are not relicensed by this asset notice.
+Attribution is appreciated but not required. This dedication does not grant trademark rights or third-party rights. Original executable source code and asset-generation scripts are licensed separately under the MIT License in `LICENSE`. External dependencies retain their own licenses.
 
 ## Audio assets: CC0-1.0
 

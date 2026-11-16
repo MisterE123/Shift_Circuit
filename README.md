@@ -173,3 +173,11 @@ Menu collections scroll to their actual content length. Audio speaker icons offe
 ## Credits and asset licensing
 
 Code, 3D models, animations and textures: **Codex GPT-6 Astra Medium**. Sound effects: **Kenney**. Music: **James Gargette (cinameng), Algate**. See [credits](CREDITS.md). Visual assets and all current audio are **CC0-1.0**, with author attribution preserved. See [asset licensing](LICENSE-ASSETS.md).
+
+## License
+
+Shift Circuit's original game code, bundled modules, tools, tests, configuration, and project documentation are licensed under the [MIT License](LICENSE).
+
+Models, textures, animations, artwork, map/puzzle data and audio remain **CC0-1.0**, as specified in [LICENSE-ASSETS.md](LICENSE-ASSETS.md). Original third-party license notices retain their own terms. Author attribution is preserved in [CREDITS.md](CREDITS.md).
+
+The distribution contains the project's `shift_circuit` module and `sc_tutorial` puzzle-pack registration module; it contains no bundled third-party code modules or vendored libraries. The Luanti engine is a separate dependency, not part of this archive, and retains its own license. Development dependencies (such as Pillow, NumPy, SoundFile and Lupa) are installed separately and retain their own licenses. Adding third-party code or bundling an engine later requires reviewing those components separately.
