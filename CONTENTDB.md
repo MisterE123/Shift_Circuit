@@ -46,7 +46,7 @@ recordings are included in the current release.
 
 ## Screenshots
 
-Use `art/Screenshots/Game.png` and `art/Screenshots/Game2.png` as actual gameplay
+Use `art/Screenshots/Game.png` and `screenshot.png` as actual gameplay
 screenshots. The approved title banner may accompany them, but is not a gameplay
 screenshot. Do not upload the rejected generated factory illustration. Ensure the
 pictured authored arenas are included in the release or explain that they are

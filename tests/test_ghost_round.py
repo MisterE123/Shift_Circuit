@@ -22,5 +22,13 @@ s.round=1;a.x=2;a.z=2;b.x=8;b.z=8;c.down=true
 s.walls[R.edge(2,2,1)]=true;assert(not R.move(s,a,1),'ghosts still obey walls');s.walls={}
 s.board['3,2']={kind='pit'};assert(R.move(s,a,1)and a.down and not a.ghost,'ghosts still fall')
 b.down=true;b.home={x=8,z=8};R.respawn(s);assert(b.ghost,'first-round reboot retains full-round ghosting')
+local solo=bot('Solo',2,2);local hunter=bot('Hunter',3,2);hunter.enemy=true
+s.mode='race';s.round=1;s.bots={solo,hunter};s.board['3,2']={kind='floor'}
+solo.ghost=true;R.ghosts(s);assert(not solo.ghost and not hunter.ghost,'one racer stays solid even with hunters')
+assert(R.at(s,3,2,solo)==hunter,'solo race opening obeys collisions')
+R.shared_start(s,{x=2,z=2,dir=1});assert(not solo.ghost)
+solo.down=true;R.respawn(s);assert(not solo.down and not solo.ghost,'solo reboot stays solid')
+hunter.racing=true;R.ghosts(s);assert(solo.ghost and hunter.ghost,'AI racer enables normal shared race ghosting')
+print('PASS solo race ghost suppression, hunter exclusion and AI racer counting')
 print('PASS whole opening round, no pushing or ram damage, later overlap persistence, symmetric ghost collision, divergence, walls, pits and reboot')
 """)

@@ -83,7 +83,16 @@ function R.blocked(s,x,z,dir)
 end
 function R.laser_source(q)local d=R.dirs[q.dir+1];return q.x-d.x*.5,q.z-d.z*.5 end
 function R.tile(s,x,z) local t=s.board[R.key(x,z)]or {kind='pit'};if t.kind=='factory'then return {kind='wall'}end;if t.kind=='trapdoor'and t.open then return {kind='pit'}end;return t end
-function R.ghosts_allowed(s)return s.mode~='puzzle' and not s.puzzle end
+function R.ghosts_allowed(s)
+ if s.mode=='puzzle'or s.puzzle then return false end
+ if s.mode=='race'then
+  local racers=0
+  -- Hunters and scripted enemies do not need a shared racing start.
+  for _,b in ipairs(s.bots or {})do if not b.enemy or b.racing then racers=racers+1 end end
+  return racers>1
+ end
+ return true
+end
 function R.at(s,x,z,except,ray)
   for _,c in pairs(s.crates or {})do if c~=except and not c.down and c.x==x and c.z==z then return c end end
   for _,b in ipairs(s.bots) do if b ~= except and not (R.ghosts_allowed(s) and not ray and except and not except.crate and (s.round==1 or except.ghost or b.ghost)) and not b.down and not b.finished and b.x==x and b.z==z then return b end end

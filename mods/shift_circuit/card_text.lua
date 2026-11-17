@@ -1,5 +1,5 @@
 -- Shared player-facing command wording; card IDs remain stable in saved programs.
-local C={names={MOVE3='MOVE 3',BACK2='BACK 2',UTURN='U-TURN'},descriptions={
+local C={names={DASH='MOVE 2',MOVE3='MOVE 3',BACK2='BACK 2',UTURN='U-TURN'},descriptions={
  STEP='Move forward 1 square.',
  DASH='Move forward 2 squares.',
  MOVE3='Move forward 3 squares.',
