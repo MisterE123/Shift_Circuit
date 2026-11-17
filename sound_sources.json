@@ -1,285 +1,662 @@
 [
   {
-    "name": "ui_click",
-    "author": "Kenney",
+    "name": "laser",
+    "author": "Codex GPT-6 Astra Medium / ChipTone (Tom Vian, SFB Games)",
     "license": "CC0-1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "sources": [
       {
-        "pack": "interface",
-        "file": "click_001.ogg",
-        "source_url": "https://kenney.nl/assets/interface-sounds",
-        "sha256": "ccfb7fa0cccdd9faec0eb16033c732b1e308d139d80f799161495d58f7adcdb9"
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v2.py",
+        "source_url": "https://sfbgames.itch.io/chiptone",
+        "sha256": "d1b77c5bb74ba0f26c8febe5a7fb653940584e39d11961ec91ea5d91e46fef73"
       }
     ],
-    "processing": "Mono; trimmed to at most 0.2s; pitch ratio 1; short edge fades and level normalization.",
-    "file": "mods/shift_circuit/sounds/sc_ui_click.ogg",
-    "sha256": "40e72d8a08b0e854cc88b47f070dc07f69a12e44193d515ca4a59ccb456ec378"
+    "audition_sha256": "8421c0c15676f29557dbcd2165fdf7400b649543cfcde492f42c1bbc0687add7",
+    "processing": "Accepted v2 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_laser.ogg",
+    "sha256": "60868745acfff6c7403f3aa8753d4fdfb1bde4c92a7f35591b2b2dde1e10f5b6"
   },
   {
     "name": "pickup",
-    "author": "Kenney",
+    "author": "Codex GPT-6 Astra Medium / ChipTone (Tom Vian, SFB Games)",
     "license": "CC0-1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "sources": [
       {
-        "pack": "interface",
-        "file": "maximize_001.ogg",
-        "source_url": "https://kenney.nl/assets/interface-sounds",
-        "sha256": "fd3e75e1de2f2fda90aceeacaeb0427ac8bddd3b07a6ce2a8f9ba923df3771f9"
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v2.py",
+        "source_url": "https://sfbgames.itch.io/chiptone",
+        "sha256": "d1b77c5bb74ba0f26c8febe5a7fb653940584e39d11961ec91ea5d91e46fef73"
       }
     ],
-    "processing": "Mono; trimmed to at most 0.5s; pitch ratio 1; short edge fades and level normalization.",
+    "audition_sha256": "99f557893023e5937a25ef71b760a5b58c0d7764b4c6aaad68cb2da0d4abaf27",
+    "processing": "Accepted v2 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
     "file": "mods/shift_circuit/sounds/sc_pickup.ogg",
-    "sha256": "d0c9fd79a66341af3b148d5926473d55b131dc56d317f489fd4df1bc6707153e"
+    "sha256": "0b99deb502af4df0307df1caac7318cc6f01f0104ef044f796bffe12ec8500bf"
   },
   {
-    "name": "success",
-    "author": "Kenney",
+    "name": "card_select",
+    "author": "Codex GPT-6 Astra Medium / ChipTone (Tom Vian, SFB Games)",
     "license": "CC0-1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "sources": [
       {
-        "pack": "interface",
-        "file": "confirmation_001.ogg",
-        "source_url": "https://kenney.nl/assets/interface-sounds",
-        "sha256": "063564703b6094d70718a3e787a55cc9141611e4ecd6b6637f8828f79b4a8c3a"
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v2.py",
+        "source_url": "https://sfbgames.itch.io/chiptone",
+        "sha256": "d1b77c5bb74ba0f26c8febe5a7fb653940584e39d11961ec91ea5d91e46fef73"
       }
     ],
-    "processing": "Mono; trimmed to at most 0.5s; pitch ratio 1; short edge fades and level normalization.",
-    "file": "mods/shift_circuit/sounds/sc_success.ogg",
-    "sha256": "d18da7c4b8b97430ff2ca71ddff9cab32eff701dbb1d9ab98a0cd6e509097969"
-  },
-  {
-    "name": "puzzle_complete",
-    "author": "Kenney",
-    "license": "CC0-1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sources": [
-      {
-        "pack": "interface",
-        "file": "confirmation_002.ogg",
-        "source_url": "https://kenney.nl/assets/interface-sounds",
-        "sha256": "33b17a9a9a2397c62b285c52c33a907fdffb476909c99e42dde603f6a7a8b12c"
-      }
-    ],
-    "processing": "Mono; trimmed to at most 1.1s; pitch ratio 0.85; short edge fades and level normalization.",
-    "file": "mods/shift_circuit/sounds/sc_puzzle_complete.ogg",
-    "sha256": "c1eae0e60ac2dd47dadb318df50efc79dae4a147be4e041ffe1b26e811689893"
-  },
-  {
-    "name": "laser",
-    "author": "Kenney",
-    "license": "CC0-1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sources": [
-      {
-        "pack": "sci-fi",
-        "file": "laserSmall_000.ogg",
-        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
-        "sha256": "72b589eadd41781257ac859e4f4d030222e623390e4a1a83f6d05329a6e026f1"
-      }
-    ],
-    "processing": "Mono; trimmed to at most 0.5s; pitch ratio 1; short edge fades and level normalization.",
-    "file": "mods/shift_circuit/sounds/sc_laser.ogg",
-    "sha256": "9bcd58dcd9a7bfcf4e413dda1448e47f054f4602c91c95e3735c1efa61508f9b"
-  },
-  {
-    "name": "shield",
-    "author": "Kenney",
-    "license": "CC0-1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sources": [
-      {
-        "pack": "sci-fi",
-        "file": "forceField_000.ogg",
-        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
-        "sha256": "c2916f2a062c8ddd1aca2826d134fe90847037db31342726ffb0f9097afe339c"
-      }
-    ],
-    "processing": "Mono; trimmed to at most 1.1s; pitch ratio 1; short edge fades and level normalization.",
-    "file": "mods/shift_circuit/sounds/sc_shield.ogg",
-    "sha256": "8878d22f3bd8531093b592ffa9c76683c8f65a9997f68574bc0378031f3523bf"
-  },
-  {
-    "name": "blink",
-    "author": "Kenney",
-    "license": "CC0-1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sources": [
-      {
-        "pack": "sci-fi",
-        "file": "forceField_003.ogg",
-        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
-        "sha256": "15e3fe971ffd3415e5ab641d3a4d043fb31f6712b0956315b524ba29c3889cda"
-      }
-    ],
-    "processing": "Mono; trimmed to at most 1.15s; pitch ratio 1.15; short edge fades and level normalization.",
-    "file": "mods/shift_circuit/sounds/sc_blink.ogg",
-    "sha256": "d097adc5b2c0612e237119bfc5bf9fe7214d3628b4a64178830a3e0cf2499cd8"
-  },
-  {
-    "name": "move",
-    "author": "Kenney",
-    "license": "CC0-1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sources": [
-      {
-        "pack": "sci-fi",
-        "file": "engineCircular_000.ogg",
-        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
-        "sha256": "8ab85f9fa85e9e692287f98acb36b9ac3ba15313b007c039055e286b736f4e3a"
-      }
-    ],
-    "processing": "Mono; trimmed to at most 0.65s; pitch ratio 1; short edge fades and level normalization.",
-    "file": "mods/shift_circuit/sounds/sc_move.ogg",
-    "sha256": "17fc330f096916e78e61dfaf2372e60c3f0b80403364d065bee9845caed7125e"
-  },
-  {
-    "name": "turn",
-    "author": "Kenney",
-    "license": "CC0-1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sources": [
-      {
-        "pack": "sci-fi",
-        "file": "engineCircular_001.ogg",
-        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
-        "sha256": "e1df3a942842a24f7c4056db3177e8008edd73d4f3985fd95f55362bc85058bc"
-      }
-    ],
-    "processing": "Mono; trimmed to at most 0.35s; pitch ratio 1.3; short edge fades and level normalization.",
-    "file": "mods/shift_circuit/sounds/sc_turn.ogg",
-    "sha256": "b3b0a298c121ecc5aff15638d545a216c0b4874928f9f8eb3f31a6f793770f27"
+    "audition_sha256": "4118f739950c424835613dfd26751e31a8cc5caa23db15a1102a8710eec4160f",
+    "processing": "Accepted v2 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_card_select.ogg",
+    "sha256": "6c180573d76592cab90c19ea62d09a84c100ee1bd17854a1522f9977024c488f"
   },
   {
     "name": "impact",
-    "author": "Kenney",
+    "author": "Codex GPT-6 Astra Medium",
     "license": "CC0-1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "sources": [
       {
-        "pack": "impact",
-        "file": "impactMetal_medium_001.ogg",
-        "source_url": "https://kenney.nl/assets/impact-sounds",
-        "sha256": "e8a9eaba7c4d27422e4eeb3e6c7100d5d7dc0f83e005efc98c960adcc5265337"
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v3.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "d653bee4681ebdced83e621bbd084dfc6d82ff28c35797edaf811e641f5ed27c"
       }
     ],
-    "processing": "Mono; trimmed to at most 0.7s; pitch ratio 1; short edge fades and level normalization.",
+    "audition_sha256": "b8f6b969799dd2f0ad91ac35904446d41680405a85e8d960696f464d7890465e",
+    "processing": "Accepted v3 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
     "file": "mods/shift_circuit/sounds/sc_impact.ogg",
-    "sha256": "67d40d8fc529e4a76d6979c2f670b335b3bcb8d00376f01e46410e716f94b2c5"
+    "sha256": "6f971566151da1e90a3af31e6eaad9e09bdee9dbb7365cd2fa1ec93476446355"
   },
   {
-    "name": "destroy",
-    "author": "Kenney",
+    "name": "success",
+    "author": "Codex GPT-6 Astra Medium",
     "license": "CC0-1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "sources": [
       {
-        "pack": "sci-fi",
-        "file": "explosionCrunch_000.ogg",
-        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
-        "sha256": "4b597d658d0ae101f0a030fbeea5fc3a4292ab85f017470a8254a8e7959cbd69"
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v3.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "d653bee4681ebdced83e621bbd084dfc6d82ff28c35797edaf811e641f5ed27c"
       }
     ],
-    "processing": "Mono; trimmed to at most 1.2s; pitch ratio 0.9; short edge fades and level normalization.",
-    "file": "mods/shift_circuit/sounds/sc_destroy.ogg",
-    "sha256": "a1b6a6f29063be8c8f275ef97e8663659087e2133880f58096fb1e0f8bede921"
+    "audition_sha256": "c4752e799668b2a995c6f9158c1baf85a721ed17c9638009da9aa64e8d88e194",
+    "processing": "Accepted v3 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_success.ogg",
+    "sha256": "2020915fb376d55574301d597012bf8b4af89fff2a059fefda9af0a1e2d38df1"
+  },
+  {
+    "name": "commit",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v3.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "d653bee4681ebdced83e621bbd084dfc6d82ff28c35797edaf811e641f5ed27c"
+      }
+    ],
+    "audition_sha256": "af93f0fd448b9e2900e79fe3a0470ea96eacc11aff4d8819c14d27b048e289ca",
+    "processing": "Accepted v3 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_commit.ogg",
+    "sha256": "1ac84fc2e0da243b13f51627159786fa22894c63084e3f61c7acb9f9e537a3f2"
+  },
+  {
+    "name": "shield",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v3.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "d653bee4681ebdced83e621bbd084dfc6d82ff28c35797edaf811e641f5ed27c"
+      }
+    ],
+    "audition_sha256": "31d0653646d5083eb66df6c9116202cd287f2d1e153f6ff6bcf24aa7b18d53db",
+    "processing": "Accepted v3 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_shield.ogg",
+    "sha256": "6c241e0b54dc0f24cb1a89f2418307dcf0b3d3e6f12180215f4d6f83d3349021"
+  },
+  {
+    "name": "blink",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v3.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "d653bee4681ebdced83e621bbd084dfc6d82ff28c35797edaf811e641f5ed27c"
+      }
+    ],
+    "audition_sha256": "290e1ded3f7ceb14b01ea68ac5a1a8dcf8608f472993222823c7a76afb4bf9ce",
+    "processing": "Accepted v3 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_blink.ogg",
+    "sha256": "35108dc38d2e97c032bf4c01c131b2fcf1cfcc71c2254900a68762470bd65db3"
+  },
+  {
+    "name": "move",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v4.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "53fc8912da4e82a9133785bca2755897b32f9bf1ed39795f1b261960e9cafe5c"
+      }
+    ],
+    "audition_sha256": "08a8f1bc4f64dc9d9bc740b80d066c787521bac4c5f069e13d10f90b268a0b85",
+    "processing": "Accepted v4 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_move.ogg",
+    "sha256": "36dbcc8d3f7220854f8b9ae01e74df8862607d90d3dd190373ec30e58b896ae0"
+  },
+  {
+    "name": "turn",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v4.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "53fc8912da4e82a9133785bca2755897b32f9bf1ed39795f1b261960e9cafe5c"
+      }
+    ],
+    "audition_sha256": "6e446a0041dca04e17be0dd837e6397ba19aeb5cc5de4cc4aae8f17a63688ab0",
+    "processing": "Accepted v4 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_turn.ogg",
+    "sha256": "3e88a3c9e6a26516c18863c98be2e7fe84d2dff0ef4e7f094c48c91c2bfad917"
+  },
+  {
+    "name": "repair",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v4.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "53fc8912da4e82a9133785bca2755897b32f9bf1ed39795f1b261960e9cafe5c"
+      }
+    ],
+    "audition_sha256": "4799ad1e63df214e87b85d0654cc2bf2076244b55d3c7fedfc06db638d9c3d96",
+    "processing": "Accepted v4 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_repair.ogg",
+    "sha256": "b03f3224681d0e530d80fd55ba6f164a5c14ec01a9ade99e94811169f1b8f6eb"
+  },
+  {
+    "name": "recharge",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v4.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "53fc8912da4e82a9133785bca2755897b32f9bf1ed39795f1b261960e9cafe5c"
+      }
+    ],
+    "audition_sha256": "346667f797bd0d0b3ab9cbde18525f5fe6d9d4a3d8166dabc2050efee1a46733",
+    "processing": "Accepted v4 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_recharge.ogg",
+    "sha256": "1ed90d92de856db0bbda0eb37fd42a1c0372665fe8d270befefaaafd59691bfb"
   },
   {
     "name": "crusher",
-    "author": "Kenney",
+    "author": "Codex GPT-6 Astra Medium",
     "license": "CC0-1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "sources": [
       {
-        "pack": "sci-fi",
-        "file": "doorClose_000.ogg",
-        "source_url": "https://kenney.nl/assets/sci-fi-sounds",
-        "sha256": "c9134651ebbd7c016f90393aee495ff8120bd343bb7569b689a7506987ebd6c2"
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v5.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "2700a55f0065888c49d6ab112c9b4df82ade6b60f0a505920d69d70905b29592"
       }
     ],
-    "processing": "Mono; trimmed to at most 1.1s; pitch ratio 0.75; short edge fades and level normalization.",
+    "audition_sha256": "eeb5efcd4ce79981fd058ecca2ff7771ac4a1e3ee19fbba91fdb011743cbd3d6",
+    "processing": "Accepted v5 audition; extension/impact, 0 to 0.98s; mono downmix, 2ms splice fades, Ogg Vorbis.",
     "file": "mods/shift_circuit/sounds/sc_crusher.ogg",
-    "sha256": "6c1df22d141642b2b9a1083b1790433265a7e7e5f3fec770c07f02afc985a50b"
+    "sha256": "395913706ddf74c3d6b7aadd9d74646798274d333cd220f6616725c072c8f8cf"
+  },
+  {
+    "name": "crusher_return",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v5.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "2700a55f0065888c49d6ab112c9b4df82ade6b60f0a505920d69d70905b29592"
+      }
+    ],
+    "audition_sha256": "eeb5efcd4ce79981fd058ecca2ff7771ac4a1e3ee19fbba91fdb011743cbd3d6",
+    "processing": "Accepted v5 audition; retraction, from 0.98s; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_crusher_return.ogg",
+    "sha256": "4e72276cc6dcd380c943ec68d6c70c86e1b94f1757ba8b28f66f4fc06554afcf"
+  },
+  {
+    "name": "ui_click",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v5.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "2700a55f0065888c49d6ab112c9b4df82ade6b60f0a505920d69d70905b29592"
+      }
+    ],
+    "audition_sha256": "abeaf7261b8b44a89c0cb96480e607823ad52bdf782726eb10ca8140cdb8f84f",
+    "processing": "Accepted v5 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_ui_click.ogg",
+    "sha256": "3c0e92903de466a2adac9094b6f95ce74b0da1c720bb7291ef61532d38c7d9d0"
+  },
+  {
+    "name": "ui_back",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v5.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "2700a55f0065888c49d6ab112c9b4df82ade6b60f0a505920d69d70905b29592"
+      }
+    ],
+    "audition_sha256": "6792b1a07c8171638f829b96e1e1b8569479e464da94071eeace8cd171f6bb8e",
+    "processing": "Accepted v5 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_ui_back.ogg",
+    "sha256": "ac416d962cbab6bd0cff318214660861993e90d7b913cd45b07a524503fb7489"
+  },
+  {
+    "name": "ui_confirm",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v5.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "2700a55f0065888c49d6ab112c9b4df82ade6b60f0a505920d69d70905b29592"
+      }
+    ],
+    "audition_sha256": "ff71cbc86232b783b84b9ccff3f9bcaef45174c81f53b168c8a298501ec4c6c3",
+    "processing": "Accepted v5 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_ui_confirm.ogg",
+    "sha256": "2613a4ceeddbb6fecff4046d826df1935f818684bb5c2ecf350973d1ff39afb7"
+  },
+  {
+    "name": "ui_error",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v5.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "2700a55f0065888c49d6ab112c9b4df82ade6b60f0a505920d69d70905b29592"
+      }
+    ],
+    "audition_sha256": "0394a44f7584cc41ab10c432a68c85e2ea8b5d8d4d8b84a23d4e221619ed6c46",
+    "processing": "Accepted v5 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_ui_error.ogg",
+    "sha256": "4b22ed46e7e6298d7653bf7f9d4098aace74db73a028d5a2b862a605f0f8c702"
+  },
+  {
+    "name": "ui_on",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v5.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "2700a55f0065888c49d6ab112c9b4df82ade6b60f0a505920d69d70905b29592"
+      }
+    ],
+    "audition_sha256": "4cd5dd8e1c418c03ff421e76fa0f7531e3495450fef18888426e49d99a77d79a",
+    "processing": "Accepted v5 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_ui_on.ogg",
+    "sha256": "2388d327661d45d5a29fccc15afff533088928eb9d6b6ab10ace9ad5bc19cd34"
+  },
+  {
+    "name": "ui_off",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v5.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "2700a55f0065888c49d6ab112c9b4df82ade6b60f0a505920d69d70905b29592"
+      }
+    ],
+    "audition_sha256": "adb90a6c46b5c390896b74d5ad2495db3cf54e81da2c96f8664a83d56c238b58",
+    "processing": "Accepted v5 audition; complete cue; mono downmix, 2ms splice fades, Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_ui_off.ogg",
+    "sha256": "a4481e8a364695f8efc8cd9d42934a23d3648928e8fa95a52c1d190b0eaff749"
+  },
+  {
+    "name": "conveyor",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v6.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "28db9a861b8b7be583ee6e451980d792935bf58f4a09f118e06b3eafd5231169"
+      }
+    ],
+    "audition_sha256": "44f3f561b2179610638b68becd5021b22131226eaa852406ebe4444555f268e9",
+    "processing": "Original procedural synthesis; stereo audition downmixed to mono Ogg Vorbis. Runtime synchronizes hydraulic cues to stroke endpoints.",
+    "file": "mods/shift_circuit/sounds/sc_conveyor.ogg",
+    "sha256": "115279df21b46fd2dfd62c1a698ecd05507041aa3f0db282cd41805170fc6fac"
+  },
+  {
+    "name": "pusher",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v6.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "28db9a861b8b7be583ee6e451980d792935bf58f4a09f118e06b3eafd5231169"
+      }
+    ],
+    "audition_sha256": "b9371bd03cf4a0c88f82cc8ee6d481b47a9148fc188f35c37447e022a116ecf6",
+    "processing": "Original procedural synthesis; stereo audition downmixed to mono Ogg Vorbis. Runtime synchronizes hydraulic cues to stroke endpoints.",
+    "file": "mods/shift_circuit/sounds/sc_pusher.ogg",
+    "sha256": "a907f35ca5be0ed8849a35b11213c929b38672af25449cd8e020f3e9f83cfbde"
+  },
+  {
+    "name": "pusher_stop",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v6.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "28db9a861b8b7be583ee6e451980d792935bf58f4a09f118e06b3eafd5231169"
+      }
+    ],
+    "audition_sha256": "38ff7e1eef703f7b48f3318684271b6a58c09fb166033c65cea7dc4e5ff00dea",
+    "processing": "Original procedural synthesis; stereo audition downmixed to mono Ogg Vorbis. Runtime synchronizes hydraulic cues to stroke endpoints.",
+    "file": "mods/shift_circuit/sounds/sc_pusher_stop.ogg",
+    "sha256": "df4570bd3a3a58efc974088fbba60c1eb6e0a13d42cf67cd88bb93837cf04776"
+  },
+  {
+    "name": "pusher_return",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_v6.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "28db9a861b8b7be583ee6e451980d792935bf58f4a09f118e06b3eafd5231169"
+      }
+    ],
+    "audition_sha256": "5e11c3437108fe459cb59991135e4a86ced6724142c9fa83feece291eec35477",
+    "processing": "Original procedural synthesis; stereo audition downmixed to mono Ogg Vorbis. Runtime synchronizes hydraulic cues to stroke endpoints.",
+    "file": "mods/shift_circuit/sounds/sc_pusher_return.ogg",
+    "sha256": "921c530a650854162ed49f41ea074c4dd38a4f49ed4ca2c7af2bf28de9dc92c7"
+  },
+  {
+    "name": "destroy_crush",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_destruction_victory.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "5e795325a6f50eeb0f550dd04cb553cdaf9d4ed5cec579c6bf826fcf9a0395e2"
+      }
+    ],
+    "audition_sha256": "36bf4292390a7689fa7799d4138270280cf3e38b80a47467bf42a751be13faa1",
+    "processing": "Approved procedural audition downmixed to mono Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_destroy_crush.ogg",
+    "sha256": "d9dad58690606b3704185e5e84564a7565d4541b94bb3cb0fd025bd846101e17"
+  },
+  {
+    "name": "destroy_electric",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_destruction_victory.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "5e795325a6f50eeb0f550dd04cb553cdaf9d4ed5cec579c6bf826fcf9a0395e2"
+      }
+    ],
+    "audition_sha256": "a984f256c0b8c7e549c1c266170f017dee8713db479cd2d4aff127c44b2a2eab",
+    "processing": "Approved procedural audition downmixed to mono Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_destroy_electric.ogg",
+    "sha256": "4e661828943797a83babad23cb6a7275a7724b56812af1641a3b2eadc112d6e6"
+  },
+  {
+    "name": "destroy",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_destruction_victory.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "5e795325a6f50eeb0f550dd04cb553cdaf9d4ed5cec579c6bf826fcf9a0395e2"
+      }
+    ],
+    "audition_sha256": "c11a4ed1b7c28232e632999acf441461e34d8ffe2f1700103f65caeb8a1037d3",
+    "processing": "Approved procedural audition downmixed to mono Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_destroy.ogg",
+    "sha256": "25a0a57bd39af750ba9ea526cd6d6126a030a1f6b0a67d93c334ed8f10d66820"
+  },
+  {
+    "name": "destroy_breakup",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_destruction_victory.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "5e795325a6f50eeb0f550dd04cb553cdaf9d4ed5cec579c6bf826fcf9a0395e2"
+      }
+    ],
+    "audition_sha256": "d7738e1f3984149dc2365508cd2c5ab841631e14b433b4e3b87a54e61265dbd9",
+    "processing": "Approved procedural audition downmixed to mono Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_destroy_breakup.ogg",
+    "sha256": "97847038265e7a3b4270f65af8629ce74a0af591e7184daa0975e67f83cc51d3"
+  },
+  {
+    "name": "victory",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_destruction_victory.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "5e795325a6f50eeb0f550dd04cb553cdaf9d4ed5cec579c6bf826fcf9a0395e2"
+      }
+    ],
+    "audition_sha256": "d41e06270f6ecab8fef46a155f7c44f2d45aeed79b8ce2d9df406685cd514da5",
+    "processing": "Approved procedural audition downmixed to mono Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_victory.ogg",
+    "sha256": "d921a0981e1de086d4166d2bfa83ca4ee91d7303b495e5f075215592c6912a25"
+  },
+  {
+    "name": "victory_race",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_destruction_victory.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "5e795325a6f50eeb0f550dd04cb553cdaf9d4ed5cec579c6bf826fcf9a0395e2"
+      }
+    ],
+    "audition_sha256": "4893a51a70c31dd0efec3b407fa8e75408a96184c012b1e5459202d9d4ef8365",
+    "processing": "Approved procedural audition downmixed to mono Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_victory_race.ogg",
+    "sha256": "625476a82168e9bedc78c5850754d7053efbfd988ab5864cea17c75762b42896"
+  },
+  {
+    "name": "puzzle_complete",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_destruction_victory.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "5e795325a6f50eeb0f550dd04cb553cdaf9d4ed5cec579c6bf826fcf9a0395e2"
+      }
+    ],
+    "audition_sha256": "3853b4a56b9bf706c1057b00b9b19430d3cac301acfb6a42460a98899a1ba2be",
+    "processing": "Approved procedural audition downmixed to mono Ogg Vorbis.",
+    "file": "mods/shift_circuit/sounds/sc_puzzle_complete.ogg",
+    "sha256": "02c9b6b7d2c3d82ba79f88183077ac752fdaec46895b9edbf5a83c7b119d1b8c"
   },
   {
     "name": "music_menu",
-    "author": "James Gargette (cinameng)",
+    "author": "Codex GPT-6 Astra Medium",
     "license": "CC0-1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "sources": [
       {
-        "pack": "algate",
-        "file": "algate.wav",
-        "source_url": "https://opengameart.org/content/algate",
-        "sha256": "314c44c33d0cc0e909e1629941b1bdf7de3241a6ab51915c2043a5b58b517474"
-      },
-      {
-        "pack": "algate",
-        "file": "algate_low.wav",
-        "source_url": "https://opengameart.org/content/algate",
-        "sha256": "3e321cd0f2999af0f02ceb010b0a2bb4ab955978ac2b9f0986967bd7fa0fd0e3"
-      },
-      {
-        "pack": "algate",
-        "file": "algate_no_kick.wav",
-        "source_url": "https://opengameart.org/content/algate",
-        "sha256": "689269cfd4464f5880bbc4591d268031c2648ae40813c0e424947197bda60a52"
-      },
-      {
-        "pack": "algate",
-        "file": "algate_bass.wav",
-        "source_url": "https://opengameart.org/content/algate",
-        "sha256": "358bf1363374f0ea7b5e5a5317b500ee9bc984b4660814629e40ec4cdbdc6166"
+        "pack": "original-synthesis",
+        "file": "art/audio/design_music_focus.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "a50f8b482eb149ba94ff7399665a175495b4cc5a896f391239f88634828beeba"
       }
     ],
-    "processing": "Continuous beat-aligned Algate stem arrangement: 12 phrases, circular instrumentation envelopes, quiet beat-synchronous stereo reflections, no phrase fades or gaps, periodic end seam. CC0 adaptation.",
+    "processing": "Approved focus music preview copied without re-encoding; circular note and echo tails.",
     "file": "mods/shift_circuit/sounds/sc_music_menu.ogg",
-    "sha256": "1f7a184d8456b1c0c9e4e7bcf0b02b053a0447e1185f1a5074910798bdca663e"
+    "sha256": "aba536211ced58c9960fb7bfb4b94f0e1b23542a2ee5381e9fda97e1b5a97c75"
   },
   {
-    "name": "music_game",
-    "author": "James Gargette (cinameng)",
+    "name": "music_lobby",
+    "author": "Codex GPT-6 Astra Medium",
     "license": "CC0-1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "sources": [
       {
-        "pack": "algate",
-        "file": "algate.wav",
-        "source_url": "https://opengameart.org/content/algate",
-        "sha256": "314c44c33d0cc0e909e1629941b1bdf7de3241a6ab51915c2043a5b58b517474"
-      },
-      {
-        "pack": "algate",
-        "file": "algate_low.wav",
-        "source_url": "https://opengameart.org/content/algate",
-        "sha256": "3e321cd0f2999af0f02ceb010b0a2bb4ab955978ac2b9f0986967bd7fa0fd0e3"
-      },
-      {
-        "pack": "algate",
-        "file": "algate_no_kick.wav",
-        "source_url": "https://opengameart.org/content/algate",
-        "sha256": "689269cfd4464f5880bbc4591d268031c2648ae40813c0e424947197bda60a52"
-      },
-      {
-        "pack": "algate",
-        "file": "algate_bass.wav",
-        "source_url": "https://opengameart.org/content/algate",
-        "sha256": "358bf1363374f0ea7b5e5a5317b500ee9bc984b4660814629e40ec4cdbdc6166"
+        "pack": "original-synthesis",
+        "file": "art/audio/design_music_focus.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "a50f8b482eb149ba94ff7399665a175495b4cc5a896f391239f88634828beeba"
       }
     ],
-    "processing": "Continuous beat-aligned Algate stem arrangement: 16 phrases, circular instrumentation envelopes, quiet beat-synchronous stereo reflections, no phrase fades or gaps, periodic end seam. CC0 adaptation.",
-    "file": "mods/shift_circuit/sounds/sc_music_game.ogg",
-    "sha256": "abb11bcef57beb15a4a63dd2793b9092e9cc7006b9a90d7137bc5efbf035d46c"
+    "processing": "Approved focus music preview copied without re-encoding; circular note and echo tails.",
+    "file": "mods/shift_circuit/sounds/sc_music_lobby.ogg",
+    "sha256": "2860fcd20a51277f571716f8f3e2cc53caa2411233c7abda786e9ea86bfe821c"
   },
   {
-    "name": "game_selection_theme",
-    "author": "James Gargette (cinameng)",
+    "name": "music_race",
+    "author": "Codex GPT-6 Astra Medium",
     "license": "CC0-1.0",
-    "source_url": "https://opengameart.org/content/algate",
-    "derived_from": "music_menu",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_music_focus.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "a50f8b482eb149ba94ff7399665a175495b4cc5a896f391239f88634828beeba"
+      }
+    ],
+    "processing": "Approved focus music preview copied without re-encoding; circular note and echo tails.",
+    "file": "mods/shift_circuit/sounds/sc_music_race.ogg",
+    "sha256": "c41ea3710b32526989f6b6bb941307e176cc4c36f879b7278697e440e27ed430"
+  },
+  {
+    "name": "music_puzzle",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_music_focus.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "a50f8b482eb149ba94ff7399665a175495b4cc5a896f391239f88634828beeba"
+      }
+    ],
+    "processing": "Approved focus music preview copied without re-encoding; circular note and echo tails.",
+    "file": "mods/shift_circuit/sounds/sc_music_puzzle.ogg",
+    "sha256": "3d4e66504432f843b271147ccf32f2c8bf8fddb6d2b7706dd257a7e449862a93"
+  },
+  {
+    "name": "menu_theme",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_music_focus.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "a50f8b482eb149ba94ff7399665a175495b4cc5a896f391239f88634828beeba"
+      }
+    ],
+    "processing": "Approved focus music preview copied without re-encoding; circular note and echo tails.",
     "file": "menu/theme.ogg",
-    "sha256": "1f7a184d8456b1c0c9e4e7bcf0b02b053a0447e1185f1a5074910798bdca663e"
+    "sha256": "aba536211ced58c9960fb7bfb4b94f0e1b23542a2ee5381e9fda97e1b5a97c75"
+  },
+  {
+    "name": "fall",
+    "author": "Codex GPT-6 Astra Medium",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sources": [
+      {
+        "pack": "original-synthesis",
+        "file": "art/audio/design_fall_motor.py",
+        "source_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "7cda355010e040502e1a14e452cbd9730b7e28dc96403596cd9b7fbaf3121c23"
+      }
+    ],
+    "processing": "Approved motor fall preview downmixed to positional mono; onset follows edge slip, drop at .18s, receding tail beyond visual disappearance.",
+    "file": "mods/shift_circuit/sounds/sc_fall.ogg",
+    "sha256": "19003313138aff03a3121c10912ab15f303ee24c373f8f85097124c7a1e29731"
   }
 ]

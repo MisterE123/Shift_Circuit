@@ -68,7 +68,7 @@ The model generator preserves existing `sc_surface_*.png` files. Other generated
 
 
 
-Sound files are mono Ogg Vorbis under `mods/shift_circuit/sounds`. Replace a file using its existing name to customize a sound. `sound_sources.json` records each CC0 source, author, filename, processing and SHA-256 hash. Rebuild with `python tools/cc0_audio.py SOURCE_DIRECTORY` using the credited extracted Kenney packs and Algate WAV loops. Runtime event volumes are set in `runtime.lua`.
+Sound files are mono Ogg Vorbis under `mods/shift_circuit/sounds`. Replace a file using its existing name to customize a sound. `sound_sources.json` records each CC0 source, author, filename, processing and SHA-256 hash. Editable approved synth recipes are in `art/audio/`; `tools/cc0_audio.py` is the historical third-party audio builder and does not reproduce the current sound set. Runtime event volumes are set in `runtime.lua`.
 
 
 
@@ -78,13 +78,13 @@ Sound files are mono Ogg Vorbis under `mods/shift_circuit/sounds`. Replace a fil
 
 
 
-`sc_menu_background.png` (560 – 400) is the pixel-art main menu background. `sc_menu_button.png` and `sc_menu_button_pressed.png` are the normal and pressed button textures. Labels remain live formspec text, so changing button art does not hide controls or require repainted words. `sc_checkpoint_1.png` through `sc_checkpoint_3.png` are transparent floating achievement badges. The generator is `tools/menu_assets.py`; save backups of hand edits before running it.
+`sc_menu_background.png` (560 â€“ 400) is the pixel-art main menu background. `sc_menu_button.png` and `sc_menu_button_pressed.png` are the normal and pressed button textures. Labels remain live formspec text, so changing button art does not hide controls or require repainted words. `sc_checkpoint_1.png` through `sc_checkpoint_3.png` are transparent floating achievement badges. The generator is `tools/menu_assets.py`; save backups of hand edits before running it.
 
 
 
 
 
-Music uses `sc_music_menu.ogg` and `sc_music_game.ogg` (stereo looping Ogg Vorbis). `sc_ui_click.ogg`, `sc_turn.ogg`, `sc_blink.ogg`, `sc_shield.ogg`, and `sc_success.ogg` extend the action sounds. Replace files under the same names to customize them. Keep music loop boundaries smooth and effects short; player gain controls and automatic music transitions are in `audio.lua`.
+Music uses `sc_music_menu.ogg`, `sc_music_lobby.ogg`, `sc_music_race.ogg`, and `sc_music_puzzle.ogg` (stereo looping Ogg Vorbis). `sc_ui_click.ogg`, `sc_turn.ogg`, `sc_blink.ogg`, `sc_shield.ogg`, and `sc_success.ogg` extend the action sounds. Replace files under the same names to customize them. Keep music loop boundaries smooth and effects short; player gain controls and automatic music transitions are in `audio.lua`.
 
 
 
@@ -116,7 +116,7 @@ Phase sequence: `art/ui/sc_phase_order_0.png` is neutral; `_1` through `_8` high
 
 Course previews use editable `art/ui/sc_map_*.png` symbols, composed directly from saved tile data. Keep these symbols at their native pixel dimensions: tiles are 8x8, edge walls 8x1 or 1x8. `tools/builder_assets.py` and `tools/export_theme.py` preserve edited sources and export map symbols at 1x. Workshop buttons use `sc_editor_*.png`; course inventory frames use `sc_build_*.png`.
 
-Game-selection icon: `menu/icon.png` (128px), with editable 64px source `art/ui/sc_game_icon.png` and generator `tools/game_icon.py`. The in-game menu uses `mods/shift_circuit/textures/sc_game_icon.png`. Game-selection music: `menu/theme.ogg`, using the Algate menu techno arrangement. In-game Audio settings continue to control the in-game mix; Luanti controls game-selection volume.
+Game-selection icon: `menu/icon.png` (128px), with editable 64px source `art/ui/sc_game_icon.png` and generator `tools/game_icon.py`. The in-game menu uses `mods/shift_circuit/textures/sc_game_icon.png`. Game-selection music: `menu/theme.ogg`, using the original mellow synth menu track. In-game Audio settings continue to control the in-game mix; Luanti controls game-selection volume.
 
 ## Shared menu theme and lobby robots
 
@@ -132,10 +132,14 @@ Lobby models reuse the same editable `sc_surface_robot*.png` textures as the boa
 
 `mods/shift_circuit/models/sc_tread_straight.b3d` consolidates all slats into one animated mesh. Edit `mods/shift_circuit/textures/sc_surface_conveyor.png` to change the tread appearance. The mesh shares the existing slat atlas and does not embed texture pixels.
 
-Run `python tools/conveyor_animation.py` to regenerate the animated model from `sc_slat.obj`. It exports 12 clipped slat bones with a one-pitch loop over frames 0�24. The server sets animation speed only when the phase or speed changes; clients interpolate the animation. Floor, rails and arrows remain separate editable meshes and textures.
+Run `python tools/conveyor_animation.py` to regenerate the animated model from `sc_slat.obj`. It exports 12 clipped slat bones with a one-pitch loop over frames 0–24. The server sets animation speed only when the phase or speed changes; clients interpolate the animation. Floor, rails and arrows remain separate editable meshes and textures.
 
 ### Mechanical arm and electromagnetic brake
 
 Run `python tools/arm_brake_assets.py` after the base asset generator to rebuild the overhead shoulder, rigid links, gripper palm/fingers and brake models. Each uses its own `sc_surface_*.png` atlas; existing custom atlases are preserved. The brake icon's editable source is `art/ui/sc_part_electromagnetic_brake.png`. Arm pose/timing lives in `mods/shift_circuit/arm_pose.lua`.
 
 Triple Laser and EMP assets are generated by `tools/weapon_assets.py`. Edit their individual `sc_surface_mount_*` and `sc_surface_pickup_*` textures, and the 32px source icons in `art/ui/sc_part_*.png`. The generator preserves existing surface textures.
+
+Launcher background and title: edit `art/menu/background.png` and `art/menu/banner-approved.png`. Installed as `menu/background.png` and `menu/header.png`. Rebuild from the existing game textures and robot previews with `python tools/menu_brand_art.py`. Sources are small pixel images, enlarged with nearest-neighbor scaling. `art/menu/banner-wide.png` is a standalone banner.
+
+The approved banner is preserved at its original resolution and alpha transparency; the builder preserves it when rebuilding the menu background. `banner-simple.png` is the alternate code-drawn title.

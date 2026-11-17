@@ -53,3 +53,22 @@ end end
 assert(checked>0)
 print('PASS synchronized machine poses, recessed crusher ends and no independent rod/plate interpolation')
 """)
+
+# Timed hydraulic travel: pressure hold, exact endpoint, one end-stop cue.
+lua.execute("""
+local hits=0;core.sound_play=function(name)if name=='sc_pusher_stop'then hits=hits+1 end end
+local tested=false
+for _,o in ipairs(objects)do local e=o.e;if o.p and e.pusher_rod then
+ local base=copy(e.pusher_base);o:set_pos(base);e.target=nil
+ local d=({{x=0,z=1},{x=1,z=0},{x=0,z=-1},{x=-1,z=0}})[e.pusher_dir+1]
+ local target={x=base.x+d.x*.9,y=base.y,z=base.z+d.z*.9}
+ e.hydraulic_motion={from=base,to=target,elapsed=0,delay=.16,total=.55,impact=true}
+ callbacks.entity.on_step(e,.1);assert(o.p.x==base.x and o.p.z==base.z and hits==0,'pressure holds piston')
+ callbacks.entity.on_step(e,.3);assert(e.hydraulic_motion and hits==0,'stroke underway')
+ callbacks.entity.on_step(e,.4);assert(not e.hydraulic_motion and hits==1,'end-stop fires once')
+ assert(math.abs(o.p.x-target.x)<1e-8 and math.abs(o.p.z-target.z)<1e-8,'exact endpoint')
+ assert(math.abs(e.pusher_rod.props.visual_size.z-1.10)<1e-8,'rod follows stroke')
+ callbacks.entity.on_step(e,.1);assert(hits==1);tested=true;break
+end end
+assert(tested);print('PASS hydraulic pressure hold, timed travel, endpoint audio and linked rod')
+""")

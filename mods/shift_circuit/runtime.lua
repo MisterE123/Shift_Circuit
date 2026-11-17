@@ -52,6 +52,19 @@ local function orbit_position(p,angle)
 end
 local function sound(kind,p,gain,pitch) if core.sound_play then core.sound_play('sc_'..kind,{pos=p,gain=gain or .45,pitch=pitch or 1,max_hear_distance=35},true) end end
 local function bot(name) for _,b in ipairs(S.bots) do if b.id==name then return b end end end
+local function spectating(name)
+ local b=bot(name)
+ return (options.is_spectator and options.is_spectator(name))or (b and b.finished)or false
+end
+local function watched_bot(name)
+ if not spectating(name)then return bot(name)end
+ local v=players[name];if not v then return end
+ local b=v.watched and bot(v.watched)
+ if b and not b.finished then return b end
+ for _,q in ipairs(S.bots)do if not q.finished and not q.enemy then v.watched=q.id;return q end end
+ for _,q in ipairs(S.bots)do if not q.finished then v.watched=q.id;return q end end
+ v.watched=nil
+end
 local Styles=dofile(path..'/robot_styles.lua')
 local NearbyLabels=dofile(path..'/nearby_labels.lua')
 local WorldTagOrder=dofile(path..'/world_tag_order.lua')
@@ -143,6 +156,14 @@ core.register_entity('shift_circuit:visual',{
    elseif self.hover then
      if self.pickup_motion then local m=self.pickup_motion;m.elapsed=math.min(m.total,m.elapsed+dt);local a=m.elapsed/m.total;a=a*a*(3-2*a);self.origin=vector.add(m.from,vector.multiply(vector.subtract(m.to,m.from),a));if m.elapsed>=m.total then self.pickup_motion=nil end end
      self.clock=(self.clock or 0)+dt*(inspecting() and .5 or 1);local p=vector.new(self.origin);p.y=p.y+math.sin(self.clock*2)*.12;Net.move(self.object,p);self.object:set_yaw(self.clock*.7)
+   elseif self.hydraulic_motion then
+     local m=self.hydraulic_motion;m.elapsed=math.min(m.delay+m.total,m.elapsed+dt)
+     local a=math.max(0,(m.elapsed-m.delay)/m.total);a=a*a*(3-2*a)
+     Net.move(self.object,vector.add(m.from,vector.multiply(vector.subtract(m.to,m.from),a)),0)
+     if m.elapsed>=m.delay+m.total then
+       self.hydraulic_motion=nil
+       if m.impact then sound('pusher_stop',m.to,.42,execution_speed)end
+     end
    elseif self.motion then
      local m=self.motion;m.elapsed=math.min(m.total,m.elapsed+dt);local t=m.elapsed/m.total;t=t*t*(3-2*t)
      Net.move(self.object,vector.add(m.from,vector.multiply(vector.subtract(m.to,m.from),t)));if m.elapsed>=m.total then self.motion=nil end
@@ -173,6 +194,25 @@ Health=dofile(path..'/robot_health.lua')(visual,Net)
 local function clear_preview() for _,o in ipairs(preview_beams) do if o:get_pos() then o:remove() end end;preview_beams={};preview_refresh=0 end
 local element_objects={};local edge_version=0
 local function cleanup() Active.release();element_objects={};edge_version=0;home_markers={};clear_preview();for _,o in ipairs(props) do if o:get_pos() then o:remove() end end;props={};robots={};belts={};presses={};pushers={};rotors={};pickups={} end
+-- Fixed stroke durations keep plate, rod and hydraulic audio on the same clock.
+local function piston_stroke(object,target,extending)
+ local e=object and object:get_luaentity();local from=object and object:get_pos()
+ if not e or not from then return end
+ e.target=nil;e.motion=nil
+ e.hydraulic_motion={from=from,to=target,elapsed=0,delay=extending and .16 or 0,total=extending and .55 or .50,impact=extending}
+ sound(extending and 'pusher' or 'pusher_return',from,extending and .48 or .3,execution_speed)
+end
+local function conveyor_sound(express)
+ -- One emitter per small belt cluster avoids overlapping a sound per tile.
+ local groups={}
+ for z=1,S.size do for x=1,S.size do local t=R.tile(S,x,z)
+  if t.kind=='belt'and(not express or t.speed==2)then
+   local key=math.floor((x-1)/6)..':'..math.floor((z-1)/6)
+   local g=groups[key]or{x=0,z=0,n=0};groups[key]=g;g.x=g.x+x;g.z=g.z+z;g.n=g.n+1
+  end
+ end end
+ for _,g in pairs(groups)do sound('conveyor',pos(g.x/g.n,g.z/g.n),.13,execution_speed)end
+end
 local function machine_pose(object,field,value)local e=object and object:get_luaentity();if e then e[field]=value end end
 local function inspect_animation(dt)
  preview_clock=preview_clock+dt;preview_refresh=preview_refresh+dt
@@ -254,7 +294,7 @@ local function sync_elements()
   edge_version=S.geometry_serial or 0;local keep={};for _,o in ipairs(props)do if o:get_pos()then if o:get_luaentity().pit_edge then o:remove()else keep[#keep+1]=o end end end;props=keep
   for _,edge in ipairs(G.pit_edges(S,R))do local o=visual('pit_edge_'..edge.corners,world(edge),{textures={'sc_pit_edge.png'},backface_culling=false});o:set_yaw(G.yaw(edge.dir));o:get_luaentity().pit_edge=true end
  end
- for _,id in ipairs(S.factory_events or {})do local c=S.crates[id];if c then element_objects['crate:'..id]=visual('crate_'..c.kind,pos(c.spawn_from.x,c.spawn_from.z));sound('crusher',pos(c.spawn_from.x,c.spawn_from.z),.18,1.25)end end;S.factory_events={}
+ for _,id in ipairs(S.factory_events or {})do local c=S.crates[id];if c then element_objects['crate:'..id]=visual('crate_'..c.kind,pos(c.spawn_from.x,c.spawn_from.z));sound('pusher',pos(c.spawn_from.x,c.spawn_from.z),.2)end end;S.factory_events={}
  for key,t in pairs(S.board)do if t.kind=='factory'then
   local x,z=key:match('^(%d+),(%d+)$');x,z=tonumber(x),tonumber(z);local id='factory:'..key;local o=element_objects[id]
   if not o then o=visual('factory_'..t.pattern,pos(x,z),{textures={'sc_surface_factory_'..t.crate_kind..'.png'}});o:set_yaw(G.yaw(t.dir));element_objects[id]=o;o:get_luaentity().lamps={}
@@ -280,7 +320,7 @@ local function sync_elements()
   local model=t.filled and 'tile'or t.kind
   if not o then o=visual(model,pos(x,z),{textures={t.filled and 'sc_tile_deck.png'or A[model]}});element_objects[id]=o end
   if t.filled then Net.properties(o,{mesh='sc_tile.obj',textures={'sc_tile_deck.png'},visual_size={x=1,y=1,z=1}});o:get_luaentity().hatch=nil;o:set_pos(pos(x,z))
-  elseif t.kind=='trapdoor'then local e=o:get_luaentity();e.hatch=e.hatch or {origin=pos(x,z),amount=t.open and 1 or 0};local goal=t.open and 1 or 0;if e.hatch.goal~=nil and e.hatch.goal~=goal then P.emit('control',pos(x,z));sound('crusher',pos(x,z),.15,1.3)end;e.hatch.goal=goal;I.describe(o,'Trapdoor',t.open and 'OPEN / Pit. Adjacent occupied plates toggle after movement.'or 'CLOSED / Safe floor. Adjacent occupied plates toggle after movement.',{-1,-.5,-1,1,-.25,1})
+  elseif t.kind=='trapdoor'then local e=o:get_luaentity();e.hatch=e.hatch or {origin=pos(x,z),amount=t.open and 1 or 0};local goal=t.open and 1 or 0;if e.hatch.goal~=nil and e.hatch.goal~=goal then P.emit('control',pos(x,z));sound('pusher',pos(x,z),.15)end;e.hatch.goal=goal;I.describe(o,'Trapdoor',t.open and 'OPEN / Pit. Adjacent occupied plates toggle after movement.'or 'CLOSED / Safe floor. Adjacent occupied plates toggle after movement.',{-1,-.5,-1,1,-.25,1})
   else o:get_luaentity().target=pos(x,z,t.pressed and .94 or 1);I.describe(o,'Pressure Plate','After all movement: toggles adjacent trapdoors once per register.',{-.85,-.5,-.85,.85,-.25,.85})end
   -- Trapdoors change robot rules and visuals, never the pilot's invisible floor.
  end end
@@ -350,8 +390,9 @@ local function sync()
      if e.last_shield and (b.shield or 0)<e.last_shield then sound('shield',dest,.4);P.emit('shield',dest)end;e.last_shield=b.shield or 0
      if e.electro_serial~=(b.electro_serial or 0)then if e.electro_serial then P.emit('shield',dest);sound('shield',dest,.4)end;e.electro_serial=b.electro_serial or 0 end
      if e.titanium_serial~=(b.titanium_serial or 0)then if e.titanium_serial then P.emit('armor',dest);sound('impact',dest,.55,.6)end;e.titanium_serial=b.titanium_serial or 0 end
-     if e.last_hp and b.hp>e.last_hp then P.emit('repair',dest);sound('pickup',dest,.35,1.2)end
+     if e.last_hp and b.hp>e.last_hp then P.emit('repair',dest);sound('repair',dest,.4)end
      if e.last_hp and b.hp<e.last_hp and not b.down then sound('impact',dest,.55);P.emit('damage',dest) end;e.last_hp=b.hp
+     if e.last_energy and b.energy and b.energy>e.last_energy and not b.down then sound('recharge',dest,.3)end;e.last_energy=b.energy
      local saved=(b.save_serial or 0)~=(e.last_save_serial or 0)
      if saved or (e.last_checkpoint and b.next>e.last_checkpoint)then
        if home_markers[b.id]then home_markers[b.id]:remove()end
@@ -359,7 +400,7 @@ local function sync()
        local marker=visual('arrow_forward',markpos,{visual_size={x=.4,y=1,z=.4},glow=5,backface_culling=false});marker:get_luaentity().private_owner=b.id;marker:set_yaw(G.yaw(b.home.dir or 0));if marker.set_observers then marker:set_observers({[b.id]=true})else marker:set_properties({is_visible=false})end;home_markers[b.id]=marker
        I.describe(marker,'Reboot direction','Saved facing direction at this checkpoint.',{-.3,-.21,-.3,.3,-.17,.3})
        local badge=visual('tile',o:get_pos(),{visual='sprite',textures={saved and 'sc_save_achievement.png'or ('sc_checkpoint_'..math.min(S.checkpoint_count or 3,b.next-1)..'.png')},visual_size={x=.8,y=.8},glow=10})
-       badge:get_luaentity().achievement=.001;badge:get_luaentity().origin=o:get_pos();sound('success',o:get_pos(),.35,1.2);P.emit('checkpoint',o:get_pos())
+       badge:get_luaentity().achievement=.001;badge:get_luaentity().origin=o:get_pos();sound('success',o:get_pos(),.4);P.emit('checkpoint',o:get_pos())
      end;e.last_checkpoint=b.next;e.last_save_serial=b.save_serial or 0
      e.yaw=G.yaw(b.dir)
      if e.was_down~=not not b.down then
@@ -367,7 +408,8 @@ local function sync()
        e.was_down=not not b.down
        Net.properties(o,{is_visible=true,visual_size=floating and {x=.5,y=.5,z=.5} or {x=1,y=b.down and .3 or 1,z=1},textures={robot_texture(b,b.down)},nametag='',nametag_color=b.down and '#ff7755' or '#94e3cf'})
        if b.down then
-         sound('destroy',dest,.65,b.destroyed_by=='Fell into a pit' and .65 or (b.destroyed_by=='CRUSHED by crusher' and .8 or 1))
+         local cue=b.destroyed_by=='CRUSHED by crusher'and 'destroy_crush'or b.destroyed_by=='Fell into a pit'and 'fall'or ({'destroy','destroy_electric','destroy_breakup'})[math.random(3)]
+         sound(cue,dest,.55)
          P.emit(b.destroyed_by=='Fell into a pit'and 'fall'or (b.destroyed_by=='CRUSHED by crusher' and 'crush' or 'destroy'),dest)
        end
      end
@@ -409,9 +451,14 @@ local function camera(p,mode)
  else p:set_pos(world({x=12.5,y=18,z=-4}));p:set_look_horizontal(0);p:set_look_vertical(.8);v.notice='Use K to enter flight mode' end
 end
 follow_camera=function(p)
- local name=p:get_player_name();local v=players[name];if not v or v.return_view then return end
- local target=not (bot(name)and bot(name).finished)and robots[name]or nil;if target and target:get_luaentity().owner_view then target=target:get_luaentity().owner_view end;if not target then local h=humans()[1];if not h then for _,candidate in ipairs(S.bots)do if not candidate.finished then h=candidate;break end end end;target=h and robots[h.id] end
- if not target then return end
+ local name=p:get_player_name();local v=players[name];if not v then return end
+ local watched=watched_bot(name);if not watched and not spectating(name)then watched=humans()[1]end;local target=watched and robots[watched.id]
+ if target and watched.id==name and target:get_luaentity().owner_view then target=target:get_luaentity().owner_view end
+ if not target or not target:get_pos()then
+  if spectating(name)and v.follow then p:set_detach();v.follow:remove();v.follow=nil;if v.return_view then p:set_fov(v.return_view.fov or 65,false,.35)end;v.return_view=nil end
+  return
+ end
+ if v.follow and v.follow:get_pos()then v.follow:get_luaentity().follow_object=target;return end
  v.return_view={pos=vector.new(p:get_pos()),yaw=p:get_look_horizontal(),pitch=p:get_look_vertical(),fov=p:get_fov()}
  local angle=v.orbit_angle or 0;local location,radius=orbit_position(target:get_pos(),angle)
  local o=visual('robot',location,{is_visible=false})
@@ -420,10 +467,12 @@ follow_camera=function(p)
 end
 restore_cameras=function(above_robot)
  for name,v in pairs(players) do
+   if not (above_robot and spectating(name))then
    local p=core.get_player_by_name(name);local saved=v.return_view
    if saved and p then p:set_detach();local b=bot(name);if above_robot and b then p:set_pos(pos(b.x,b.z,7));p:set_look_vertical(math.pi/2)else p:set_pos(saved.pos);p:set_look_horizontal(saved.yaw);p:set_look_vertical(saved.pitch)end;p:set_fov(saved.fov or 65,false,.35)end
    if v.follow and v.follow:get_pos() then v.follow:remove() end
    v.return_view=nil;v.follow=nil
+   end
  end
 end
 local Cards=dofile(path..'/card_text.lua');local card_names=Cards.names;local help=Cards.descriptions
@@ -433,6 +482,7 @@ local function direction_name(choice)return 'BLUE '..(choice=='UTURN'and 'U-TURN
 local function inventory(p,b)
  local inv=p:get_inventory();inv:set_size('main',math.max(13,1+(b and #(b.hand or {})or 9)+(S.round==1 and 4 or 0)));local a={}
  if phase=='editor'then inv:set_list('main',{'shift_circuit:editor_brush','shift_circuit:editor_rotate'});p:hud_set_hotbar_itemcount(2);return end
+ if spectating(p:get_player_name())then inv:set_list('main',{ItemStack('shift_circuit:orbit'),ItemStack('shift_circuit:spectate_switch')});p:hud_set_hotbar_itemcount(2);return end
  local v=players[p:get_player_name()];if v and v.follow and not inspecting()then inv:set_list('main',{ItemStack('shift_circuit:orbit')});p:hud_set_hotbar_itemcount(1);return end
  local commit=ItemStack('shift_circuit:commit');local state=b and b.ready and 'locked' or (b and phase=='program' and #(b.program or {})==5 and 'ready' or 'disabled')
  commit:get_meta():set_string('inventory_image','sc_commit_'..state..'.png')
@@ -457,7 +507,7 @@ local function inventory(p,b)
  inv:set_list('main',a);p:hud_set_hotbar_itemcount(1+(b and math.max(5,#(b.hand or {})) or 9)+(b and S.round==1 and 4 or 0))
 end
 local function update_hud(name)
- local p=core.get_player_by_name(name);local v=players[name];if not p or not v then return end;local b=bot(name)
+ local p=core.get_player_by_name(name);local v=players[name];if not p or not v then return end;local spectator=spectating(name);local b=watched_bot(name)
  v.hud_sent=v.hud_sent or {};local function hud(id,field,value)Net.hud(p,v.hud_sent,id,field,value)end
  if phase=='editor'then
   if not v.editor_hidden then for _,id in ipairs(v.hud_ids)do hud(id,'text','')end;v.editor_hidden=true end
@@ -469,7 +519,7 @@ local function update_hud(name)
  hud(v.ghost_status,'text',ghost and 'Ghost mode: inter-bot collision disabled'or '')
  hud(v.ghost_status_bg,'text',ghost and 'sc_ghost_status.png'or '')
  local palette_count=b and math.min(18,1+math.max(5,#(b.hand or {}))+(S.round==1 and 4 or 0))or 10
- hud(v.command_palette,'text',phase=='program'and b and ('sc_command_palette_'..palette_count..'.png')or '')
+ hud(v.command_palette,'text',phase=='program'and b and not spectator and ('sc_command_palette_'..palette_count..'.png')or '')
  local hint=S.puzzle and S.puzzle.hint or '';if phase=='lobby'or phase=='loading'or phase=='finished'then hint=''end
  if v.hint_source~=hint then v.hint_source=hint;local lines={};local line='';for token in hint:gmatch('%S+')do local word=token;while #word>46 do if line~=''then lines[#lines+1]=line;line=''end;lines[#lines+1]=word:sub(1,46);word=word:sub(47)end;if #line+#word+1>46 then lines[#lines+1]=line;line=word else line=line==''and word or line..' '..word end end;if line~=''then lines[#lines+1]=line end;v.hint_display=table.concat(lines,'\n')end
  hud(v.puzzle_hint_bg,'text',v.hint_display~=''and 'sc_puzzle_hint.png'or '');hud(v.puzzle_hint,'text',v.hint_display)
@@ -481,7 +531,7 @@ local function update_hud(name)
  hud(v.phase_order,'text',(phase=='editor'or phase=='lobby'or phase=='loading')and ''or 'sc_phase_order_'..phase_icon..'.png')
  local owner_actor=robots[name];local owner_view=owner_actor and owner_actor:get_luaentity().owner_view
  local own_position=(owner_view or owner_actor)and (owner_view or owner_actor):get_pos()
- hud(v.own_marker,'text',b and not b.finished and own_position and 'sc_your_robot.png'or '')
+ hud(v.own_marker,'text',not spectator and b and not b.finished and own_position and 'sc_your_robot.png'or '')
  if own_position then hud(v.own_marker,'world_pos',b and b.down and pos(b.x,b.z,2.9)or {x=own_position.x,y=own_position.y+1.9,z=own_position.z})end
  local rows=RaceHUD.rows(S,phase);local visible=phase~='editor'and phase~='lobby'and phase~='loading'
  hud(v.racer_header,'text',visible and #rows>0 and 'sc_racer_header.png'or '')
@@ -497,6 +547,7 @@ local function update_hud(name)
  if goal.x then hud(v.goal_marker,'world_pos',pos(goal.x,goal.z,5.2))end
  local direction_phase=phase=='direction_reading'or phase=='direction'
  local title=phase=='lobby' and 'READY TO PLAY / Select START GAME and left-click' or (phase=='program' and 'PROGRAM / Queue five cards, then use COMMIT' or (phase=='finished' and 'ROUTE COMPLETE / I for the next mission' or ('PULSE '..slot..' / '..(phase=='presses' and 'CRUSHERS' or (phase=='planning_ai' and 'OPPONENTS PROGRAMMING' or phase:upper())))))
+ if spectator and phase=='program'then title='PLANNING / '..(b and (b.ready and 'READY'or 'Choosing commands')or 'No robots remaining')end
  if direction_phase then title='STARTING DIRECTION / Blue register'end
  if execution_speed>1 then title='FAST FORWARD / Reboot pending'end
  if phase=='commands'and S.executing then local acting=bot(S.executing);title=title..((S.executing_count or 1)>1 and (' / '..S.executing_count..' enemies moving')or (' / '..S.executing..' / Priority ID '..R.priority(acting,slot)))end
@@ -506,6 +557,7 @@ local function update_hud(name)
  local values={energy=b and b.energy or 0,shield=b and b.shield or 0,hull=b and not b.down and math.max(0,b.hp or 0) or 0,hand=b and b.allowance or 0,jam=b and b.disruption or 0,route=b and math.min(S.checkpoint_count or 3,b.next-1) or 0,modules=(b and (b.blink_left or 0)>0 and 1 or 0)+(b and (b.range or 4)>4 and 2 or 0)}
  for kind,id in pairs(v.gauges) do hud(id,'text','sc_stat_'..(kind=='route' and ('route_'..(S.checkpoint_count or 3))or kind)..'_'..values[kind]..'.png') end
  hud(v.controls,'text',inspecting() and 'Use K to enter flight mode / Z: go to your robot / I: inventory\nWheel: select / E: retain / Left-click: queue or COMMIT / Right-click: undo' or 'EXECUTION CAMERA / Following your robot\nLeft-click: orbit left / Right-click: orbit right / Round ends above your robot')
+ if spectator then hud(v.controls,'text','SPECTATING / '..(b and b.id or 'No robots remaining')..'\n1: orbit / 2: switch robot / Left-click: previous / Right-click: next / I: menu')end
  local opening=S.round==1
  hud(v.register_terminal,'text',opening and 'sc_register_terminal_start.png'or 'sc_register_terminal.png')
  local blue=b and b.start_direction
@@ -513,7 +565,7 @@ local function update_hud(name)
  hud(v.direction_label,'text',opening and (direction_phase and 'sc_register_start_active.png'or 'sc_register_start.png')or '')
  hud(v.direction_slot,'offset',{x=-190,y=30+(phase=='direction_reading'and 4 or 0)})
  for i=1,5 do
-   local c=b and b.program[i];local texture=c and card_image(c,R.priority(b,i))or 'sc_emptycard.png'
+   local c=b and b.program and b.program[i];local texture=c and card_image(c,R.priority(b,i))or 'sc_emptycard.png'
    local reading=phase=='reading' and i==slot
    local progress=math.min(1,timer/phase_time())
    local scale=1
@@ -538,13 +590,14 @@ local function update_hud(name)
  for _,q in ipairs(WorldTagOrder.sort(world_tags,eye))do hud(q.id,'z_index',q.z)end
  hud(v.own_marker,'z_index',WorldTagOrder.owner)
  hud(v.pointed,'text',I.pointed(core,p,9))
+ hud(v.destruction,'text',b and b.down and ('ROBOT DESTROYED / '..(b.destroyed_by or 'Damage')..'\nRebooting after this round') or '')
+ if spectator then hud(v.detail,'text',b and ('WATCHING '..b.id..' / '..(b.down and 'Reboot pending'or b.ready and 'Program ready'or 'Planning'))or 'No robots remaining');return end
  local c=b and b.hand and b.hand[p:get_wield_index()-1]
  local blue_choice=b and S.round==1 and direction_cards[p:get_wield_index()-1-#(b.hand or {})]
- hud(v.destruction,'text',b and b.down and ('ROBOT DESTROYED / '..(b.destroyed_by or 'Damage')..'\nRebooting after this round') or '')
  local notice=(b and b.emp_round==S.round and 'EMP DISABLED / Remaining commands skipped this round')or (b and b.remote_from and ('REMOTE CONTROL / Program copied from '..b.remote_from))or v.notice or '';if phase=='program' and planning_left then notice=(planning_left<=10 and 'TIME RUNNING OUT / ' or '')..'Empty slots will be filled randomly from your remaining cards.' end
  hud(v.detail,'text',(v.follow and not inspecting())and 'ORBIT / Left-click: rotate left / Right-click: rotate right'or notice..'\n'..(p:get_wield_index()==1 and (phase=='lobby' and 'START GAME / Left-click to choose a campaign or race' or 'COMMIT / Left-click to lock in your five-card program') or (blue_choice and (direction_name(blue_choice)..' / '..direction_help[blue_choice]..' / Starting register only')or c and (card_names[c]or c)..' / Priority ID '..((b.hand_ids or {})[p:get_wield_index()-1]or 0)..' / '..help[c] or 'Select a command card')))
 end
-refresh=function() for name in pairs(players) do local p=core.get_player_by_name(name);if p then inventory(p,bot(name));update_hud(name);if refresh_menu then refresh_menu(p) end end end end
+refresh=function() for name in pairs(players) do local p=core.get_player_by_name(name);if p then if spectating(name)then follow_camera(p)end;inventory(p,bot(name));update_hud(name);if refresh_menu then refresh_menu(p) end end end end
 local function all_ready() local n=0;for _,b in ipairs(humans()) do n=n+1;if not b.ready then return false end end;if n>0 then return true end;for _,b in ipairs(S.bots)do if b.enemy and not b.finished then return true end end;return false end
 local planner=dofile(path..'/planning.lua')(core,path,R,C,options.time_sliced_ai)
 local begin
@@ -555,7 +608,7 @@ end
 begin=function()
  if not planner.ready()then planning_left=nil;phase='planning_ai';refresh();return end
  clear_preview();preview_clock=0
- for _,p in ipairs(presses) do machine_pose(p.o,'target',pos(p.x,p.z,4.3)) end
+ for _,p in ipairs(presses) do if phase=='presses'and slot%2==(p.parity or 0)then sound('crusher_return',pos(p.x,p.z),.3)end;machine_pose(p.o,'target',pos(p.x,p.z,4.3)) end
  for _,p in ipairs(pushers) do machine_pose(p.o,'target',pos(p.q.x,p.q.z)) end
  for _,r in ipairs(rotors) do machine_pose(r.o,'yaw',r.angle) end
  for _,b in ipairs(S.bots)do if S.round==1 then b.start_direction=b.start_direction or 'FORWARD'end end
@@ -566,7 +619,7 @@ begin=function()
 end
 local function edit(p,action,index)
  local name=p:get_player_name();local b=bot(name);local v=players[name]
- if not b or b.finished or phase~='program' or b.ready then return end
+ if spectating(name)or not b or b.finished or phase~='program' or b.ready then return end
  if action=='direction'then
    if S.round~=1 or R.start_directions[index]==nil then return end
    b.start_direction=index
@@ -574,17 +627,17 @@ local function edit(p,action,index)
    if S.round~=1 then return end;b.start_direction=nil
  elseif action=='queue' then
    if not b.hand[index] then return end
-   if #b.selected>=5 then v.notice='Program is full / undo a card first';if options.ui then options.ui(name,.65)end;update_hud(name);return end
-   for _,i in ipairs(b.selected) do if i==index then v.notice='This card is already queued';if options.ui then options.ui(name,.65)end;update_hud(name);return end end
+   if #b.selected>=5 then v.notice='Program is full / undo a card first';if options.ui then options.ui(name,1,'ui_error')end;update_hud(name);return end
+   for _,i in ipairs(b.selected) do if i==index then v.notice='This card is already queued';if options.ui then options.ui(name,1,'ui_error')end;update_hud(name);return end end
    b.selected[#b.selected+1]=index;b.program[#b.program+1]=b.hand[index];b.program_ids=b.program_ids or {};b.program_ids[#b.program]=(b.hand_ids or {})[index]
  elseif action=='undo' then table.remove(b.selected);table.remove(b.program);table.remove(b.program_ids or {})
  elseif action=='clear' then b.selected={};b.program={};b.program_ids={};if S.round==1 then b.start_direction=nil end
  elseif action=='commit' then
-   if #b.program<5 then v.notice='Choose five cards before committing';if options.ui then options.ui(name,.65)end;update_hud(name);return end
+   if #b.program<5 then v.notice='Choose five cards before committing';if options.ui then options.ui(name,1,'ui_error')end;update_hud(name);return end
    if S.round==1 then b.start_direction=b.start_direction or 'FORWARD'end
    b.ready=true
  end
- if options.ui then options.ui(name,action=='commit' and 1.25 or (action=='undo' and .85 or 1))end
+ if options.ui then options.ui(name,1,action=='commit'and 'commit'or ((action=='undo'or action=='clear'or action=='direction_clear')and 'ui_back'or 'card_select'))end
  v.notice='';refresh();if all_ready() then begin() end
 end
 for _,c in ipairs({'STEP','DASH','MOVE3','BACK','BACK2','LEFT','RIGHT','UTURN','WAIT','PULSE','BLINK'}) do
@@ -607,11 +660,22 @@ core.register_tool('shift_circuit:commit',{description='COMMIT / Queue five card
  on_drop=function(stack) return stack end})
 local function orbit(direction)
  return function(stack,p)
-  local v=players[p:get_player_name()];if v and v.follow and not inspecting()then
+  local v=players[p:get_player_name()];if v and v.follow and (spectating(p:get_player_name())or not inspecting())then
    local e=v.follow:get_luaentity();e.orbit_target=(e.orbit_target or 0)+direction*math.pi/4;v.orbit_angle=e.orbit_target
   end;return stack
  end
 end
+local function switch_watched(name,direction)
+ if not spectating(name)then return false end
+ local v=players[name];local p=core.get_player_by_name(name);if not v or not p then return false end
+ local current=watched_bot(name);local choices={};local index=1
+ for _,b in ipairs(S.bots)do if not b.finished then choices[#choices+1]=b;if current and current.id==b.id then index=#choices end end end
+ if #choices==0 then return false end
+ v.watched=choices[(index-1+(direction<0 and -1 or 1))%#choices+1].id
+ follow_camera(p);refresh();return true
+end
+local function spectate_tool(direction)return function(stack,p)switch_watched(p:get_player_name(),direction);return stack end end
+core.register_tool('shift_circuit:spectate_switch',{description='WATCH ROBOT / Left-click: previous / Right-click: next',inventory_image='sc_direction_RIGHT.png',on_use=spectate_tool(-1),on_secondary_use=spectate_tool(1),on_place=spectate_tool(1),on_drop=function(stack)return stack end})
 core.register_tool('shift_circuit:orbit',{description='ORBIT / Left-click: left / Right-click: right',inventory_image='sc_orbit.png',on_use=orbit(-1),on_secondary_use=orbit(1),on_place=orbit(1),on_drop=function(stack)return stack end})
 core.register_tool('shift_circuit:start',{description='START GAME',inventory_image='sc_start.png',on_use=function(_,p) menu(p:get_player_name()) end,on_drop=function(stack)return stack end})
 core.register_allow_player_inventory_action(function() return 0 end)
@@ -635,7 +699,7 @@ end
 spawn_pickup=function(key,kind)
    local x,z=key:match('(%d+),(%d+)');local o=visual('pickup_'..kind,pos(tonumber(x),tonumber(z),1.4),{nametag=Systems.item_name(kind),nametag_color=kind=='jammer' and '#ef859f' or '#96e5cd',glow=4})
    if kind=='jammer' then Net.properties(o,{textures={'sc_surface_pickup_jammer.png^[multiply:#f28cbe'}}) end
-   I.describe(o,Systems.item_name(kind),({reset_button='Use during planning to redraw your hand and clear your program. Consumed on use.',electromagnetic_brake='Blocks robot pushes, pushers and tractor/repulsor beams while enabled. Commands and conveyors still move you. No power cost.',battering_ram='Successful pushes deal 2 hull damage to the first robot pushed.',hard_disk='Press E to keep one movement card per disk for the next round.',holographic_memory='Consumed to reboot at your destruction square once, except pit falls.',gyro_stabilizer='Enable each round to ignore forced rotation.',electroshield='Absorbs incoming damage for one power per hit while enabled.',titanium_hull='Survives one crusher strike, then breaks.',green_laser='Default weapon / one loaded weapon at a time.',double_laser='Two damage beams. Install during planning.',triple_laser='Three damage beams. Costs 1 power per hit.',emp_generator='Costs 2 power on a target hit. Disables the target�s remaining commands this round.',remote_control='Copies remaining commands to a target. Install during planning.',tractor_beam='Pulls a robot one square.',repulsor_beam='Pushes a robot one square.',mechanical_arm='Collects an adjacent pickup each register, across walls.',turret_gearbox='Aim your weapon front, back, left or right.',repair='Fully restores hull when collected.',shield='Grants three shield charges (maximum three).',cell='Fully recharges power to nine.',thermal_camera='Automatic aim tracks the nearest visible enemy during weapon phases.',blueprint_archive='Choose one item in your dashboard to keep on respawn.',blink='One successful jump consumes one Blink. At most one per round.',range='Passive equipment / +5 weapon range per copy.',cache='Adds two cards to future hands, up to three bonus cards.',jammer='Warning: removes two cards from the next hand.'})[kind],{-.48,-.48,-.48,.48,.48,.48});o:get_luaentity().hover=true;o:get_luaentity().origin=pos(tonumber(x),tonumber(z),1.4);pickups[key]=o
+   I.describe(o,Systems.item_name(kind),({reset_button='Use during planning to redraw your hand and clear your program. Consumed on use.',electromagnetic_brake='Blocks robot pushes, pushers and tractor/repulsor beams while enabled. Commands and conveyors still move you. No power cost.',battering_ram='Successful pushes deal 2 hull damage to the first robot pushed.',hard_disk='Press E to keep one movement card per disk for the next round.',holographic_memory='Consumed to reboot at your destruction square once, except pit falls.',gyro_stabilizer='Enable each round to ignore forced rotation.',electroshield='Absorbs incoming damage for one power per hit while enabled.',titanium_hull='Survives one crusher strike, then breaks.',green_laser='Default weapon / one loaded weapon at a time.',double_laser='Two damage beams. Install during planning.',triple_laser='Three damage beams. Costs 1 power per hit.',emp_generator='Costs 2 power on a target hit. Disables the targetÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢s remaining commands this round.',remote_control='Copies remaining commands to a target. Install during planning.',tractor_beam='Pulls a robot one square.',repulsor_beam='Pushes a robot one square.',mechanical_arm='Collects an adjacent pickup each register, across walls.',turret_gearbox='Aim your weapon front, back, left or right.',repair='Fully restores hull when collected.',shield='Grants three shield charges (maximum three).',cell='Fully recharges power to nine.',thermal_camera='Automatic aim tracks the nearest visible enemy during weapon phases.',blueprint_archive='Choose one item in your dashboard to keep on respawn.',blink='One successful jump consumes one Blink. At most one per round.',range='Passive equipment / +5 weapon range per copy.',cache='Adds two cards to future hands, up to three bonus cards.',jammer='Warning: removes two cards from the next hand.'})[kind],{-.48,-.48,-.48,.48,.48,.48});o:get_luaentity().hover=true;o:get_luaentity().origin=pos(tonumber(x),tonumber(z),1.4);pickups[key]=o
  end
 local built_extent
 build=function()
@@ -759,21 +823,22 @@ menu=function(name)
  p:set_inventory_formspec(MenuUI.decorate(table.concat(f)));core.show_formspec(name,'shift_circuit:lobby',table.concat(f))
 end
 refresh_menu=function(p)
- local b=bot(p:get_player_name());p:set_inventory_formspec(Loadout.formspec(b,phase,nil,S.test_mode and 'Test your equipment'or Goal.current(S,b,phase).label))
+ local name=p:get_player_name();local b=watched_bot(name);p:set_inventory_formspec(Loadout.formspec(b,spectating(name)and 'spectate'or phase,nil,S.test_mode and 'Test your equipment'or Goal.current(S,b,phase).label))
 end
 core.register_on_player_receive_fields(function(p,form,f)
  if form=='shift_circuit:loadout'or ((form==''or f.apply)and Loadout.changed(f))then
   if f.room then menu(p:get_player_name());return end
+  if spectating(p:get_player_name())then return end
   local b=bot(p:get_player_name());local note
   if b and Loadout.changed(f)and not f.quit then
-   if phase=='program'and not b.ready then local ok;if f.use_reset then ok,note=C.reset_hand(S,b);if ok then sound('pickup',p:get_pos(),.25,1.2)end else ok,note=Loadout.apply(b,f)end;if ok then sync();refresh()end
-   else note='Loadout is locked'end
+   if phase=='program'and not b.ready then local ok;if f.use_reset then ok,note=C.reset_hand(S,b);if ok then sound('pickup',p:get_pos(),.25,1.2)end else ok,note=Loadout.apply(b,f)end;if ok then if options.ui then local cue='ui_click';for k,value in pairs(f)do if k:match('^enable_')then cue=value=='true'and 'ui_on'or 'ui_off'end end;options.ui(p:get_player_name(),1,cue)end;sync();refresh()elseif options.ui then options.ui(p:get_player_name(),1,'ui_error')end
+   else note='Loadout is locked';if options.ui then options.ui(p:get_player_name(),1,'ui_error')end end
    if form=='shift_circuit:loadout'then Loadout.show(p,b,phase,note)else p:set_inventory_formspec(Loadout.formspec(b,phase,note))end
   end;return
  end
  if form~='' and form~='shift_circuit:lobby' then return end
  local name=p:get_player_name();local v=players[name];if not v then return end
- if f.loadout then Loadout.show(p,bot(name),phase);return end
+ if f.loadout then Loadout.show(p,watched_bot(name),spectating(name)and 'spectate'or phase);return end
  if f.room then menu(name);return end
  if f.results and options.finished then options.finished(S);return end
  if f.join then
@@ -890,7 +955,7 @@ core.register_globalstep(function(dt)
       end
      end;v.locate_key=locate
      local held=controls.aux1
-     if held and not v.keep_key and phase=='program'then
+     if held and not v.keep_key and phase=='program'and not spectating(name)then
       local b=bot(name);local index=p:get_wield_index()-1
       if b and not b.ready and b.hand[index]and b.hand[index]~='BLINK'then
        b.keep=b.keep or {};local removed=false;for i,k in ipairs(b.keep)do if k==index then table.remove(b.keep,i);removed=true;break end end
@@ -901,7 +966,7 @@ core.register_globalstep(function(dt)
        inventory(p,b);update_hud(name)
       end
      end;v.keep_key=held
-     if hudclock>.15 then update_hud(name) end
+     if hudclock>.15 then if spectating(name)then follow_camera(p)end;update_hud(name) end
    end
  end
  if hudclock>.15 then hudclock=0 end
@@ -918,13 +983,13 @@ core.register_globalstep(function(dt)
  elseif phase=='reading' then
   S.register=slot;command_queue=R.program_order(S,slot);phase='commands';command_batch()
  elseif phase=='commands' then
-  if not command_batch()then S.executing=nil;R.collect_phase(S);R.arms(S);R.belts(S,true);phase='express';sound('move',pos(6,6),.12,.75)end
- elseif phase=='express' then R.collect_phase(S);R.belts(S,false);phase='belts';sound('move',pos(6,6),.12,.75)
+  if not command_batch()then S.executing=nil;R.collect_phase(S);R.arms(S);R.belts(S,true);phase='express';conveyor_sound(true)end
+ elseif phase=='express' then R.collect_phase(S);R.belts(S,false);phase='belts';conveyor_sound(false)
  elseif phase=='belts' then
-   R.collect_phase(S);R.pushers(S,slot);phase='pushers';for _,p in ipairs(pushers) do if slot%2==p.q.parity then sound('crusher',pos(p.q.x,p.q.z),.2,1.25);local d=R.dirs[p.q.dir+1];machine_pose(p.o,'target',vector.add(pos(p.q.x,p.q.z),{x=d.x*.9,y=0,z=d.z*.9})) end end
+   R.collect_phase(S);R.pushers(S,slot);phase='pushers';for _,p in ipairs(pushers) do if slot%2==p.q.parity then local d=R.dirs[p.q.dir+1];piston_stroke(p.o,vector.add(pos(p.q.x,p.q.z),{x=d.x*.9,y=0,z=d.z*.9}),true) end end
  elseif phase=='pushers' then
    R.plates(S);R.collect_phase(S)
-   for _,p in ipairs(pushers) do machine_pose(p.o,'target',pos(p.q.x,p.q.z)) end
+   for _,p in ipairs(pushers) do if slot%2==p.q.parity then piston_stroke(p.o,pos(p.q.x,p.q.z),false)end end
    R.rotators(S);phase='rotators';for _,r in ipairs(rotors) do r.angle=r.angle+(r.turn==3 and 1 or -1)*math.pi/2;machine_pose(r.o,'yaw',r.angle) end
  elseif phase=='rotators' then R.robot_weapons(S,slot);phase='weapons'
  elseif phase=='weapons' then R.collect_phase(S);R.lasers(S);phase='lasers'
@@ -932,12 +997,12 @@ core.register_globalstep(function(dt)
    R.hazards(S,slot);phase='presses';for _,p in ipairs(presses)do local active=slot%2==(p.parity or 0);if active then sound('crusher',pos(p.x,p.z),.4)end;machine_pose(p.o,'target',pos(p.x,p.z,active and 1 or 4.3))end
  elseif phase=='presses' then
    R.register_repairs(S);R.ghosts(S,true)
-   for _,p in ipairs(presses) do machine_pose(p.o,'target',pos(p.x,p.z,4.3)) end
+   for _,p in ipairs(presses) do if phase=='presses'and slot%2==(p.parity or 0)then sound('crusher_return',pos(p.x,p.z),.3)end;machine_pose(p.o,'target',pos(p.x,p.z,4.3)) end
    if S.puzzle and not S.winner then for _,b in ipairs(humans())do if S.puzzle.no_reboot and b.down then S.failed='Robot destroyed'end end;if not S.failed and slot==5 and S.puzzle.limit>0 and S.round>=S.puzzle.limit then S.failed='Round limit reached'end end
    if S.failed then execution_speed=1;destruction_pause=0;phase='finished';restore_cameras(true);if options.finished then options.finished(S)end
    elseif S.winner and (S.mode~='race'or R.race_complete(S))then
      execution_speed=1;destruction_pause=0;phase='finished';restore_cameras(true)
-     if S.mode=='puzzle' and core.sound_play then core.sound_play('sc_puzzle_complete',{gain=.4},true)end
+     if S.mode=='puzzle' and core.sound_play then for _,b in ipairs(humans(true))do core.sound_play('sc_puzzle_complete',{to_player=b.id,gain=.4},true)end end
      for _,b in ipairs(humans(true)) do
        if S.mode=='campaign' and bot(S.winner) and not bot(S.winner).enemy then
          store:set_int('progress:'..b.id,math.max(store:get_int('progress:'..b.id),math.min(3,S.level+1)))
@@ -988,7 +1053,14 @@ api.edit_level=function(data,play)
  else R.init_objects(S);phase='editor'end
  slot=0;planning_left=nil;build();sync();refresh()
 end
-api.watch=function(name)local p=core.get_player_by_name(name);local v=players[name];if p and v then if v.follow then v.follow:remove();v.follow=nil end;p:set_detach();v.return_view=nil;follow_camera(p)end end
+api.watch=function(name)
+ if not spectating(name)then return false end
+ local p=core.get_player_by_name(name);if not p or not players[name]then return false end
+ follow_camera(p);refresh();return true
+end
+api.watch_next=switch_watched
+api.watching=function(name)local b=watched_bot(name);return spectating(name)and b and b.id or nil end
+
 api.lab=function(name,scenario)
  if not options.test_lab or not core.get_player_privs(name).server then return false end
  if not players[name]then return false end

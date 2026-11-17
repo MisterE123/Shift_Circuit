@@ -2,7 +2,7 @@
 
 
 
-Playable Luanti 5.18+ factory-programming game, development build 0.19.1. Original artwork, models, maps, text, and working title; CC0 sound effects by Kenney and Algate music by James Gargette (cinameng).
+Playable Luanti 5.18+ factory-programming game, development build 0.19.1. Original artwork, models, maps, text, and working title; original CC0 procedural music and sound effects, with credited ChipTone layers.
 
 
 
@@ -142,7 +142,7 @@ Puzzle and tutorial selection screens contain only play/navigation and lesson in
 
 Tutorial lessons appear only in Tutorial. The Puzzles play menu shows installed non-tutorial packs and enabled server puzzles, excluding disabled/private entries even for admins and authors. Private work remains in the Workshop library.
 
-Luanti game selection now has a custom editable pixel robot icon and the Algate techno menu arrangement in `menu/theme.ogg`. The in-game main menu groups solo/multiplayer play above Workshop/community tools, with robot choice beneath the solo modes.
+Luanti game selection now has a custom editable pixel robot icon and the original mellow synth menu track in `menu/theme.ogg`. The in-game main menu groups solo/multiplayer play above Workshop/community tools, with robot choice beneath the solo modes.
 
 Network updates: HUD values and entity appearance properties are sent only when they change. Card-selection feedback remains immediate; register overlays are composed before sending to avoid repeatedly resetting the highlighted texture. Position/animation updates continue normally.
 
@@ -172,7 +172,7 @@ Menu collections scroll to their actual content length. Audio speaker icons offe
 
 ## Credits and asset licensing
 
-Code, 3D models, animations and textures: **Codex GPT-6 Astra Medium**. Sound effects: **Kenney**. Music: **James Gargette (cinameng), Algate**. See [credits](CREDITS.md). Visual assets and all current audio are **CC0-1.0**, with author attribution preserved. See [asset licensing](LICENSE-ASSETS.md).
+Code, 3D models, animations and textures: **Codex GPT-6 Astra Medium**. Music and sound design: **Codex GPT-6 Astra Medium**, with **Tom Vian / SFB Games (ChipTone)** layers. Earlier contributors remain credited. See [credits](CREDITS.md). Visual assets and all current audio are **CC0-1.0**, with author attribution preserved. See [asset licensing](LICENSE-ASSETS.md).
 
 ## License
 
@@ -181,3 +181,5 @@ Shift Circuit's original game code, bundled modules, tools, tests, configuration
 Models, textures, animations, artwork, map/puzzle data and audio remain **CC0-1.0**, as specified in [LICENSE-ASSETS.md](LICENSE-ASSETS.md). Original third-party license notices retain their own terms. Author attribution is preserved in [CREDITS.md](CREDITS.md).
 
 The distribution contains the project's `shift_circuit` module and `sc_tutorial` puzzle-pack registration module; it contains no bundled third-party code modules or vendored libraries. The Luanti engine is a separate dependency, not part of this archive, and retains its own license. Development dependencies (such as Pillow, NumPy, SoundFile and Lupa) are installed separately and retain their own licenses. Adding third-party code or bundling an engine later requires reviewing those components separately.
+
+Spectating: after finishing, or joining as a spectator, use hotbar tool 1 to orbit and tool 2 to switch robots (left-click previous, right-click next). HUD registers, stats and goals follow the watched robot. Spectating never grants control of that robot; active racers cannot switch away from their own robot.

@@ -6,6 +6,7 @@ local factory=dofile(path..'/runtime.lua')
 local store=core.get_mod_storage()
 local Styles=dofile(path..'/robot_styles.lua');local wardrobe={}
 local Audio=dofile(path..'/audio.lua')(engine,store)
+local menu_visible={}
 local PuzzleLibrary;local audio_open={};local setup_open={};local solo_setup
 local rooms,member,queue,prefs,used={},{},{},{},{}
 local reconnect={} -- Authenticated player names reserve their existing robot, not a new seat.
@@ -74,7 +75,7 @@ local function background(title)
  return {'formspec_version[6]size[14,10]bgcolor[#09131fee;true]background[0,0;14,10;sc_menu_background.png]style_type[button;bgimg=sc_menu_button.png;bgimg_pressed=sc_menu_button_pressed.png;border=false]label[.7,.65;'..esc(title)..']button[12.55,.3;.75,.65;audio;]image[12.67,.36;.5,.5;sc_ui_audio.png]tooltip[audio;Audio settings]'}
 end
 local function button(f,x,y,w,h,key,label)f[#f+1]=('button[%s,%s;%s,%s;%s;%s]'):format(x,y,w,h,key,esc(label))end
-local function deliver(name,f,form)local p=core.get_player_by_name(name);if p then local text=MenuUI.decorate(table.concat(f));local r=rooms[member[name]];if not r or r.status~='playing'then p:set_inventory_formspec(text)end;core.show_formspec(name,form or 'shift_circuit:online',text)end end
+local function deliver(name,f,form)menu_visible[name]=true;local p=core.get_player_by_name(name);if p then local text=MenuUI.decorate(table.concat(f));local r=rooms[member[name]];if not r or r.status~='playing'then p:set_inventory_formspec(text)end;core.show_formspec(name,form or 'shift_circuit:online',text)end end
 local function preference(name)prefs[name]=prefs[name] or {board=1,bots=1,ai='hunter',campaign_enemies=1,race_enemies=0,racers=0,difficulty=2,racer_difficulty=2,board_count=1,checkpoints=3};return prefs[name]end
 local approved_choices={}
 local function course_choices(review)
@@ -345,7 +346,7 @@ end
 local function finish_scores(room,state)
  if room.recorded then return end;room.recorded=true
  for n in pairs(room.participants or {})do score_player(room,n,state)end
- for n in pairs(room.members)do Audio.effect(n,state.winner==n and 'sc_success'or 'sc_ui_click',{gain=.3})end
+ if state.mode~='race'then for n in pairs(room.members)do Audio.effect(n,state.winner==n and 'sc_victory'or 'sc_ui_click',{gain=.3})end end
 end
 racer_finished=function(room,state,b)
  if b.enemy or state.mode~='race'or room.solo_mode=='editor'or room.solo_mode=='test'then return end
@@ -359,7 +360,7 @@ racer_finished=function(room,state,b)
  local f=background('FINISHED / PLACE '..b.rank)
  f[#f+1]='label[1,2;Your finish is recorded. The other racers can continue.]label[1,3;Completed in '..b.finish_round..' rounds.]'
  button(f,1,4.3,12,1,'watch_race','STAY AND SPECTATE');if b.id~='singleplayer'then button(f,1,5.7,12,1,'find_match','FIND A NEW MATCH')end;button(f,1,7.4,12,.8,'leave','MAIN MENU')
- deliver(b.id,f);Audio.effect(b.id,'sc_success',{gain=.4})
+ deliver(b.id,f);Audio.effect(b.id,b.rank==1 and 'sc_victory_race'or 'sc_victory',{gain=.4})
 end
 finish=function(room,state)
  if room.solo_mode=='test'then Lab.open(room.host);return end
@@ -405,7 +406,7 @@ local function new_room(list,solo,auto,level,solo_mode,settings)
   if not rooms[r.id]then if slot then used[slot]=nil end;return end
   if not o then for n in pairs(r.members)do member[n]=nil;show(n)end;rooms[r.id]=nil;return end
   r.origin=o;r.slot=slot
-  r.api=factory(proxy(r),{origin=o,multiplayer=not r.solo,test_lab=r.solo_mode=='test',board=1,defer_board=true,time_sliced_ai=true,ai_mode=preference(r.host).ai,is_spectator=function(n)return r.spectators[n]==true end,racer_finished=function(state,b)racer_finished(r,state,b)end,menu=show,ui=function(n,pitch)Audio.click(n,pitch)end,finished=function(state)finish(r,state)end})
+  r.api=factory(proxy(r),{origin=o,multiplayer=not r.solo,test_lab=r.solo_mode=='test',board=1,defer_board=true,time_sliced_ai=true,ai_mode=preference(r.host).ai,is_spectator=function(n)return r.spectators[n]==true end,racer_finished=function(state,b)racer_finished(r,state,b)end,menu=show,ui=function(n,pitch,cue)Audio.click(n,pitch,cue)end,finished=function(state)finish(r,state)end})
   r.callbacks.on_mods_loaded()
   r.status='loading'
  end)
@@ -448,11 +449,11 @@ core.register_on_joinplayer(function(p)
  local r=rooms[reconnect[n]];reconnect[n]=nil
  if r and r.api and r.api.can_reclaim(n)then
   r.empty_grace=nil;r.members[n]=true;r.spectators[n]=nil;member[n]=r.id
-  r.callbacks.on_joinplayer(p);Audio.update(n,'game',false);return
+  r.callbacks.on_joinplayer(p);Audio.update(n,Audio.context(r,false),false);return
  end
  Audio.update(n,'menu',false);lobby_spawn(p);p:set_sky({type='plain',base_color='#101c29',clouds=false});lobby_robot(p);core.after(.3,function()if core.get_player_by_name(n)then show(n)end end)
 end)
-core.register_on_leaveplayer(function(p)local n=p:get_player_name();leave(n,true);Audio.leave(n);audio_open[n]=nil;lobby_hints[n]=nil end)
+core.register_on_leaveplayer(function(p)local n=p:get_player_name();leave(n,true);Audio.leave(n);menu_visible[n]=nil;audio_open[n]=nil;lobby_hints[n]=nil end)
 core.register_allow_player_inventory_action(function()return 0 end)
 core.register_chatcommand('sc',{description='Open the main menu.',func=function(n)show(n);return true end})
 solo_setup=function(n,mode,level)
@@ -497,6 +498,8 @@ core.register_on_player_receive_fields(function(p,form,f)
  -- a scroll event from scrollbar values included with an Apply button press.
  for key,value in pairs(f)do if key:match('_scroll$')and type(value)=='string'and value:match('^CHG:')then return end end
  local n=p:get_player_name();local r=rooms[member[n]];local pr=preference(n)
+ if f.quit then menu_visible[n]=nil end
+ if form~='shift_circuit:loadout'and not (form==''and Dashboard.changed(f))then Audio.menu(n,f)end
  if r and r.callbacks and (form=='shift_circuit:loadout'or f.loadout or f.apply or (form==''and Dashboard.changed(f)))then r.callbacks.on_player_receive_fields(p,form,f);return end
  if form~='shift_circuit:online' and form~='' then if f.room then show(n)end;return end
  if f.quit then audio_open[n]=nil;wardrobe[n]=nil;return end
@@ -581,11 +584,10 @@ core.register_on_player_receive_fields(function(p,form,f)
     if key=='enemy_count'then pr[setup.mode=='race' and 'race_enemies' or 'campaign_enemies']=value elseif key=='enemy_skill'then pr.difficulty=value elseif key=='racer_count'then pr.racers=value else pr.racer_difficulty=value end;changed=true
    end end
   end
-  if f.play_solo then setup_open[n]=nil;Audio.click(n,1.2);new_room({n},true,false,setup.level,setup.mode);return end
+  if f.play_solo then setup_open[n]=nil;new_room({n},true,false,setup.level,setup.mode);return end
   if f.setup_back then setup_open[n]=nil;show(n);return end
   if changed and not f.audio then solo_setup(n,setup.mode,setup.level);return end
  end
- Audio.click(n)
  if f.audio then audio_menu(n);return end
  if f.audio_back then audio_open[n]=nil;show(n);return end
  for i,v in ipairs({0,.12,.22})do if f['music'..i]then Audio.set(n,'music',v);audio_menu(n);return end end
@@ -661,7 +663,7 @@ core.register_globalstep(function(dt)
   end
  end
  if clock<1 then return end;clock=0
- for _,p in ipairs(core.get_connected_players())do local n=p:get_player_name();local r=rooms[member[n]];local playing=r and r.status=='playing';lobby_hint(p);local phase=playing and r.api.phase();Audio.update(n,playing and 'game' or 'menu',playing and phase~='program')end
+ for _,p in ipairs(core.get_connected_players())do local n=p:get_player_name();local r=rooms[member[n]];local playing=r and r.status=='playing';lobby_hint(p);local phase=playing and r.api.phase();Audio.update(n,Audio.context(r,menu_visible[n]),playing and phase~='program')end
  local q={};for n in pairs(queue)do if n~='singleplayer'and core.get_player_by_name(n) and not member[n]then q[#q+1]=n else queue[n]=nil end end;table.sort(q,function(a,b)return queue[a]<queue[b]end)
  while #q>=2 do local group={};for i=1,math.min(8,#q)do group[#group+1]=table.remove(q,1)end;new_room(group,false,true,nil,nil,{limit=16,collaborative=true})end
  for _,p in ipairs(core.get_connected_players())do if not member[p:get_player_name()] and hub_ready then local q=p:get_pos();if q.y<hub.y-4 or q.y>hub.y+26 or math.abs(q.x-(hub.x+12))>21 or math.abs(q.z-(hub.z+12))>21 then p:set_pos(add(hub,{x=12,y=2,z=12}))end end end

@@ -13,7 +13,7 @@ Attribution is appreciated but not required. This dedication does not grant trad
 
 ## Audio assets: CC0-1.0
 
-All current sound effects are adapted from Kenney's Sci-fi Sounds, Interface Sounds, and Impact Sounds. All current music, including `menu/theme.ogg`, is adapted from Algate by James Gargette (cinameng). These sources were released under CC0 1.0 Universal. The project's adaptations are also dedicated under CC0 to the extent any new rights arise.
+Current music and sound effects are original procedural synthesis by Codex GPT-6 Astra Medium, with CC0 ChipTone layers (Tom Vian / SFB Games) in the laser, pickup and card-selection cues. Original generated audio, including `menu/theme.ogg`, is dedicated to CC0 1.0 to the extent the project rights holder owns any rights. Former Kenney and Algate assets have been replaced; their historical credits and notices are retained.
 
 Author credits are maintained in `CREDITS.md` and `sound_sources.json`, despite CC0 not requiring attribution. Original Kenney license notices and Algate's source/license record are preserved in `LICENSES/`. All sound files in the current game are covered; no ElevenLabs audio is included.
 

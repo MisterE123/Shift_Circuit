@@ -1,0 +1,5 @@
+ChipTone by Tom Vian / SFB Games
+https://sfbgames.itch.io/chiptone
+Source page states generated sounds may be used for any purpose, commercial or otherwise, under CC0.
+https://creativecommons.org/publicdomain/zero/1.0/
+Used in the original laser, pickup, and card-selection layers. Attribution retained voluntarily.

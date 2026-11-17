@@ -57,7 +57,7 @@ function newplayer(name)
 end
 function flush()while #pending>0 do local q=pending;pending={};for _,f in ipairs(q)do f()end end end
 function tick(dt)callbacks.globalstep(dt);for _,o in ipairs(objects)do if o.p then callbacks.entity.on_step(o.e,dt)end end end
-ui_events={};shift_circuit=dofile(modpath..'/runtime.lua')(core,{ui=function(n,pitch)ui_events[#ui_events+1]={name=n,pitch=pitch}end});callbacks.on_mods_loaded();flush()
+ui_events={};shift_circuit=dofile(modpath..'/runtime.lua')(core,{ui=function(n,pitch,cue)ui_events[#ui_events+1]={name=n,pitch=pitch,cue=cue}end});callbacks.on_mods_loaded();flush()
 local a=newplayer('Alpha');local b=newplayer('Beta');flush()
 assert(a.shown and a.shown:find('START CAMPAIGN'),'welcome menu has an explicit start button')
 assert(shift_circuit.start('Alpha','race',1))
@@ -140,7 +140,7 @@ print('PASS collection animation lifecycle and positional sound events')
 
 lua.execute("""
 local click,commit,reject=false,false,false
-for _,e in ipairs(ui_events)do click=click or e.pitch==1;commit=commit or e.pitch==1.25;reject=reject or e.pitch==.65 end
+for _,e in ipairs(ui_events)do click=click or e.cue=='card_select';commit=commit or e.cue=='commit';reject=reject or e.cue=='ui_error' end
 assert(click and commit and reject,'card selection, commit and rejection have distinct sound cues')
 print('PASS program card sound hooks')
 """)

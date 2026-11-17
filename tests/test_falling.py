@@ -11,6 +11,7 @@ for i=1,5 do api.queue('Alpha',i)end;api.commit('Alpha')
 local main;for _,o in ipairs(objects)do if o.p and o.e.robot then main=o;break end end;local own=main.e.owner_view;assert(own)
 for i=1,80 do tick(.05);if b.down then break end end;assert(b.down and b.destroyed_by=='Fell into a pit','death applies immediately')
 assert(main.e.fall and own.e.fall and own.props.visual_size.y==1,'both observer views fall at full height')
+local falls=0;for _,call in ipairs(sounds)do if call.name=='sc_fall'then falls=falls+1;assert(call.params.pitch==1,'fall timing unaffected by execution speed')end end;assert(falls==1,'one motor fall cue for both observer views')
 local y=own.p.y;tick(.25);assert(own.p.y<y and own.p.y> -4.5 and own.props.is_visible,'visible accelerating drop')
 for i=1,8 do tick(.1)end
 assert(main.e.fallen and own.e.fallen and not main.props.is_visible and not own.props.is_visible,'robot disappears below pit')

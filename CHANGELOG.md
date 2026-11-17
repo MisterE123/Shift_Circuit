@@ -22,7 +22,7 @@
 - Removed generated Assembly Line, Crossroads and Reactor Hall choices and bundled Service Yard. Existing bundled Service Yard records are retired with a storage backup; player copies, drafts and configurations are preserved.
 - Campaign selection is empty pending author-selected missions. Race layouts use enabled authored boards and handle an empty catalog. Tutorial and isolated test fixtures remain available.
 
-## 0.17.5 � Protected drafts and board validation
+## 0.17.5 â€” Protected drafts and board validation
 
 - Each player keeps one persistent Draft with a dedicated library entry and visible workshop label.
 - Library selections open read-only previews. Returning to Draft restores the untouched draft, even after restarting the editor. Replacing it from a saved board requires explicit confirmation.
@@ -30,35 +30,35 @@
 - Submission, enabling and export require at least two checkpoint candidates. Existing one-candidate submissions cannot be enabled. Reachability checks remain enforced.
 - Automatic routes still cap at available reachable candidates after reserving one for the start.
 
-## 0.17.4 � Flat connected pushers
+## 0.17.4 â€” Flat connected pushers
 
 - Redesigns the pusher housing to 0.48 nodes tall and the moving plate to 0.38 nodes tall.
 - Removes the translating fixed-length shaft. A separate rod stays anchored inside the housing and changes length to meet the animated plate, during both preview and execution.
 - Keeps existing editable housing/plate textures and adds an independent sc_surface_pushrod.png texture.
 - Tests check connection across the full stroke in all directions, actual entity extension/retraction callbacks, mesh height, UVs and normals.
 
-## 0.17.3 � Collect after movement
+## 0.17.3 â€” Collect after movement
 
 - Movement no longer grants pickups immediately. After all command moves and pushes finish, surviving robots collect only from their final squares, in register priority order.
 - Conveyor substeps, pushers and weapon displacement collect at their respective phase boundaries after movement animation. Mechanical Arm retains its separate reach action.
 - AI planning uses the same phase-end collection rules. Items crossed during Dash, Move 3 or reverse movement stay on the board; falling before the phase ends grants no pickup.
 - Regression coverage includes Blink, conveyors, pushers, intermediate items, falls and being pushed off an item by a later command.
 
-## 0.17.2 � Visible robot previews and local-player menu
+## 0.17.2 â€” Visible robot previews and local-player menu
 
 - Replaces blank native model widgets with 24-frame turntable images rendered from the actual meshes and UV-mapped textures. The root cause of the client widget failure remains unconfirmed; the selection menu no longer relies on that widget.
 - All 16 preview sheets are checked for visible content in every frame and distinct rotation frames. Regenerate after model/texture edits with tools/robot_previews.py.
 - Player name singleplayer sees disabled multiplayer controls. Queue, room creation, join, watch, and find-match requests are rejected server-side; direct room creation and matchmaking also exclude this name. Solo modes remain available.
 - Automated regression checks and headless engine smoke checks run; live client visual confirmation is still pending.
 
-## 0.17.1 � Sixteen selectable robots
+## 0.17.1 â€” Sixteen selectable robots
 
 - Adds Rivet, Surveyor, Mantis, Dynamo, Porter, Beacon, Crate, Skitter, Sentry, Spindle, Beetle and Relay, each with a distinct mesh and editable texture.
 - Four selection pages retain large rotating previews. Selection persists, and reopening the menu returns to the selected body's page.
 - All 16 bodies share the same gameplay stats and equipment mounting convention.
 - Checked all pages, selections, mesh uniqueness, textures, normals and in-game spawn through automated tests; inspected an offline roster render.
 
-## 0.17.0 � Clearer phases, wall lasers and robot selection
+## 0.17.0 â€” Clearer phases, wall lasers and robot selection
 
 - Phase-order HUD uses distinct colors, numbered steps, readable labels and a white active border. Editable pixel art remains in art/ui.
 - Single-speed turning conveyor arrows are green; double-speed arrows stay yellow.
@@ -68,7 +68,7 @@
 - Robot weapons and their inspection beams are inactive throughout round 1. All weapons activate from round 2; fixed board lasers keep their normal schedule.
 - Verification: 29 regression scripts and native engine smoke checks. Live client visuals remain unverified; pixel HUD and model geometry were inspected with offline renders.
 
-## 0.16.0 � Routes, review and recoverable equipment
+## 0.16.0 â€” Routes, review and recoverable equipment
 
 - Thermal Camera: collectible animated sensor, Automatic aim, nearest clear cardinal target selected each weapon phase, toggleable and supported by AI.
 
@@ -141,7 +141,7 @@ Verification: 21 automated test scripts passed. Native Luanti smoke checks cover
 
 - Increased room, queue, and controller seating to eight humans, with a hard cap of eight total robots.
 
-- Expanded AI votes and solo Racer selection to 0–7. Bots use only seats left after humans; combined solo opponents also obey the cap.
+- Expanded AI votes and solo Racer selection to 0Ã¢â‚¬â€œ7. Bots use only seats left after humans; combined solo opponents also obey the cap.
 
 - Public voting rooms accept incoming queued humans before launch. Room labels and the roster fit eight seats.
 
@@ -157,7 +157,7 @@ Verification: 21 automated test scripts passed. Native Luanti smoke checks cover
 
 - Added shared-start and shared-reboot ghosts. Per-player observers keep your own robot full-size on the square while opponents float. Larger cones point to the actual square center. Ghost robot lasers are hidden and disabled.
 
-- Added an integrated 5x5–15x15 editor, independent overlay brushes, autosaved drafts, undo, playtest, player submissions, admin approval, and portable JSON export/import. Checkpoints are candidate locations, numbered at course assembly.
+- Added an integrated 5x5Ã¢â‚¬â€œ15x15 editor, independent overlay brushes, autosaved drafts, undo, playtest, player submissions, admin approval, and portable JSON export/import. Checkpoints are candidate locations, numbered at course assembly.
 
 - Races mix one to four platforms; multiplayer votes select platform pool/count and requested checkpoint count. Bridges preserve platform interiors. Approved custom levels join the pool.
 
@@ -215,7 +215,7 @@ Validation: music handle lifecycle, crossfade/ducking, volume persistence, effec
 
 - One server now hosts private solo campaigns and multiplayer races concurrently. Match arenas spawn on demand in independently owned slots; empty slots are reusable and unowned terrain is skipped. Solid floor, walls, and ceiling enclose each arena and the shared hub.
 
-- Added a pixel-art Control Room, open multiplayer rooms, FIFO public queue, host-start rooms, board and AI-count voting, and timed queue/rematch voting windows. Three board layouts and 0–4 AI racers are available.
+- Added a pixel-art Control Room, open multiplayer rooms, FIFO public queue, host-start rooms, board and AI-count voting, and timed queue/rematch voting windows. Three board layouts and 0Ã¢â‚¬â€œ4 AI racers are available.
 
 - Added automatic solo results/next-mission screens, multiplayer result rankings, and a persistent server wins leaderboard.
 
@@ -407,7 +407,7 @@ Verification: 10 original rule tests and 16 expansion tests pass. Two real local
 
 - Factories now have editable and exportable round schedules, defaulting to every three rounds from round one. Each outlet attempts once per due round; jams retry only when next due. Floating round badges and the Workshop Factory Timing form share the schedule.
 
-- Revised factories to produce one or two crates total every round, rotating across clear outlets. Removed the factory timing control; legacy schedule fields no longer delay production. Factory badges now read 1�2 CRATES / EVERY ROUND.
+- Revised factories to produce one or two crates total every round, rotating across clear outlets. Removed the factory timing control; legacy schedule fields no longer delay production. Factory badges now read 1â€“2 CRATES / EVERY ROUND.
 - Redrew the checkpoint waypoint as a shaded green flag silhouette with a small downward pointer; removed the chunky square frame and reduced pixel enlargement.
 
 - Lobby HUD now prompts Press I for main menu. Programming hotbar has an editable pixel-art Command Palette >_ surround sized to the available hand. Added bottom padding beneath the Workshop & Community buttons.
@@ -489,3 +489,10 @@ Verification: 10 original rule tests and 16 expansion tests pass. Two real local
 ## Code licensing
 
 - Licensed original game code, both bundled modules, tools, tests, configuration and project documentation under MIT. Assets retain CC0-1.0 and author credits. Reviewed bundled modules and found no third-party code modules or vendored libraries; external engine/development dependencies are not included or relicensed.
+
+- Installed approved original 96-bar focus music for menu, lobby, race and puzzle, including launcher theme; retained per-player crossfades and execution ducking.
+- Pit falls now play a receding motor cue timed to the slide/drop, with a tail beyond disappearance. Music and falling recipes are editable and CC0 audio provenance is updated.
+
+- Spectator HUDs now show the watched robot’s registers, priorities, gauges, status and route goal. Finished racers and spectator-only entrants can switch targets with a dedicated hotbar tool; active racers cannot. Spectator cameras persist through planning/round boundaries and retarget finished or recreated actors. Spectated loadouts are read-only.
+
+- Bound crate pit-filling to playable board coordinates; perimeter pits stay open and interior gaps remain fillable.

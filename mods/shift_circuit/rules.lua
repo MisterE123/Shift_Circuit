@@ -188,7 +188,7 @@ function R.move(s,b,dir,seen,forced)
   local other=R.at(s,x,z,b)
   if other and not R.move(s,other,dir,seen,true) then return false end
   b.x,b.z=x,z
-  if b.crate and t.kind=='pit'then b.down=true;b.filled=true;if s.board[R.key(x,z)]then s.board[R.key(x,z)]={kind='floor',filled=true};s.geometry_serial=(s.geometry_serial or 0)+1 end
+  if b.crate and t.kind=='pit'then b.down=true;b.filled=true;if x>=1 and z>=1 and x<=s.size and z<=s.size and s.board[R.key(x,z)]then s.board[R.key(x,z)]={kind='floor',filled=true};s.geometry_serial=(s.geometry_serial or 0)+1 end
   elseif t.kind=='pit' then R.drop(b,'Fell into a pit') end
   if other and not other.crate and not other.down and not b.crate and ((b.parts or {}).battering_ram or 0)>0 then R.hit(other,'Battering Ram');if not other.down then R.hit(other,'Battering Ram')end;b.ram_serial=(b.ram_serial or 0)+1 end
   R.ghosts(s)
@@ -541,7 +541,7 @@ function R.plates(s)
  end end
  for key,count in pairs(toggles)do if count%2==1 then local t=s.board[key];t.open=not t.open;s.geometry_serial=(s.geometry_serial or 0)+1
   if t.open then R.lose_pickup(s,key,'fall');local x,z=key:match('^(%d+),(%d+)$');x,z=tonumber(x),tonumber(z)
-   local c=R.at(s,x,z);if c and c.crate then c.down=true;c.filled=true;s.board[key]={kind='floor',filled=true}end
+   local c=R.at(s,x,z);if c and c.crate then c.down=true;c.filled=true;if x>=1 and z>=1 and x<=s.size and z<=s.size then s.board[key]={kind='floor',filled=true}end end
    for _,b in ipairs(s.bots)do if not b.down and b.x==x and b.z==z and not s.board[key].filled then R.drop(b,'Fell through a trapdoor')end end
   end
  end end

@@ -19,12 +19,37 @@ return function(core,store)
   local p={};for k,v in pairs(params or {})do p[k]=v end;p.to_player=name;p.gain=(p.gain or .4)*gain
   core.sound_play(spec,p,true)
  end
- function M.click(name,pitch)
+ function M.click(name,pitch,cue)
   if last_click[name] and clock-last_click[name]<.075 then return end;last_click[name]=clock
-  M.effect(name,'sc_ui_click',{gain=.22,pitch=pitch or 1})
+  M.effect(name,'sc_'..(cue or 'ui_click'),{gain=.45,pitch=pitch or 1})
+ end
+ -- Only actual controls produce feedback: typing, hover and scroll stay silent.
+ function M.menu_cue(fields)
+  for k,v in pairs(fields)do if k:match('_scroll$')and tostring(v):match('^CHG:')then return end end
+  if fields.quit then return end
+  for k,v in pairs(fields)do
+   if k:match('^enable_')then return v=='true'and 'ui_on'or 'ui_off'end
+  end
+  local cue
+  for k,v in pairs(fields)do
+   if (v==true or v=='true')and not k:match('^key_')then
+    if k:find('back')or k:find('cancel')or k=='close'or k=='leave'then return 'ui_back'end
+    if k:find('confirm')or k:find('save')or k:find('submit')or k=='play_solo'then cue='ui_confirm'
+    elseif not cue then cue='ui_click'end
+   end
+  end
+  return cue
+ end
+ function M.menu(name,fields)local cue=M.menu_cue(fields);if cue then M.click(name,1,cue)end end
+ function M.context(room,menu_open)
+  if room and room.status=='playing'then
+   if room.solo and room.solo_mode~='race'then return 'puzzle'end
+   return 'race'
+  end
+  return menu_open and 'menu'or 'lobby'
  end
  function M.update(name,mode,executing)
-  local volume=pref(name).music*(mode=='game' and (executing and .45 or .65) or 1)
+  local volume=pref(name).music*((mode=='race'or mode=='puzzle') and (executing and .45 or .65) or 1)
   local old=active[name]
   if old and (old.mode~=mode or volume==0)then
    local h=old.handle;fade(h,.16,0);if h then retiring[h]=1.8 end;active[name]=nil;old=nil
