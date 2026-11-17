@@ -109,7 +109,8 @@ return function(core,store,room_for,leave)
   if d.group==6 then f[#f]=f[#f]:gsub('label%[9.1,5.85;Snaps to the nearest axis.%]','')end
   if d.group==6 then f[#f+1]='label[9.1,5.95;1-2 crates / every round]';f[#f+1]='button[9.1,6.3;1.8,.65;factory_loot;'..((d.factory_kind or 'loot')=='loot'and '> 'or '')..'LOOT]button[11.05,6.3;1.8,.65;factory_steel;'..(d.factory_kind=='steel'and '> 'or '')..'STEEL]'else f[#f+1]='button[9.1,6.3;3.8,.65;spawner_setup;SPAWNER TIMING]'end
   f[#f+1]='button[.7,7.3;3,.65;type_race;'..(d.data.map_type~='puzzle'and '> 'or '')..'RACE BOARD]button[3.9,7.3;3,.65;type_puzzle;'..(d.data.map_type=='puzzle'and '> 'or '')..'PUZZLE]'
-  if d.data.map_type=='puzzle'then f[#f+1]='button[7.1,7.3;3,.65;puzzle_settings;PUZZLE SETTINGS]';if admin(n)then f[#f+1]='button[10.3,7.3;3,.65;export_puzzle;EXPORT AS MOD]'end end
+  if d.data.map_type=='puzzle'then f[#f+1]='button[7.1,7.3;3,.65;puzzle_settings;PUZZLE SETTINGS]'end
+  if admin(n)then f[#f+1]='button[10.3,7.3;3,.65;export_puzzle;EXPORT AS MOD]'end
   f[#f+1]='button[.7,8.25;2.2,.75;undo;UNDO]button[3,8.25;2.2,.75;test;TEST]button[5.3,8.25;3.8,.75;save_library;SAVE TO LIBRARY]'..(admin(n)and 'button[9.3,8.25;1.9,.75;publish;ENABLE]button[11.4,8.25;1.9,.75;disable_entry;DISABLE]'or 'button[9.3,8.25;4,.75;submit;REQUEST REVIEW]')
   if admin(n)then f[#f+1]='button[.7,9.2;3,.65;export;EXPORT JSON]'end
   if d.review_notes and d.review_notes~=''then f[#f+1]='button[7.1,9.2;3,.65;review_notes;REVIEW NOTES]'end
@@ -301,5 +302,5 @@ return function(core,store,room_for,leave)
  end
  PuzzleUI=dofile(path..'/puzzle_editor.lua')(core,L,draft,save_draft,draw,E.open)
  function E.result(n,state)messages[n]=state.failed and ('PLAYTEST FAILED / '..state.failed)or 'PLAYTEST COMPLETE';E.open(n)end
- E.status=status;E.draft=draft;E.catalog=catalog;return E
+ E.reconcile_names=reconcile_names;E.persist=persist;E.status=status;E.draft=draft;E.catalog=catalog;return E
 end

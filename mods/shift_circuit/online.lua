@@ -443,6 +443,7 @@ Lab=dofile(path..'/test_lab.lua')(engine,function(n)return rooms[member[n]]end,f
 Editor=dofile(path..'/editor.lua')(engine,store,function(n)return rooms[member[n]]end,function(n)leave(n)end)
 PuzzleLibrary=dofile(path..'/puzzle_library.lua')(engine,L,store,Editor.catalog,Preview,function(n,data,id)if member[n]then leave(n)end;local r=new_room({n},true,false,1,'puzzle');if r then r.puzzle_data=data;r.puzzle_id=id end end,show,function(n,data)if member[n]then leave(n)end;local r=new_room({n},true,false,1,'editor');if r then r.import_puzzle=data end end)
 Editor.export_puzzle=PuzzleLibrary.export
+local BoardPacks=dofile(path..'/board_packs.lua')(engine,L,store,Editor)
 Moderation=dofile(path..'/moderation.lua')(engine,Editor,Configs,Preview,Routes,course_choices,function(n)return rooms[member[n]]end,function(n)Lab.open(n)end)
 core.register_on_joinplayer(function(p)
  local n=p:get_player_name();preference(n)
@@ -680,4 +681,4 @@ core.register_on_mods_loaded(function() core.after(0,function()
  end)
 end) end)
 core.register_on_shutdown(function()Audio.shutdown();for _,r in pairs(rooms)do if r.api then r.api.cleanup()end end;save()end)
-shift_circuit={register_puzzle_pack=PuzzleLibrary.register,puzzles=PuzzleLibrary,rooms=rooms,queue=queue,member=member,show=show,new_room=new_room,leave=leave,launch=launch,hub=function()return hub,hub_ready end}
+shift_circuit={register_board_pack=BoardPacks.register,register_puzzle_pack=PuzzleLibrary.register,puzzles=PuzzleLibrary,rooms=rooms,queue=queue,member=member,show=show,new_room=new_room,leave=leave,launch=launch,hub=function()return hub,hub_ready end}

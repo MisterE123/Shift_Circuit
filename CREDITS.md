@@ -21,3 +21,5 @@ Conveyor roller and hydraulic pusher effects: Codex GPT-6 Astra Medium; original
 Robot destruction variants and victory/puzzle completion cues: Codex GPT-6 Astra Medium, original procedural synthesis, CC0 1.0. Recipe: `art/audio/design_destruction_victory.py`. These replace the previous puzzle completion audio.
 
 Menu background and banner: original game assets and editable pixel lettering by Codex GPT-6 Astra Medium, CC0. Sources in `art/menu/`; builder in `tools/menu_brand_art.py`. The approved title banner was created using OpenAI image generation and is included under the project CC0 asset dedication. The rejected factory illustration is not shipped.
+
+Bundled race-board designs: MisterE. Seven enabled authored boards are shipped in `mods/shift_circuit_arenas/boards.json` under CC0-1.0.

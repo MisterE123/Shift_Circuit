@@ -43,3 +43,20 @@ Search board names, filter by size, or page through the inventory. Two entries p
 The creator sets a board limit when opening the room and may enable collaborative editing. Otherwise only the creator can modify the layout. Spectators can view it. The creator chooses checkpoint and AI counts and starts the race. There is no voting or automatic launch timer during course construction.
 
 **Save Configuration** stores a named layout and checkpoint count. Your own configurations are available immediately in Saved Configurations. Other players see them only after admin approval. Admins can see pending saves and approve them in that list. Saving the same name replaces your own version and resets approval unless you are an admin. Loading respects the current room's board limit and editing permissions. Saved configurations use this server's board catalog.
+
+
+## Exporting race boards and puzzles as mods
+
+Admins have an EXPORT AS MOD button for both map types. Export writes a new
+folder under the game's mod-data directory, `shift_circuit/exports/`, containing
+mod.conf, init.lua, LICENSE.txt and boards.json or puzzles.json. Copy the whole
+folder into the game's mods directory to bundle it, or install it as a mod with
+Shift Circuit enabled. Normal players cannot export mods.
+
+Race packs register through shift_circuit.register_board_pack(modname,
+'boards.json'). They import validated maps into the server library, enabled by
+default. Import IDs are stable: restarts do not overwrite library edits or
+re-enable disabled/deleted boards. A new export receives a new mod name.
+Conflicting display names are given numeric suffixes rather than merged.
+Generated packs may use the shift_circuit_boards_ and shift_circuit_puzzles_
+prefixes; permission to use these game namespaces is granted for these packs.

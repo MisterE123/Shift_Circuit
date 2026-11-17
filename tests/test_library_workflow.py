@@ -45,7 +45,7 @@ room.host='Admin';e.begin(room);fields('Admin',{type_puzzle=true});fields('Admin
 assert(clients.Admin.shown:find(';publish;ENABLE]')and clients.Admin.shown:find(';disable_entry;DISABLE]')and not clients.Admin.shown:find(';submit;'))
 assert(clients.Admin.shown:find('EXPORT JSON')and clients.Admin.shown:find('EXPORT AS MOD'))
 -- Use a valid race board to verify direct enable/disable of the same saved entry.
-e.draft('Admin').data=dofile(modpath..'/levels.lua').blank();fields('Admin',{publish=true,title='Admin Board'});local aid=e.draft('Admin').entry_id;assert(e.catalog[aid].approved and e.catalog[aid].status=='enabled')
+e.draft('Admin').data=dofile(modpath..'/levels.lua').blank();fields('Admin',{publish=true,title='Admin Board'});local aid=e.draft('Admin').entry_id;assert(clients.Admin.shown:find('EXPORT AS MOD'),'race maps expose mod export');assert(e.catalog[aid].approved and e.catalog[aid].status=='enabled')
 fields('Admin',{disable_entry=true});assert(not e.catalog[aid].approved and e.catalog[aid].status=='disabled');fields('Admin',{publish=true});assert(e.catalog[aid].approved)
 room.host='Other';e.begin(room);fields('Other',{disable_entry=true});assert(e.catalog[aid].approved,'forged disable cannot affect another author')
 local calls=0;e.export_puzzle=function()calls=calls+1 end;fields('Other',{export_puzzle=true});assert(calls==0,'non-admin mod export is blocked before callback')

@@ -136,7 +136,7 @@ Authors may permanently delete their own globally disabled library entries after
 
 Legacy duplicate arena names are reconciled when the library loads: the oldest entry keeps its name and later duplicates receive unused numbered suffixes. Case and extra spaces count as duplicates. Existing numbered names are reserved. IDs, map contents, approval, review notes, and saved course references are preserved; a note records each rename. Linked drafts using the old title are updated, and subsequent loads do not rename entries again.
 
-The built-in tutorial is supplied by `mods/sc_tutorial`, using the authored exports in this order: 01 Welcome To the Floor, then 02 Crate Job. The main-menu Tutorial button opens these independent puzzle lessons. Their original maps, hands, hints, objectives, and reboot settings are preserved. The source export folders are not modified.
+The built-in tutorial is supplied by `mods/shift_circuit_tutorial`, using the authored exports in this order: 01 Welcome To the Floor, then 02 Crate Job. The main-menu Tutorial button opens these independent puzzle lessons. Their original maps, hands, hints, objectives, and reboot settings are preserved. The source export folders are not modified.
 
 Puzzle and tutorial selection screens contain only play/navigation and lesson information. Copy-to-workshop and export controls are removed from these screens; admins still export puzzles from the Workshop.
 
@@ -180,6 +180,8 @@ Shift Circuit's original game code, bundled modules, tools, tests, configuration
 
 Models, textures, animations, artwork, map/puzzle data and audio remain **CC0-1.0**, as specified in [LICENSE-ASSETS.md](LICENSE-ASSETS.md). Original third-party license notices retain their own terms. Author attribution is preserved in [CREDITS.md](CREDITS.md).
 
-The distribution contains the project's `shift_circuit` module and `sc_tutorial` puzzle-pack registration module; it contains no bundled third-party code modules or vendored libraries. The Luanti engine is a separate dependency, not part of this archive, and retains its own license. Development dependencies (such as Pillow, NumPy, SoundFile and Lupa) are installed separately and retain their own licenses. Adding third-party code or bundling an engine later requires reviewing those components separately.
+The distribution contains the project's `shift_circuit` module and `shift_circuit_tutorial` puzzle-pack registration module; it contains no bundled third-party code modules or vendored libraries. The Luanti engine is a separate dependency, not part of this archive, and retains its own license. Development dependencies (such as Pillow, NumPy, SoundFile and Lupa) are installed separately and retain their own licenses. Adding third-party code or bundling an engine later requires reviewing those components separately.
 
 Spectating: after finishing, or joining as a spectator, use hotbar tool 1 to orbit and tool 2 to switch robots (left-click previous, right-click next). HUD registers, stats and goals follow the watched robot. Spectating never grants control of that robot; active racers cannot switch away from their own robot.
+
+Bundled race boards (`shift_circuit_arenas`): LoopDLoop, OneWay, Parking Lot, Decrepit Assembly Line, The Spawn, Extractor Floor, Birthing Floor. All seven are enabled on a fresh server.

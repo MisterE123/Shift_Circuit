@@ -1,0 +1,4 @@
+Registration code: MIT; see the game root LICENSE.
+Authored map data: CC0-1.0; see LICENSE-ASSETS.md.
+Map design: MisterE.
+https://creativecommons.org/publicdomain/zero/1.0/

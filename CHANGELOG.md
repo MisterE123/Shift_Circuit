@@ -496,3 +496,5 @@ Verification: 10 original rule tests and 16 expansion tests pass. Two real local
 - Spectator HUDs now show the watched robot’s registers, priorities, gauges, status and route goal. Finished racers and spectator-only entrants can switch targets with a dedicated hotbar tool; active racers cannot. Spectator cameras persist through planning/round boundaries and retarget finished or recreated actors. Spectated loadouts are read-only.
 
 - Bound crate pit-filling to playable board coordinates; perimeter pits stay open and interior gaps remain fillable.
+
+- Renamed the bundled tutorial mod to shift_circuit_tutorial, preserving legacy personal-best lookup. Added AI attribution to LICENSE and ContentDB submission materials. Race boards now have admin EXPORT AS MOD and validated, idempotent pack imports; generated pack names share the game namespace.

@@ -15,12 +15,12 @@ setup=(root/'tests/test_online.py').read_text().split("lua.execute('''",1)[1].sp
 lua.execute('''
 local handlers={};core.register_on_player_receive_fields=function(fn)handlers[#handlers+1]=fn end
 core.parse_json=decode_json;core.get_game_info=function()return {path=gamepath}end
-core.get_modpath=function(n)if n=='sc_tutorial'then return gamepath..'/mods/sc_tutorial'end;return modpath end
-core.get_current_modname=function()return 'sc_tutorial'end
+core.get_modpath=function(n)if n=='shift_circuit_tutorial'then return gamepath..'/mods/shift_circuit_tutorial'end;return modpath end
+core.get_current_modname=function()return 'shift_circuit_tutorial'end
 local L=dofile(modpath..'/levels.lua');local hidden=L.blank(10);hidden.map_type='puzzle';hidden.puzzle={checkpoints={'8,3'}};hidden.title='Disabled workshop copy'
 core.get_mod_storage():set_string('level_catalog',{['1']={data=hidden,author='Student',approved=false,enabled=false}})
 core.get_player_privs=function()return {server=true}end
-dofile(modpath..'/online.lua');dofile(gamepath..'/mods/sc_tutorial/init.lua');callbacks.on_mods_loaded();flush()
+dofile(modpath..'/online.lua');dofile(gamepath..'/mods/shift_circuit_tutorial/init.lua');callbacks.on_mods_loaded();flush()
 local entries=shift_circuit.puzzles.entries('Student','tutorial');assert(#entries==2)
 assert(entries[1].data.title=='01 Welcome To the Floor'and entries[2].data.title=='02 Crate Job')
 assert(entries[1].builtin and entries[1].tutorial and entries[2].tutorial)

@@ -4,7 +4,7 @@
 
 To the extent the project rights holder owns copyright and related rights, the original Shift Circuit non-audio assets are dedicated to the public domain under CC0 1.0 Universal.
 
-This covers the original textures, pixel art, icons, models, material definitions, animations, and bundled authored map/puzzle data, including their editable asset sources. It includes `art/`, image assets in `menu/`, `asset_palette.png`, the model and texture directories under `mods/`, and bundled puzzle data in `mods/sc_tutorial/puzzles.json`.
+This covers the original textures, pixel art, icons, models, material definitions, animations, and bundled authored map/puzzle data, including their editable asset sources. It includes `art/`, image assets in `menu/`, `asset_palette.png`, the model and texture directories under `mods/`, and bundled puzzle data in `mods/shift_circuit_tutorial/puzzles.json` and `mods/shift_circuit_arenas/boards.json`.
 
 The full legal text is available from Creative Commons:
 https://creativecommons.org/publicdomain/zero/1.0/legalcode.en

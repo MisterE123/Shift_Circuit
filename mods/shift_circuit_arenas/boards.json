@@ -1,0 +1,6496 @@
+{
+  "version": 1,
+  "title": "Shift Circuit Race Boards",
+  "boards": [
+    {
+      "id": "arena_2",
+      "author": "singleplayer",
+      "data": {
+        "version": 3,
+        "board": {
+          "10,9": {
+            "kind": "floor"
+          },
+          "7,8": {
+            "kind": "floor"
+          },
+          "6,8": {
+            "kind": "floor"
+          },
+          "9,8": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "8,8": {
+            "kind": "floor"
+          },
+          "10,5": {
+            "kind": "floor"
+          },
+          "10,7": {
+            "kind": "floor"
+          },
+          "10,1": {
+            "kind": "floor"
+          },
+          "3,8": {
+            "kind": "repair"
+          },
+          "2,8": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "5,8": {
+            "kind": "floor"
+          },
+          "4,8": {
+            "kind": "floor"
+          },
+          "9,6": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "1,7": {
+            "kind": "floor"
+          },
+          "7,6": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "6,6": {
+            "kind": "pit"
+          },
+          "4,7": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2,
+            "entry": 3
+          },
+          "9,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "2,7": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "3,7": {
+            "kind": "floor"
+          },
+          "1,6": {
+            "kind": "floor"
+          },
+          "3,3": {
+            "kind": "checkpoint"
+          },
+          "6,3": {
+            "kind": "floor"
+          },
+          "5,3": {
+            "kind": "floor"
+          },
+          "5,6": {
+            "kind": "pit"
+          },
+          "4,6": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "3,6": {
+            "kind": "floor"
+          },
+          "2,6": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "8,3": {
+            "kind": "repair"
+          },
+          "7,3": {
+            "kind": "floor"
+          },
+          "9,3": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "8,7": {
+            "kind": "floor"
+          },
+          "9,7": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "6,7": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "7,7": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3,
+            "entry": 0
+          },
+          "10,10": {
+            "kind": "floor"
+          },
+          "9,10": {
+            "kind": "floor"
+          },
+          "8,10": {
+            "kind": "checkpoint"
+          },
+          "7,10": {
+            "kind": "floor"
+          },
+          "6,10": {
+            "kind": "floor"
+          },
+          "5,10": {
+            "kind": "floor"
+          },
+          "4,10": {
+            "kind": "floor"
+          },
+          "3,10": {
+            "kind": "floor"
+          },
+          "2,3": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "5,7": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "9,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2,
+            "entry": 1
+          },
+          "8,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "7,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "6,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "1,9": {
+            "kind": "floor"
+          },
+          "2,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1,
+            "entry": 0
+          },
+          "3,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "5,4": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "6,4": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "3,4": {
+            "kind": "floor"
+          },
+          "4,4": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1,
+            "entry": 2
+          },
+          "1,4": {
+            "kind": "floor"
+          },
+          "2,4": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "4,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "5,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "6,5": {
+            "kind": "pit"
+          },
+          "5,5": {
+            "kind": "pit"
+          },
+          "4,5": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "1,1": {
+            "kind": "floor"
+          },
+          "6,1": {
+            "kind": "floor"
+          },
+          "7,1": {
+            "kind": "floor"
+          },
+          "4,1": {
+            "kind": "floor"
+          },
+          "5,1": {
+            "kind": "floor"
+          },
+          "10,6": {
+            "kind": "floor"
+          },
+          "4,2": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 3
+          },
+          "5,2": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 3
+          },
+          "6,2": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 3
+          },
+          "1,3": {
+            "kind": "floor"
+          },
+          "1,8": {
+            "kind": "floor"
+          },
+          "1,2": {
+            "kind": "floor"
+          },
+          "2,2": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0,
+            "entry": 3
+          },
+          "1,10": {
+            "kind": "floor"
+          },
+          "2,10": {
+            "kind": "floor"
+          },
+          "7,4": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0,
+            "entry": 1
+          },
+          "8,4": {
+            "kind": "floor"
+          },
+          "7,2": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 3
+          },
+          "8,2": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 3
+          },
+          "9,2": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 3,
+            "entry": 2
+          },
+          "8,1": {
+            "kind": "floor"
+          },
+          "9,4": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "10,4": {
+            "kind": "floor"
+          },
+          "2,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "1,5": {
+            "kind": "floor"
+          },
+          "10,3": {
+            "kind": "floor"
+          },
+          "3,5": {
+            "kind": "floor"
+          },
+          "10,8": {
+            "kind": "floor"
+          },
+          "4,3": {
+            "kind": "floor"
+          },
+          "9,1": {
+            "kind": "floor"
+          },
+          "10,2": {
+            "kind": "floor"
+          },
+          "3,2": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 3
+          },
+          "3,1": {
+            "kind": "floor"
+          },
+          "2,1": {
+            "kind": "floor"
+          },
+          "8,5": {
+            "kind": "floor"
+          },
+          "7,5": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "8,6": {
+            "kind": "floor"
+          }
+        },
+        "spawners": {},
+        "pushers": [
+          {
+            "parity": 1,
+            "z": 5,
+            "dir": 1,
+            "x": 1
+          },
+          {
+            "parity": 1,
+            "z": 6,
+            "dir": 1,
+            "x": 1
+          },
+          {
+            "parity": 1,
+            "z": 10,
+            "dir": 2,
+            "x": 5
+          },
+          {
+            "parity": 1,
+            "z": 10,
+            "dir": 2,
+            "x": 6
+          },
+          {
+            "parity": 0,
+            "z": 6,
+            "dir": 3,
+            "x": 10
+          },
+          {
+            "parity": 0,
+            "z": 5,
+            "dir": 3,
+            "x": 10
+          },
+          {
+            "parity": 0,
+            "z": 1,
+            "dir": 0,
+            "x": 6
+          },
+          {
+            "parity": 0,
+            "z": 1,
+            "dir": 0,
+            "x": 5
+          }
+        ],
+        "overhead": {},
+        "lasers": [
+          {
+            "power": 1,
+            "z": 4,
+            "dir": 3,
+            "x": 10
+          },
+          {
+            "power": 1,
+            "z": 7,
+            "dir": 3,
+            "x": 10
+          },
+          {
+            "power": 1,
+            "z": 10,
+            "dir": 2,
+            "x": 7
+          },
+          {
+            "power": 1,
+            "z": 10,
+            "dir": 2,
+            "x": 4
+          }
+        ],
+        "map_type": "race",
+        "crates": {},
+        "walls": {
+          "5,0,N": true,
+          "4,0,N": true,
+          "7,0,N": true,
+          "6,0,N": true,
+          "10,6,E": true,
+          "0,5,E": true,
+          "10,5,E": true,
+          "6,10,N": true,
+          "5,10,N": true,
+          "0,4,E": true,
+          "0,6,E": true,
+          "0,7,E": true
+        },
+        "size": 10,
+        "enemies": {},
+        "title": "LoopDLoop",
+        "start": {
+          "z": 3,
+          "dir": 0,
+          "x": 3
+        },
+        "pickups": {}
+      }
+    },
+    {
+      "id": "arena_3",
+      "author": "singleplayer",
+      "data": {
+        "version": 3,
+        "board": {
+          "10,9": {
+            "kind": "floor"
+          },
+          "7,8": {
+            "kind": "floor"
+          },
+          "6,8": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "9,8": {
+            "kind": "floor"
+          },
+          "8,8": {
+            "kind": "floor"
+          },
+          "10,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "10,7": {
+            "kind": "floor"
+          },
+          "10,1": {
+            "kind": "floor"
+          },
+          "3,8": {
+            "kind": "floor"
+          },
+          "2,8": {
+            "kind": "floor"
+          },
+          "5,8": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "4,8": {
+            "kind": "floor"
+          },
+          "9,6": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "1,7": {
+            "kind": "floor"
+          },
+          "7,6": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "6,6": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "4,7": {
+            "kind": "floor"
+          },
+          "9,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "2,7": {
+            "kind": "floor"
+          },
+          "3,7": {
+            "kind": "floor"
+          },
+          "1,6": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "3,3": {
+            "kind": "floor"
+          },
+          "6,3": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "5,3": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "5,6": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "4,6": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "3,6": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "2,6": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "8,3": {
+            "kind": "floor"
+          },
+          "7,3": {
+            "kind": "floor"
+          },
+          "9,3": {
+            "kind": "floor"
+          },
+          "8,7": {
+            "kind": "floor"
+          },
+          "9,7": {
+            "kind": "floor"
+          },
+          "6,7": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "7,7": {
+            "kind": "floor"
+          },
+          "10,10": {
+            "kind": "floor"
+          },
+          "9,10": {
+            "kind": "floor"
+          },
+          "8,10": {
+            "kind": "floor"
+          },
+          "7,10": {
+            "kind": "floor"
+          },
+          "6,10": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "5,10": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "4,10": {
+            "kind": "floor"
+          },
+          "3,10": {
+            "kind": "floor"
+          },
+          "2,3": {
+            "kind": "floor"
+          },
+          "5,7": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "9,9": {
+            "kind": "floor"
+          },
+          "8,9": {
+            "kind": "floor"
+          },
+          "7,9": {
+            "kind": "floor"
+          },
+          "6,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "1,9": {
+            "kind": "floor"
+          },
+          "2,9": {
+            "kind": "floor"
+          },
+          "3,9": {
+            "kind": "checkpoint"
+          },
+          "5,4": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "6,4": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "3,4": {
+            "kind": "floor"
+          },
+          "4,4": {
+            "kind": "floor"
+          },
+          "1,4": {
+            "kind": "floor"
+          },
+          "2,4": {
+            "kind": "floor"
+          },
+          "4,9": {
+            "kind": "floor"
+          },
+          "5,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "6,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "5,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "4,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "1,1": {
+            "kind": "floor"
+          },
+          "6,1": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "7,1": {
+            "kind": "floor"
+          },
+          "4,1": {
+            "kind": "floor"
+          },
+          "5,1": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "10,6": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "4,2": {
+            "kind": "floor"
+          },
+          "5,2": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "6,2": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "1,3": {
+            "kind": "floor"
+          },
+          "1,8": {
+            "kind": "floor"
+          },
+          "1,2": {
+            "kind": "floor"
+          },
+          "2,2": {
+            "kind": "floor"
+          },
+          "1,10": {
+            "kind": "floor"
+          },
+          "2,10": {
+            "kind": "floor"
+          },
+          "7,4": {
+            "kind": "floor"
+          },
+          "8,4": {
+            "kind": "floor"
+          },
+          "7,2": {
+            "kind": "floor"
+          },
+          "8,2": {
+            "kind": "checkpoint"
+          },
+          "9,2": {
+            "kind": "floor"
+          },
+          "8,1": {
+            "kind": "floor"
+          },
+          "9,4": {
+            "kind": "floor"
+          },
+          "10,4": {
+            "kind": "floor"
+          },
+          "2,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "1,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "10,3": {
+            "kind": "floor"
+          },
+          "3,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "10,8": {
+            "kind": "floor"
+          },
+          "4,3": {
+            "kind": "floor"
+          },
+          "9,1": {
+            "kind": "floor"
+          },
+          "10,2": {
+            "kind": "floor"
+          },
+          "3,2": {
+            "kind": "floor"
+          },
+          "3,1": {
+            "kind": "floor"
+          },
+          "2,1": {
+            "kind": "floor"
+          },
+          "8,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "7,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "8,6": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          }
+        },
+        "spawners": {
+          "9,4": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 2,
+            "first": 1
+          },
+          "2,4": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 1,
+            "first": 1
+          },
+          "2,7": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 1,
+            "first": 1
+          },
+          "9,7": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 2,
+            "first": 1
+          }
+        },
+        "pushers": {},
+        "overhead": {
+          "1,10": {
+            "kind": "crusher",
+            "parity": 0
+          },
+          "10,10": {
+            "kind": "crusher",
+            "parity": 0
+          },
+          "10,1": {
+            "kind": "crusher",
+            "parity": 0
+          },
+          "1,1": {
+            "kind": "crusher",
+            "parity": 0
+          }
+        },
+        "lasers": [
+          {
+            "power": 1,
+            "z": 3,
+            "dir": 3,
+            "x": 4
+          },
+          {
+            "power": 1,
+            "z": 4,
+            "dir": 3,
+            "x": 4
+          },
+          {
+            "power": 1,
+            "z": 4,
+            "dir": 1,
+            "x": 7
+          },
+          {
+            "power": 1,
+            "z": 3,
+            "dir": 1,
+            "x": 7
+          },
+          {
+            "power": 1,
+            "z": 7,
+            "dir": 1,
+            "x": 7
+          },
+          {
+            "power": 1,
+            "z": 8,
+            "dir": 1,
+            "x": 7
+          },
+          {
+            "power": 1,
+            "z": 8,
+            "dir": 3,
+            "x": 4
+          },
+          {
+            "power": 1,
+            "z": 7,
+            "dir": 3,
+            "x": 4
+          }
+        ],
+        "map_type": "race",
+        "crates": {},
+        "walls": {
+          "4,4,E": true,
+          "6,3,E": true,
+          "6,4,E": true,
+          "4,3,E": true,
+          "4,8,E": true,
+          "6,7,E": true,
+          "6,8,E": true,
+          "4,7,E": true
+        },
+        "size": 10,
+        "enemies": {},
+        "title": "OneWay",
+        "start": {
+          "z": 2,
+          "dir": 0,
+          "x": 8
+        },
+        "pickups": {}
+      }
+    },
+    {
+      "id": "arena_11",
+      "author": "MisterE",
+      "data": {
+        "version": 3,
+        "board": {
+          "12,20": {
+            "kind": "pit"
+          },
+          "14,1": {
+            "kind": "floor"
+          },
+          "11,17": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "15,4": {
+            "kind": "floor"
+          },
+          "20,5": {
+            "kind": "pit"
+          },
+          "13,13": {
+            "kind": "floor"
+          },
+          "13,10": {
+            "kind": "floor"
+          },
+          "10,9": {
+            "kind": "pit"
+          },
+          "20,9": {
+            "kind": "pit"
+          },
+          "15,8": {
+            "kind": "floor"
+          },
+          "10,5": {
+            "kind": "floor"
+          },
+          "19,18": {
+            "kind": "floor"
+          },
+          "20,14": {
+            "kind": "floor"
+          },
+          "10,14": {
+            "kind": "floor"
+          },
+          "17,15": {
+            "kind": "floor"
+          },
+          "18,16": {
+            "kind": "floor"
+          },
+          "20,17": {
+            "kind": "pit"
+          },
+          "10,17": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "14,4": {
+            "kind": "floor"
+          },
+          "14,13": {
+            "kind": "floor"
+          },
+          "3,3": {
+            "kind": "floor"
+          },
+          "6,3": {
+            "kind": "floor"
+          },
+          "20,10": {
+            "kind": "pit"
+          },
+          "15,5": {
+            "kind": "floor"
+          },
+          "2,3": {
+            "kind": "floor"
+          },
+          "1,3": {
+            "kind": "floor"
+          },
+          "8,3": {
+            "kind": "floor"
+          },
+          "7,3": {
+            "kind": "floor"
+          },
+          "9,3": {
+            "kind": "floor"
+          },
+          "13,7": {
+            "kind": "floor"
+          },
+          "16,15": {
+            "kind": "floor"
+          },
+          "17,4": {
+            "kind": "floor"
+          },
+          "10,20": {
+            "kind": "pit"
+          },
+          "20,20": {
+            "kind": "floor"
+          },
+          "13,17": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "9,14": {
+            "kind": "floor"
+          },
+          "5,13": {
+            "kind": "floor"
+          },
+          "6,13": {
+            "kind": "floor"
+          },
+          "3,13": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "4,13": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "1,13": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "2,13": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "2,14": {
+            "kind": "floor"
+          },
+          "1,14": {
+            "kind": "floor"
+          },
+          "5,4": {
+            "kind": "floor"
+          },
+          "6,4": {
+            "kind": "floor"
+          },
+          "3,4": {
+            "kind": "floor"
+          },
+          "4,4": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "9,13": {
+            "kind": "floor"
+          },
+          "2,4": {
+            "kind": "pit"
+          },
+          "7,13": {
+            "kind": "floor"
+          },
+          "8,13": {
+            "kind": "floor"
+          },
+          "6,5": {
+            "kind": "floor"
+          },
+          "5,5": {
+            "kind": "floor"
+          },
+          "4,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "3,5": {
+            "kind": "floor"
+          },
+          "9,4": {
+            "kind": "floor"
+          },
+          "1,5": {
+            "kind": "pit"
+          },
+          "4,1": {
+            "kind": "pit"
+          },
+          "8,4": {
+            "kind": "floor"
+          },
+          "2,12": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "1,12": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "4,12": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "3,12": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "1,2": {
+            "kind": "floor"
+          },
+          "2,2": {
+            "kind": "floor"
+          },
+          "7,2": {
+            "kind": "floor"
+          },
+          "8,2": {
+            "kind": "floor"
+          },
+          "9,2": {
+            "kind": "pit"
+          },
+          "13,5": {
+            "kind": "floor"
+          },
+          "14,2": {
+            "kind": "floor"
+          },
+          "10,3": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2,
+            "entry": 3
+          },
+          "20,3": {
+            "kind": "floor"
+          },
+          "19,12": {
+            "kind": "pit"
+          },
+          "11,7": {
+            "kind": "floor"
+          },
+          "11,1": {
+            "kind": "pit"
+          },
+          "6,12": {
+            "kind": "floor"
+          },
+          "5,12": {
+            "kind": "floor"
+          },
+          "8,12": {
+            "kind": "floor"
+          },
+          "7,12": {
+            "kind": "floor"
+          },
+          "10,12": {
+            "kind": "pit"
+          },
+          "11,4": {
+            "kind": "floor"
+          },
+          "19,6": {
+            "kind": "floor"
+          },
+          "14,5": {
+            "kind": "floor"
+          },
+          "7,8": {
+            "kind": "floor"
+          },
+          "6,8": {
+            "kind": "floor"
+          },
+          "9,8": {
+            "kind": "floor"
+          },
+          "8,8": {
+            "kind": "checkpoint"
+          },
+          "11,3": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3,
+            "entry": 0
+          },
+          "13,3": {
+            "kind": "floor"
+          },
+          "14,14": {
+            "kind": "floor"
+          },
+          "1,8": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "20,1": {
+            "kind": "floor"
+          },
+          "3,8": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "2,8": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "5,8": {
+            "kind": "floor"
+          },
+          "4,8": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "9,6": {
+            "kind": "floor"
+          },
+          "8,6": {
+            "kind": "floor"
+          },
+          "8,1": {
+            "kind": "floor"
+          },
+          "9,1": {
+            "kind": "pit"
+          },
+          "4,7": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "5,7": {
+            "kind": "floor"
+          },
+          "2,7": {
+            "kind": "floor"
+          },
+          "10,4": {
+            "kind": "floor"
+          },
+          "1,6": {
+            "kind": "floor"
+          },
+          "7,9": {
+            "kind": "floor"
+          },
+          "19,5": {
+            "kind": "pit"
+          },
+          "9,9": {
+            "kind": "floor"
+          },
+          "5,6": {
+            "kind": "floor"
+          },
+          "4,6": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "3,6": {
+            "kind": "floor"
+          },
+          "2,6": {
+            "kind": "floor"
+          },
+          "14,18": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "12,8": {
+            "kind": "floor"
+          },
+          "12,3": {
+            "kind": "floor"
+          },
+          "8,7": {
+            "kind": "floor"
+          },
+          "9,7": {
+            "kind": "floor"
+          },
+          "6,7": {
+            "kind": "floor"
+          },
+          "7,7": {
+            "kind": "floor"
+          },
+          "17,7": {
+            "kind": "floor"
+          },
+          "13,4": {
+            "kind": "floor"
+          },
+          "11,13": {
+            "kind": "floor"
+          },
+          "9,19": {
+            "kind": "pit"
+          },
+          "9,10": {
+            "kind": "pit"
+          },
+          "6,19": {
+            "kind": "floor"
+          },
+          "19,11": {
+            "kind": "pit"
+          },
+          "8,10": {
+            "kind": "floor"
+          },
+          "5,10": {
+            "kind": "floor"
+          },
+          "6,10": {
+            "kind": "floor"
+          },
+          "3,10": {
+            "kind": "floor"
+          },
+          "4,10": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "11,2": {
+            "kind": "pit"
+          },
+          "19,19": {
+            "kind": "checkpoint"
+          },
+          "16,14": {
+            "kind": "trapdoor",
+            "open": false
+          },
+          "18,7": {
+            "kind": "floor"
+          },
+          "2,20": {
+            "kind": "floor"
+          },
+          "1,20": {
+            "kind": "floor"
+          },
+          "12,4": {
+            "kind": "floor"
+          },
+          "1,10": {
+            "kind": "floor"
+          },
+          "2,10": {
+            "kind": "floor"
+          },
+          "12,13": {
+            "kind": "floor"
+          },
+          "7,20": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "6,20": {
+            "kind": "floor"
+          },
+          "5,20": {
+            "kind": "pit"
+          },
+          "4,20": {
+            "kind": "pit"
+          },
+          "19,9": {
+            "kind": "pit"
+          },
+          "12,18": {
+            "kind": "floor"
+          },
+          "18,11": {
+            "kind": "floor"
+          },
+          "14,8": {
+            "kind": "floor"
+          },
+          "20,2": {
+            "kind": "floor"
+          },
+          "10,2": {
+            "kind": "pit"
+          },
+          "18,19": {
+            "kind": "floor"
+          },
+          "20,12": {
+            "kind": "pit"
+          },
+          "19,7": {
+            "kind": "floor"
+          },
+          "18,5": {
+            "kind": "floor"
+          },
+          "15,6": {
+            "kind": "floor"
+          },
+          "17,3": {
+            "kind": "floor"
+          },
+          "18,9": {
+            "kind": "floor"
+          },
+          "19,20": {
+            "kind": "floor"
+          },
+          "16,17": {
+            "kind": "floor"
+          },
+          "18,14": {
+            "kind": "floor"
+          },
+          "11,18": {
+            "kind": "floor"
+          },
+          "1,17": {
+            "kind": "pit"
+          },
+          "17,2": {
+            "kind": "pit"
+          },
+          "14,15": {
+            "kind": "floor"
+          },
+          "15,20": {
+            "kind": "floor"
+          },
+          "17,11": {
+            "kind": "floor"
+          },
+          "6,1": {
+            "kind": "floor"
+          },
+          "11,16": {
+            "kind": "floor"
+          },
+          "13,20": {
+            "kind": "floor"
+          },
+          "17,19": {
+            "kind": "pit"
+          },
+          "11,20": {
+            "kind": "pit"
+          },
+          "14,12": {
+            "kind": "floor"
+          },
+          "9,20": {
+            "kind": "pit"
+          },
+          "8,20": {
+            "kind": "floor"
+          },
+          "3,20": {
+            "kind": "floor"
+          },
+          "3,2": {
+            "kind": "floor"
+          },
+          "18,10": {
+            "kind": "floor"
+          },
+          "17,1": {
+            "kind": "pit"
+          },
+          "5,19": {
+            "kind": "pit"
+          },
+          "4,18": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "11,10": {
+            "kind": "floor"
+          },
+          "13,19": {
+            "kind": "floor"
+          },
+          "3,1": {
+            "kind": "floor"
+          },
+          "17,8": {
+            "kind": "floor"
+          },
+          "17,9": {
+            "kind": "floor"
+          },
+          "16,6": {
+            "kind": "floor"
+          },
+          "16,3": {
+            "kind": "floor"
+          },
+          "4,2": {
+            "kind": "pit"
+          },
+          "8,19": {
+            "kind": "floor"
+          },
+          "7,19": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "17,14": {
+            "kind": "floor"
+          },
+          "16,19": {
+            "kind": "pit"
+          },
+          "4,19": {
+            "kind": "pit"
+          },
+          "10,18": {
+            "kind": "floor"
+          },
+          "16,11": {
+            "kind": "floor"
+          },
+          "16,2": {
+            "kind": "pit"
+          },
+          "3,19": {
+            "kind": "floor"
+          },
+          "2,19": {
+            "kind": "checkpoint"
+          },
+          "10,16": {
+            "kind": "floor"
+          },
+          "20,16": {
+            "kind": "pit"
+          },
+          "1,19": {
+            "kind": "floor"
+          },
+          "20,18": {
+            "kind": "floor"
+          },
+          "13,12": {
+            "kind": "floor"
+          },
+          "18,18": {
+            "kind": "floor"
+          },
+          "17,18": {
+            "kind": "floor"
+          },
+          "16,18": {
+            "kind": "floor"
+          },
+          "15,18": {
+            "kind": "floor"
+          },
+          "13,18": {
+            "kind": "floor"
+          },
+          "16,1": {
+            "kind": "pit"
+          },
+          "19,10": {
+            "kind": "pit"
+          },
+          "2,17": {
+            "kind": "pit"
+          },
+          "3,17": {
+            "kind": "floor"
+          },
+          "12,12": {
+            "kind": "floor"
+          },
+          "5,17": {
+            "kind": "floor"
+          },
+          "13,6": {
+            "kind": "floor"
+          },
+          "9,18": {
+            "kind": "floor"
+          },
+          "8,18": {
+            "kind": "floor"
+          },
+          "16,9": {
+            "kind": "floor"
+          },
+          "15,13": {
+            "kind": "plate"
+          },
+          "7,18": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "6,18": {
+            "kind": "floor"
+          },
+          "5,18": {
+            "kind": "floor"
+          },
+          "15,19": {
+            "kind": "floor"
+          },
+          "4,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "2,18": {
+            "kind": "floor"
+          },
+          "16,10": {
+            "kind": "floor"
+          },
+          "15,3": {
+            "kind": "floor"
+          },
+          "15,11": {
+            "kind": "floor"
+          },
+          "19,17": {
+            "kind": "pit"
+          },
+          "18,17": {
+            "kind": "floor"
+          },
+          "6,17": {
+            "kind": "floor"
+          },
+          "7,17": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0,
+            "entry": 3
+          },
+          "8,17": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "9,17": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "17,17": {
+            "kind": "floor"
+          },
+          "18,20": {
+            "kind": "floor"
+          },
+          "15,17": {
+            "kind": "floor"
+          },
+          "14,17": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3,
+            "entry": 2
+          },
+          "12,17": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "19,1": {
+            "kind": "floor"
+          },
+          "4,17": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "17,20": {
+            "kind": "pit"
+          },
+          "19,16": {
+            "kind": "pit"
+          },
+          "11,15": {
+            "kind": "floor"
+          },
+          "17,16": {
+            "kind": "floor"
+          },
+          "11,12": {
+            "kind": "pit"
+          },
+          "15,9": {
+            "kind": "floor"
+          },
+          "14,6": {
+            "kind": "floor"
+          },
+          "16,16": {
+            "kind": "floor"
+          },
+          "15,16": {
+            "kind": "floor"
+          },
+          "14,16": {
+            "kind": "floor"
+          },
+          "16,13": {
+            "kind": "trapdoor",
+            "open": false
+          },
+          "13,16": {
+            "kind": "floor"
+          },
+          "12,16": {
+            "kind": "floor"
+          },
+          "1,7": {
+            "kind": "floor"
+          },
+          "6,6": {
+            "kind": "floor"
+          },
+          "19,14": {
+            "kind": "floor"
+          },
+          "14,19": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "13,11": {
+            "kind": "floor"
+          },
+          "20,8": {
+            "kind": "floor"
+          },
+          "10,8": {
+            "kind": "floor"
+          },
+          "5,16": {
+            "kind": "floor"
+          },
+          "4,3": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "3,16": {
+            "kind": "floor"
+          },
+          "2,16": {
+            "kind": "pit"
+          },
+          "14,11": {
+            "kind": "floor"
+          },
+          "1,4": {
+            "kind": "pit"
+          },
+          "12,14": {
+            "kind": "floor"
+          },
+          "19,15": {
+            "kind": "floor"
+          },
+          "18,15": {
+            "kind": "floor"
+          },
+          "18,1": {
+            "kind": "floor"
+          },
+          "15,15": {
+            "kind": "floor"
+          },
+          "16,20": {
+            "kind": "pit"
+          },
+          "11,6": {
+            "kind": "floor"
+          },
+          "10,15": {
+            "kind": "floor"
+          },
+          "13,15": {
+            "kind": "floor"
+          },
+          "8,9": {
+            "kind": "floor"
+          },
+          "20,15": {
+            "kind": "floor"
+          },
+          "13,14": {
+            "kind": "floor"
+          },
+          "14,9": {
+            "kind": "floor"
+          },
+          "8,14": {
+            "kind": "floor"
+          },
+          "11,14": {
+            "kind": "floor"
+          },
+          "17,10": {
+            "kind": "floor"
+          },
+          "4,14": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "15,14": {
+            "kind": "plate"
+          },
+          "3,15": {
+            "kind": "floor"
+          },
+          "4,15": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "5,15": {
+            "kind": "floor"
+          },
+          "2,15": {
+            "kind": "floor"
+          },
+          "13,2": {
+            "kind": "floor"
+          },
+          "8,15": {
+            "kind": "floor"
+          },
+          "9,15": {
+            "kind": "floor"
+          },
+          "6,15": {
+            "kind": "floor"
+          },
+          "7,15": {
+            "kind": "floor"
+          },
+          "7,14": {
+            "kind": "floor"
+          },
+          "10,7": {
+            "kind": "floor"
+          },
+          "18,12": {
+            "kind": "floor"
+          },
+          "6,14": {
+            "kind": "floor"
+          },
+          "5,14": {
+            "kind": "floor"
+          },
+          "1,15": {
+            "kind": "floor"
+          },
+          "20,7": {
+            "kind": "floor"
+          },
+          "19,8": {
+            "kind": "floor"
+          },
+          "13,1": {
+            "kind": "floor"
+          },
+          "18,4": {
+            "kind": "floor"
+          },
+          "12,6": {
+            "kind": "floor"
+          },
+          "3,14": {
+            "kind": "floor"
+          },
+          "20,13": {
+            "kind": "floor"
+          },
+          "10,13": {
+            "kind": "floor"
+          },
+          "8,5": {
+            "kind": "floor"
+          },
+          "7,5": {
+            "kind": "floor"
+          },
+          "11,8": {
+            "kind": "floor"
+          },
+          "18,13": {
+            "kind": "floor"
+          },
+          "17,13": {
+            "kind": "floor"
+          },
+          "19,4": {
+            "kind": "pit"
+          },
+          "1,18": {
+            "kind": "floor"
+          },
+          "9,5": {
+            "kind": "floor"
+          },
+          "3,18": {
+            "kind": "floor"
+          },
+          "14,10": {
+            "kind": "floor"
+          },
+          "7,6": {
+            "kind": "floor"
+          },
+          "2,5": {
+            "kind": "pit"
+          },
+          "12,2": {
+            "kind": "pit"
+          },
+          "15,2": {
+            "kind": "floor"
+          },
+          "11,5": {
+            "kind": "floor"
+          },
+          "20,4": {
+            "kind": "pit"
+          },
+          "12,19": {
+            "kind": "pit"
+          },
+          "2,1": {
+            "kind": "floor"
+          },
+          "9,12": {
+            "kind": "floor"
+          },
+          "12,11": {
+            "kind": "pit"
+          },
+          "5,1": {
+            "kind": "pit"
+          },
+          "17,12": {
+            "kind": "floor"
+          },
+          "6,2": {
+            "kind": "floor"
+          },
+          "18,6": {
+            "kind": "floor"
+          },
+          "17,5": {
+            "kind": "floor"
+          },
+          "7,4": {
+            "kind": "floor"
+          },
+          "14,20": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "12,1": {
+            "kind": "pit"
+          },
+          "9,16": {
+            "kind": "floor"
+          },
+          "8,16": {
+            "kind": "floor"
+          },
+          "13,9": {
+            "kind": "floor"
+          },
+          "7,1": {
+            "kind": "floor"
+          },
+          "12,15": {
+            "kind": "floor"
+          },
+          "6,9": {
+            "kind": "floor"
+          },
+          "14,3": {
+            "kind": "floor"
+          },
+          "2,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "1,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "16,8": {
+            "kind": "floor"
+          },
+          "13,8": {
+            "kind": "floor"
+          },
+          "7,10": {
+            "kind": "floor"
+          },
+          "15,10": {
+            "kind": "floor"
+          },
+          "19,3": {
+            "kind": "floor"
+          },
+          "12,9": {
+            "kind": "floor"
+          },
+          "19,13": {
+            "kind": "floor"
+          },
+          "1,11": {
+            "kind": "floor"
+          },
+          "2,11": {
+            "kind": "floor"
+          },
+          "17,6": {
+            "kind": "floor"
+          },
+          "12,5": {
+            "kind": "floor"
+          },
+          "19,2": {
+            "kind": "floor"
+          },
+          "11,19": {
+            "kind": "pit"
+          },
+          "11,11": {
+            "kind": "floor"
+          },
+          "8,11": {
+            "kind": "floor"
+          },
+          "9,11": {
+            "kind": "pit"
+          },
+          "3,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "3,11": {
+            "kind": "floor"
+          },
+          "4,11": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "5,11": {
+            "kind": "floor"
+          },
+          "16,12": {
+            "kind": "trapdoor",
+            "open": false
+          },
+          "10,6": {
+            "kind": "floor"
+          },
+          "3,7": {
+            "kind": "floor"
+          },
+          "15,1": {
+            "kind": "floor"
+          },
+          "20,6": {
+            "kind": "floor"
+          },
+          "10,1": {
+            "kind": "pit"
+          },
+          "1,1": {
+            "kind": "floor"
+          },
+          "14,7": {
+            "kind": "floor"
+          },
+          "15,7": {
+            "kind": "floor"
+          },
+          "5,3": {
+            "kind": "floor"
+          },
+          "16,7": {
+            "kind": "floor"
+          },
+          "12,10": {
+            "kind": "pit"
+          },
+          "10,10": {
+            "kind": "floor"
+          },
+          "18,8": {
+            "kind": "floor"
+          },
+          "11,9": {
+            "kind": "pit"
+          },
+          "18,3": {
+            "kind": "floor"
+          },
+          "6,11": {
+            "kind": "floor"
+          },
+          "7,11": {
+            "kind": "floor"
+          },
+          "12,7": {
+            "kind": "floor"
+          },
+          "16,4": {
+            "kind": "floor"
+          },
+          "5,2": {
+            "kind": "pit"
+          },
+          "10,19": {
+            "kind": "pit"
+          },
+          "20,19": {
+            "kind": "floor"
+          },
+          "5,9": {
+            "kind": "floor"
+          },
+          "18,2": {
+            "kind": "floor"
+          },
+          "10,11": {
+            "kind": "floor"
+          },
+          "20,11": {
+            "kind": "pit"
+          },
+          "1,16": {
+            "kind": "pit"
+          },
+          "16,5": {
+            "kind": "floor"
+          },
+          "7,16": {
+            "kind": "floor"
+          },
+          "6,16": {
+            "kind": "floor"
+          },
+          "15,12": {
+            "kind": "plate"
+          },
+          "4,16": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          }
+        },
+        "spawners": {
+          "14,10": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 1,
+            "first": 1
+          },
+          "17,4": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 1,
+            "first": 1
+          },
+          "7,10": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 0,
+            "first": 1
+          },
+          "11,11": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 0,
+            "first": 1
+          },
+          "10,10": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 0,
+            "first": 1
+          },
+          "17,17": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 0,
+            "first": 1
+          },
+          "11,10": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 1,
+            "first": 1
+          },
+          "10,11": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 2,
+            "first": 1
+          },
+          "10,7": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 0,
+            "first": 1
+          },
+          "11,7": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 1,
+            "first": 1
+          },
+          "14,11": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 0,
+            "first": 1
+          },
+          "11,14": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 0,
+            "first": 1
+          },
+          "7,11": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 2,
+            "first": 1
+          },
+          "17,7": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 1,
+            "first": 1
+          },
+          "10,14": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 2,
+            "first": 1
+          }
+        },
+        "pushers": {},
+        "overhead": {},
+        "lasers": {},
+        "map_type": "race",
+        "crates": {
+          "8,10": {
+            "kind": "loot"
+          },
+          "11,8": {
+            "kind": "loot"
+          },
+          "10,8": {
+            "kind": "loot"
+          },
+          "11,13": {
+            "kind": "loot"
+          },
+          "12,12": {
+            "kind": "steel"
+          },
+          "9,12": {
+            "kind": "steel"
+          },
+          "13,11": {
+            "kind": "loot"
+          },
+          "9,9": {
+            "kind": "steel"
+          },
+          "13,10": {
+            "kind": "loot"
+          },
+          "8,11": {
+            "kind": "loot"
+          },
+          "12,9": {
+            "kind": "steel"
+          },
+          "10,13": {
+            "kind": "loot"
+          }
+        },
+        "walls": {
+          "19,5,N": true,
+          "6,5,N": true,
+          "5,8,E": true,
+          "19,8,N": true,
+          "20,12,N": true,
+          "13,5,N": true,
+          "7,5,N": true,
+          "8,5,N": true,
+          "9,5,N": true,
+          "6,15,N": true,
+          "5,15,E": true,
+          "7,15,N": true,
+          "15,7,E": true,
+          "15,9,E": true,
+          "19,15,N": true,
+          "13,15,N": true,
+          "15,6,E": true,
+          "19,12,N": true,
+          "15,13,E": true,
+          "14,5,N": true,
+          "20,5,N": true,
+          "20,15,N": true,
+          "5,9,E": true,
+          "8,15,N": true,
+          "5,13,E": true,
+          "15,8,E": true,
+          "5,12,E": true,
+          "5,14,E": true,
+          "20,8,N": true,
+          "5,6,E": true,
+          "15,5,N": true,
+          "9,15,N": true,
+          "12,5,N": true,
+          "15,14,E": true,
+          "15,12,E": true,
+          "12,15,N": true,
+          "5,7,E": true,
+          "14,15,N": true
+        },
+        "size": 20,
+        "enemies": {
+          "13,1": {
+            "kind": "patroller",
+            "dir": 0
+          },
+          "15,1": {
+            "kind": "patroller",
+            "dir": 0
+          },
+          "13,6": {
+            "kind": "ram_bot",
+            "dir": 0
+          },
+          "14,6": {
+            "kind": "ram_bot",
+            "dir": 0
+          },
+          "6,14": {
+            "kind": "patroller",
+            "dir": 1
+          },
+          "19,14": {
+            "kind": "sentry",
+            "dir": 0
+          },
+          "12,6": {
+            "kind": "ram_bot",
+            "dir": 0
+          },
+          "15,8": {
+            "kind": "ram_bot",
+            "dir": 3
+          },
+          "9,15": {
+            "kind": "patroller",
+            "dir": 2
+          },
+          "19,2": {
+            "kind": "sentry",
+            "dir": 0
+          },
+          "7,15": {
+            "kind": "patroller",
+            "dir": 2
+          },
+          "15,9": {
+            "kind": "ram_bot",
+            "dir": 3
+          },
+          "6,12": {
+            "kind": "patroller",
+            "dir": 1
+          },
+          "8,1": {
+            "kind": "patroller",
+            "dir": 0
+          },
+          "15,7": {
+            "kind": "ram_bot",
+            "dir": 3
+          },
+          "19,7": {
+            "kind": "sentry",
+            "dir": 2
+          },
+          "8,15": {
+            "kind": "patroller",
+            "dir": 2
+          },
+          "6,1": {
+            "kind": "patroller",
+            "dir": 0
+          },
+          "6,13": {
+            "kind": "patroller",
+            "dir": 1
+          }
+        },
+        "title": "Parking Lot",
+        "start": {
+          "z": 8,
+          "dir": 0,
+          "x": 8
+        },
+        "pickups": {}
+      }
+    },
+    {
+      "id": "arena_12",
+      "author": "MisterE",
+      "data": {
+        "version": 3,
+        "board": {
+          "12,20": {
+            "kind": "pit"
+          },
+          "14,1": {
+            "kind": "floor"
+          },
+          "11,17": {
+            "kind": "pit"
+          },
+          "15,4": {
+            "kind": "pit"
+          },
+          "20,5": {
+            "kind": "floor"
+          },
+          "13,13": {
+            "kind": "floor"
+          },
+          "13,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "10,9": {
+            "kind": "floor"
+          },
+          "20,9": {
+            "kind": "floor"
+          },
+          "15,8": {
+            "kind": "pit"
+          },
+          "10,5": {
+            "kind": "floor"
+          },
+          "19,18": {
+            "kind": "floor"
+          },
+          "20,14": {
+            "kind": "floor"
+          },
+          "10,14": {
+            "kind": "floor"
+          },
+          "17,15": {
+            "kind": "rotator",
+            "turn": 3
+          },
+          "18,16": {
+            "kind": "floor"
+          },
+          "20,17": {
+            "kind": "floor"
+          },
+          "10,17": {
+            "kind": "floor"
+          },
+          "14,4": {
+            "kind": "pit"
+          },
+          "14,13": {
+            "kind": "floor"
+          },
+          "3,3": {
+            "kind": "floor"
+          },
+          "6,3": {
+            "kind": "floor"
+          },
+          "20,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "15,5": {
+            "kind": "pit"
+          },
+          "2,3": {
+            "kind": "floor"
+          },
+          "1,3": {
+            "kind": "floor"
+          },
+          "8,3": {
+            "kind": "floor"
+          },
+          "7,3": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "9,3": {
+            "kind": "rotator",
+            "turn": 3
+          },
+          "13,7": {
+            "kind": "floor"
+          },
+          "16,15": {
+            "kind": "floor"
+          },
+          "17,4": {
+            "kind": "floor"
+          },
+          "10,20": {
+            "kind": "pit"
+          },
+          "20,20": {
+            "kind": "floor"
+          },
+          "13,17": {
+            "kind": "floor"
+          },
+          "9,14": {
+            "kind": "floor"
+          },
+          "5,13": {
+            "kind": "floor"
+          },
+          "6,13": {
+            "kind": "floor"
+          },
+          "3,13": {
+            "kind": "floor"
+          },
+          "4,13": {
+            "kind": "floor"
+          },
+          "1,13": {
+            "kind": "floor"
+          },
+          "2,13": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "2,14": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "1,14": {
+            "kind": "floor"
+          },
+          "5,4": {
+            "kind": "floor"
+          },
+          "6,4": {
+            "kind": "floor"
+          },
+          "3,4": {
+            "kind": "floor"
+          },
+          "4,4": {
+            "kind": "floor"
+          },
+          "9,13": {
+            "kind": "pit"
+          },
+          "2,4": {
+            "kind": "floor"
+          },
+          "7,13": {
+            "kind": "floor"
+          },
+          "8,13": {
+            "kind": "pit"
+          },
+          "6,5": {
+            "kind": "pit"
+          },
+          "5,5": {
+            "kind": "pit"
+          },
+          "4,5": {
+            "kind": "floor"
+          },
+          "3,5": {
+            "kind": "floor"
+          },
+          "9,4": {
+            "kind": "floor"
+          },
+          "1,5": {
+            "kind": "floor"
+          },
+          "4,1": {
+            "kind": "floor"
+          },
+          "8,4": {
+            "kind": "floor"
+          },
+          "2,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "1,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "4,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "3,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "1,2": {
+            "kind": "floor"
+          },
+          "2,2": {
+            "kind": "checkpoint"
+          },
+          "7,2": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "8,2": {
+            "kind": "floor"
+          },
+          "9,2": {
+            "kind": "floor"
+          },
+          "13,5": {
+            "kind": "pit"
+          },
+          "14,2": {
+            "kind": "floor"
+          },
+          "10,3": {
+            "kind": "floor"
+          },
+          "20,3": {
+            "kind": "floor"
+          },
+          "19,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "11,7": {
+            "kind": "pit"
+          },
+          "11,1": {
+            "kind": "floor"
+          },
+          "6,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "5,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "8,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "7,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "10,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "11,4": {
+            "kind": "floor"
+          },
+          "19,6": {
+            "kind": "floor"
+          },
+          "14,5": {
+            "kind": "pit"
+          },
+          "7,8": {
+            "kind": "pit"
+          },
+          "6,8": {
+            "kind": "pit"
+          },
+          "9,8": {
+            "kind": "floor"
+          },
+          "8,8": {
+            "kind": "floor"
+          },
+          "11,3": {
+            "kind": "floor"
+          },
+          "13,3": {
+            "kind": "floor"
+          },
+          "14,14": {
+            "kind": "pit"
+          },
+          "1,8": {
+            "kind": "floor"
+          },
+          "20,1": {
+            "kind": "floor"
+          },
+          "3,8": {
+            "kind": "floor"
+          },
+          "2,8": {
+            "kind": "floor"
+          },
+          "5,8": {
+            "kind": "floor"
+          },
+          "4,8": {
+            "kind": "floor"
+          },
+          "9,6": {
+            "kind": "floor"
+          },
+          "8,6": {
+            "kind": "floor"
+          },
+          "8,1": {
+            "kind": "floor"
+          },
+          "9,1": {
+            "kind": "floor"
+          },
+          "4,7": {
+            "kind": "floor"
+          },
+          "5,7": {
+            "kind": "pit"
+          },
+          "2,7": {
+            "kind": "floor"
+          },
+          "10,4": {
+            "kind": "floor"
+          },
+          "1,6": {
+            "kind": "floor"
+          },
+          "7,9": {
+            "kind": "pit"
+          },
+          "19,5": {
+            "kind": "floor"
+          },
+          "9,9": {
+            "kind": "floor"
+          },
+          "5,6": {
+            "kind": "pit"
+          },
+          "4,6": {
+            "kind": "floor"
+          },
+          "3,6": {
+            "kind": "floor"
+          },
+          "2,6": {
+            "kind": "floor"
+          },
+          "14,18": {
+            "kind": "floor"
+          },
+          "12,8": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "12,3": {
+            "kind": "floor"
+          },
+          "8,7": {
+            "kind": "floor"
+          },
+          "9,7": {
+            "kind": "floor"
+          },
+          "6,7": {
+            "kind": "pit"
+          },
+          "7,7": {
+            "kind": "pit"
+          },
+          "17,7": {
+            "kind": "floor"
+          },
+          "13,4": {
+            "kind": "floor"
+          },
+          "11,13": {
+            "kind": "floor"
+          },
+          "9,19": {
+            "kind": "floor"
+          },
+          "9,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "6,19": {
+            "kind": "floor"
+          },
+          "19,11": {
+            "kind": "floor"
+          },
+          "8,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "5,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "6,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "3,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "4,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "11,2": {
+            "kind": "floor"
+          },
+          "19,19": {
+            "kind": "floor"
+          },
+          "16,14": {
+            "kind": "floor"
+          },
+          "18,7": {
+            "kind": "floor"
+          },
+          "2,20": {
+            "kind": "floor"
+          },
+          "1,20": {
+            "kind": "floor"
+          },
+          "12,4": {
+            "kind": "floor"
+          },
+          "1,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "2,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "12,13": {
+            "kind": "floor"
+          },
+          "7,20": {
+            "kind": "pit"
+          },
+          "6,20": {
+            "kind": "pit"
+          },
+          "5,20": {
+            "kind": "floor"
+          },
+          "4,20": {
+            "kind": "floor"
+          },
+          "19,9": {
+            "kind": "floor"
+          },
+          "12,18": {
+            "kind": "floor"
+          },
+          "18,11": {
+            "kind": "floor"
+          },
+          "14,8": {
+            "kind": "floor"
+          },
+          "20,2": {
+            "kind": "floor"
+          },
+          "10,2": {
+            "kind": "floor"
+          },
+          "18,19": {
+            "kind": "floor"
+          },
+          "20,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "19,7": {
+            "kind": "floor"
+          },
+          "18,5": {
+            "kind": "floor"
+          },
+          "15,6": {
+            "kind": "pit"
+          },
+          "17,3": {
+            "kind": "floor"
+          },
+          "18,9": {
+            "kind": "floor"
+          },
+          "19,20": {
+            "kind": "floor"
+          },
+          "16,17": {
+            "kind": "floor"
+          },
+          "18,14": {
+            "kind": "floor"
+          },
+          "11,18": {
+            "kind": "floor"
+          },
+          "1,17": {
+            "kind": "floor"
+          },
+          "17,2": {
+            "kind": "floor"
+          },
+          "14,15": {
+            "kind": "floor"
+          },
+          "15,20": {
+            "kind": "floor"
+          },
+          "17,11": {
+            "kind": "floor"
+          },
+          "6,1": {
+            "kind": "floor"
+          },
+          "11,16": {
+            "kind": "floor"
+          },
+          "13,20": {
+            "kind": "floor"
+          },
+          "17,19": {
+            "kind": "floor"
+          },
+          "11,20": {
+            "kind": "floor"
+          },
+          "14,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "9,20": {
+            "kind": "floor"
+          },
+          "8,20": {
+            "kind": "pit"
+          },
+          "3,20": {
+            "kind": "floor"
+          },
+          "3,2": {
+            "kind": "floor"
+          },
+          "18,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "17,1": {
+            "kind": "floor"
+          },
+          "5,19": {
+            "kind": "floor"
+          },
+          "4,18": {
+            "kind": "floor"
+          },
+          "11,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "13,19": {
+            "kind": "floor"
+          },
+          "3,1": {
+            "kind": "floor"
+          },
+          "17,8": {
+            "kind": "floor"
+          },
+          "17,9": {
+            "kind": "floor"
+          },
+          "16,6": {
+            "kind": "pit"
+          },
+          "16,3": {
+            "kind": "floor"
+          },
+          "4,2": {
+            "kind": "floor"
+          },
+          "8,19": {
+            "kind": "pit"
+          },
+          "7,19": {
+            "kind": "floor"
+          },
+          "17,14": {
+            "kind": "floor"
+          },
+          "16,19": {
+            "kind": "floor"
+          },
+          "4,19": {
+            "kind": "floor"
+          },
+          "10,18": {
+            "kind": "floor"
+          },
+          "16,11": {
+            "kind": "pit"
+          },
+          "16,2": {
+            "kind": "floor"
+          },
+          "3,19": {
+            "kind": "floor"
+          },
+          "2,19": {
+            "kind": "floor"
+          },
+          "10,16": {
+            "kind": "floor"
+          },
+          "20,16": {
+            "kind": "floor"
+          },
+          "1,19": {
+            "kind": "floor"
+          },
+          "20,18": {
+            "kind": "floor"
+          },
+          "13,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "18,18": {
+            "kind": "checkpoint"
+          },
+          "17,18": {
+            "kind": "floor"
+          },
+          "16,18": {
+            "kind": "floor"
+          },
+          "15,18": {
+            "kind": "pit"
+          },
+          "13,18": {
+            "kind": "floor"
+          },
+          "16,1": {
+            "kind": "floor"
+          },
+          "19,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "2,17": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "3,17": {
+            "kind": "floor"
+          },
+          "12,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "5,17": {
+            "kind": "pit"
+          },
+          "13,6": {
+            "kind": "floor"
+          },
+          "9,18": {
+            "kind": "floor"
+          },
+          "8,18": {
+            "kind": "floor"
+          },
+          "16,9": {
+            "kind": "pit"
+          },
+          "15,13": {
+            "kind": "floor"
+          },
+          "7,18": {
+            "kind": "floor"
+          },
+          "6,18": {
+            "kind": "floor"
+          },
+          "5,18": {
+            "kind": "pit"
+          },
+          "15,19": {
+            "kind": "pit"
+          },
+          "4,9": {
+            "kind": "floor"
+          },
+          "2,18": {
+            "kind": "checkpoint"
+          },
+          "16,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "15,3": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "15,11": {
+            "kind": "floor"
+          },
+          "19,17": {
+            "kind": "floor"
+          },
+          "18,17": {
+            "kind": "floor"
+          },
+          "6,17": {
+            "kind": "pit"
+          },
+          "7,17": {
+            "kind": "pit"
+          },
+          "8,17": {
+            "kind": "floor"
+          },
+          "9,17": {
+            "kind": "floor"
+          },
+          "17,17": {
+            "kind": "floor"
+          },
+          "18,20": {
+            "kind": "floor"
+          },
+          "15,17": {
+            "kind": "pit"
+          },
+          "14,17": {
+            "kind": "floor"
+          },
+          "12,17": {
+            "kind": "pit"
+          },
+          "19,1": {
+            "kind": "floor"
+          },
+          "4,17": {
+            "kind": "floor"
+          },
+          "17,20": {
+            "kind": "floor"
+          },
+          "19,16": {
+            "kind": "floor"
+          },
+          "11,15": {
+            "kind": "floor"
+          },
+          "17,16": {
+            "kind": "floor"
+          },
+          "11,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "15,9": {
+            "kind": "pit"
+          },
+          "14,6": {
+            "kind": "pit"
+          },
+          "16,16": {
+            "kind": "pit"
+          },
+          "15,16": {
+            "kind": "floor"
+          },
+          "14,16": {
+            "kind": "floor"
+          },
+          "16,13": {
+            "kind": "floor"
+          },
+          "13,16": {
+            "kind": "pit"
+          },
+          "12,16": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "1,7": {
+            "kind": "floor"
+          },
+          "6,6": {
+            "kind": "pit"
+          },
+          "19,14": {
+            "kind": "floor"
+          },
+          "14,19": {
+            "kind": "floor"
+          },
+          "13,11": {
+            "kind": "floor"
+          },
+          "20,8": {
+            "kind": "floor"
+          },
+          "10,8": {
+            "kind": "pit"
+          },
+          "5,16": {
+            "kind": "pit"
+          },
+          "4,3": {
+            "kind": "floor"
+          },
+          "3,16": {
+            "kind": "floor"
+          },
+          "2,16": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "14,11": {
+            "kind": "floor"
+          },
+          "1,4": {
+            "kind": "floor"
+          },
+          "12,14": {
+            "kind": "floor"
+          },
+          "19,15": {
+            "kind": "floor"
+          },
+          "18,15": {
+            "kind": "floor"
+          },
+          "18,1": {
+            "kind": "floor"
+          },
+          "15,15": {
+            "kind": "floor"
+          },
+          "16,20": {
+            "kind": "floor"
+          },
+          "11,6": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "10,15": {
+            "kind": "floor"
+          },
+          "13,15": {
+            "kind": "pit"
+          },
+          "8,9": {
+            "kind": "floor"
+          },
+          "20,15": {
+            "kind": "floor"
+          },
+          "13,14": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "14,9": {
+            "kind": "pit"
+          },
+          "8,14": {
+            "kind": "floor"
+          },
+          "11,14": {
+            "kind": "floor"
+          },
+          "17,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "4,14": {
+            "kind": "floor"
+          },
+          "15,14": {
+            "kind": "floor"
+          },
+          "3,15": {
+            "kind": "floor"
+          },
+          "4,15": {
+            "kind": "floor"
+          },
+          "5,15": {
+            "kind": "pit"
+          },
+          "2,15": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "13,2": {
+            "kind": "floor"
+          },
+          "8,15": {
+            "kind": "floor"
+          },
+          "9,15": {
+            "kind": "floor"
+          },
+          "6,15": {
+            "kind": "floor"
+          },
+          "7,15": {
+            "kind": "rotator",
+            "turn": 3
+          },
+          "7,14": {
+            "kind": "floor"
+          },
+          "10,7": {
+            "kind": "pit"
+          },
+          "18,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "6,14": {
+            "kind": "floor"
+          },
+          "5,14": {
+            "kind": "floor"
+          },
+          "1,15": {
+            "kind": "floor"
+          },
+          "20,7": {
+            "kind": "floor"
+          },
+          "19,8": {
+            "kind": "floor"
+          },
+          "13,1": {
+            "kind": "floor"
+          },
+          "18,4": {
+            "kind": "floor"
+          },
+          "12,6": {
+            "kind": "floor"
+          },
+          "3,14": {
+            "kind": "floor"
+          },
+          "20,13": {
+            "kind": "floor"
+          },
+          "10,13": {
+            "kind": "floor"
+          },
+          "8,5": {
+            "kind": "floor"
+          },
+          "7,5": {
+            "kind": "pit"
+          },
+          "11,8": {
+            "kind": "pit"
+          },
+          "18,13": {
+            "kind": "floor"
+          },
+          "17,13": {
+            "kind": "floor"
+          },
+          "19,4": {
+            "kind": "floor"
+          },
+          "1,18": {
+            "kind": "floor"
+          },
+          "9,5": {
+            "kind": "floor"
+          },
+          "3,18": {
+            "kind": "floor"
+          },
+          "14,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "7,6": {
+            "kind": "pit"
+          },
+          "2,5": {
+            "kind": "floor"
+          },
+          "12,2": {
+            "kind": "floor"
+          },
+          "15,2": {
+            "kind": "floor"
+          },
+          "11,5": {
+            "kind": "floor"
+          },
+          "20,4": {
+            "kind": "floor"
+          },
+          "12,19": {
+            "kind": "floor"
+          },
+          "2,1": {
+            "kind": "floor"
+          },
+          "9,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "12,11": {
+            "kind": "pit"
+          },
+          "5,1": {
+            "kind": "floor"
+          },
+          "17,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "6,2": {
+            "kind": "floor"
+          },
+          "18,6": {
+            "kind": "floor"
+          },
+          "17,5": {
+            "kind": "rotator",
+            "turn": 3
+          },
+          "7,4": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "14,20": {
+            "kind": "floor"
+          },
+          "12,1": {
+            "kind": "floor"
+          },
+          "9,16": {
+            "kind": "floor"
+          },
+          "8,16": {
+            "kind": "floor"
+          },
+          "13,9": {
+            "kind": "floor"
+          },
+          "7,1": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "12,15": {
+            "kind": "pit"
+          },
+          "6,9": {
+            "kind": "pit"
+          },
+          "14,3": {
+            "kind": "floor"
+          },
+          "2,9": {
+            "kind": "floor"
+          },
+          "1,9": {
+            "kind": "floor"
+          },
+          "16,8": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "13,8": {
+            "kind": "floor"
+          },
+          "7,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "15,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "19,3": {
+            "kind": "floor"
+          },
+          "12,9": {
+            "kind": "floor"
+          },
+          "19,13": {
+            "kind": "floor"
+          },
+          "1,11": {
+            "kind": "floor"
+          },
+          "2,11": {
+            "kind": "floor"
+          },
+          "17,6": {
+            "kind": "floor"
+          },
+          "12,5": {
+            "kind": "floor"
+          },
+          "19,2": {
+            "kind": "floor"
+          },
+          "11,19": {
+            "kind": "floor"
+          },
+          "11,11": {
+            "kind": "pit"
+          },
+          "8,11": {
+            "kind": "pit"
+          },
+          "9,11": {
+            "kind": "floor"
+          },
+          "3,9": {
+            "kind": "floor"
+          },
+          "3,11": {
+            "kind": "floor"
+          },
+          "4,11": {
+            "kind": "floor"
+          },
+          "5,11": {
+            "kind": "floor"
+          },
+          "16,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "10,6": {
+            "kind": "pit"
+          },
+          "3,7": {
+            "kind": "floor"
+          },
+          "15,1": {
+            "kind": "floor"
+          },
+          "20,6": {
+            "kind": "floor"
+          },
+          "10,1": {
+            "kind": "floor"
+          },
+          "1,1": {
+            "kind": "floor"
+          },
+          "14,7": {
+            "kind": "floor"
+          },
+          "15,7": {
+            "kind": "floor"
+          },
+          "5,3": {
+            "kind": "floor"
+          },
+          "16,7": {
+            "kind": "floor"
+          },
+          "12,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "10,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "18,8": {
+            "kind": "pit"
+          },
+          "11,9": {
+            "kind": "floor"
+          },
+          "18,3": {
+            "kind": "checkpoint"
+          },
+          "6,11": {
+            "kind": "pit"
+          },
+          "7,11": {
+            "kind": "floor"
+          },
+          "12,7": {
+            "kind": "floor"
+          },
+          "16,4": {
+            "kind": "pit"
+          },
+          "5,2": {
+            "kind": "floor"
+          },
+          "10,19": {
+            "kind": "floor"
+          },
+          "20,19": {
+            "kind": "floor"
+          },
+          "5,9": {
+            "kind": "floor"
+          },
+          "18,2": {
+            "kind": "floor"
+          },
+          "10,11": {
+            "kind": "pit"
+          },
+          "20,11": {
+            "kind": "floor"
+          },
+          "1,16": {
+            "kind": "floor"
+          },
+          "16,5": {
+            "kind": "pit"
+          },
+          "7,16": {
+            "kind": "pit"
+          },
+          "6,16": {
+            "kind": "pit"
+          },
+          "15,12": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "4,16": {
+            "kind": "floor"
+          }
+        },
+        "spawners": {},
+        "pushers": [
+          {
+            "parity": 1,
+            "z": 4,
+            "dir": 2,
+            "x": 13
+          }
+        ],
+        "overhead": {
+          "11,10": {
+            "kind": "crusher",
+            "parity": 1
+          },
+          "4,12": {
+            "kind": "crusher",
+            "parity": 0
+          },
+          "17,12": {
+            "kind": "crusher",
+            "parity": 0
+          },
+          "17,10": {
+            "kind": "crusher",
+            "parity": 0
+          },
+          "11,12": {
+            "kind": "crusher",
+            "parity": 1
+          },
+          "4,10": {
+            "kind": "crusher",
+            "parity": 0
+          }
+        },
+        "lasers": [
+          {
+            "power": 3,
+            "z": 1,
+            "dir": 0,
+            "x": 9
+          }
+        ],
+        "map_type": "race",
+        "crates": {},
+        "walls": {
+          "9,4,N": true,
+          "13,4,N": true
+        },
+        "size": 20,
+        "enemies": {},
+        "title": "Decrepit Assembly Line",
+        "start": {
+          "z": 2,
+          "dir": 0,
+          "x": 2
+        },
+        "pickups": {}
+      }
+    },
+    {
+      "id": "arena_13",
+      "author": "MisterE",
+      "data": {
+        "version": 3,
+        "board": {
+          "10,9": {
+            "kind": "floor"
+          },
+          "7,8": {
+            "kind": "floor"
+          },
+          "6,8": {
+            "kind": "floor"
+          },
+          "9,8": {
+            "kind": "floor"
+          },
+          "8,8": {
+            "kind": "floor"
+          },
+          "10,5": {
+            "kind": "floor"
+          },
+          "10,7": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "10,1": {
+            "kind": "floor"
+          },
+          "3,8": {
+            "kind": "repair"
+          },
+          "2,8": {
+            "kind": "floor"
+          },
+          "5,8": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "4,8": {
+            "kind": "floor"
+          },
+          "9,6": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "1,7": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "7,6": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "6,6": {
+            "crate_kind": "loot",
+            "kind": "factory",
+            "schedule": {
+              "every": 3,
+              "rounds": {},
+              "phase": 0,
+              "first": 1
+            },
+            "dir": 1,
+            "pattern": "one"
+          },
+          "4,7": {
+            "kind": "rotator",
+            "turn": 3
+          },
+          "9,5": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "2,7": {
+            "kind": "floor"
+          },
+          "3,7": {
+            "kind": "floor"
+          },
+          "1,6": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "3,3": {
+            "kind": "floor"
+          },
+          "6,3": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "5,3": {
+            "kind": "floor"
+          },
+          "5,6": {
+            "crate_kind": "loot",
+            "kind": "factory",
+            "schedule": {
+              "every": 3,
+              "rounds": {},
+              "phase": 0,
+              "first": 1
+            },
+            "dir": 0,
+            "pattern": "one"
+          },
+          "4,6": {
+            "kind": "floor"
+          },
+          "3,6": {
+            "kind": "floor"
+          },
+          "2,6": {
+            "kind": "floor"
+          },
+          "8,3": {
+            "kind": "floor"
+          },
+          "7,3": {
+            "kind": "floor"
+          },
+          "9,3": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "8,7": {
+            "kind": "floor"
+          },
+          "9,7": {
+            "kind": "floor"
+          },
+          "6,7": {
+            "kind": "floor"
+          },
+          "7,7": {
+            "kind": "rotator",
+            "turn": 3
+          },
+          "10,10": {
+            "kind": "floor"
+          },
+          "9,10": {
+            "kind": "floor"
+          },
+          "8,10": {
+            "kind": "floor"
+          },
+          "7,10": {
+            "kind": "floor"
+          },
+          "6,10": {
+            "kind": "floor"
+          },
+          "5,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "4,10": {
+            "kind": "floor"
+          },
+          "3,10": {
+            "kind": "floor"
+          },
+          "2,3": {
+            "kind": "floor"
+          },
+          "5,7": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "9,9": {
+            "kind": "checkpoint"
+          },
+          "8,9": {
+            "kind": "floor"
+          },
+          "7,9": {
+            "kind": "floor"
+          },
+          "6,9": {
+            "kind": "floor"
+          },
+          "1,9": {
+            "kind": "floor"
+          },
+          "2,9": {
+            "kind": "floor"
+          },
+          "3,9": {
+            "kind": "floor"
+          },
+          "5,4": {
+            "kind": "floor"
+          },
+          "6,4": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "3,4": {
+            "kind": "floor"
+          },
+          "4,4": {
+            "kind": "rotator",
+            "turn": 3
+          },
+          "1,4": {
+            "kind": "floor"
+          },
+          "2,4": {
+            "kind": "floor"
+          },
+          "4,9": {
+            "kind": "floor"
+          },
+          "5,9": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "6,5": {
+            "crate_kind": "loot",
+            "kind": "factory",
+            "schedule": {
+              "every": 3,
+              "rounds": {},
+              "phase": 0,
+              "first": 1
+            },
+            "dir": 2,
+            "pattern": "one"
+          },
+          "5,5": {
+            "crate_kind": "loot",
+            "kind": "factory",
+            "schedule": {
+              "every": 3,
+              "rounds": {},
+              "phase": 0,
+              "first": 1
+            },
+            "dir": 3,
+            "pattern": "one"
+          },
+          "4,5": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "1,1": {
+            "kind": "floor"
+          },
+          "6,1": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "7,1": {
+            "kind": "floor"
+          },
+          "4,1": {
+            "kind": "floor"
+          },
+          "5,1": {
+            "kind": "floor"
+          },
+          "10,6": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "4,2": {
+            "kind": "floor"
+          },
+          "5,2": {
+            "kind": "floor"
+          },
+          "6,2": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "1,3": {
+            "kind": "floor"
+          },
+          "1,8": {
+            "kind": "floor"
+          },
+          "1,2": {
+            "kind": "floor"
+          },
+          "2,2": {
+            "kind": "checkpoint"
+          },
+          "1,10": {
+            "kind": "floor"
+          },
+          "2,10": {
+            "kind": "floor"
+          },
+          "7,4": {
+            "kind": "rotator",
+            "turn": 3
+          },
+          "8,4": {
+            "kind": "floor"
+          },
+          "7,2": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "8,2": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "9,2": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "8,1": {
+            "kind": "floor"
+          },
+          "9,4": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "10,4": {
+            "kind": "floor"
+          },
+          "2,5": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "1,5": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "10,3": {
+            "kind": "floor"
+          },
+          "3,5": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "10,8": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "4,3": {
+            "kind": "floor"
+          },
+          "9,1": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "10,2": {
+            "kind": "floor"
+          },
+          "3,2": {
+            "kind": "floor"
+          },
+          "3,1": {
+            "kind": "floor"
+          },
+          "2,1": {
+            "kind": "floor"
+          },
+          "8,5": {
+            "kind": "floor"
+          },
+          "7,5": {
+            "kind": "repair"
+          },
+          "8,6": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          }
+        },
+        "spawners": {},
+        "pushers": [
+          {
+            "parity": 1,
+            "z": 6,
+            "dir": 2,
+            "x": 9
+          },
+          {
+            "parity": 1,
+            "z": 6,
+            "dir": 0,
+            "x": 10
+          },
+          {
+            "parity": 0,
+            "z": 2,
+            "dir": 1,
+            "x": 6
+          },
+          {
+            "parity": 1,
+            "z": 5,
+            "dir": 0,
+            "x": 1
+          }
+        ],
+        "overhead": {
+          "5,8": {
+            "kind": "crusher",
+            "parity": 1
+          },
+          "8,6": {
+            "kind": "crusher",
+            "parity": 1
+          },
+          "6,3": {
+            "kind": "crusher",
+            "parity": 0
+          },
+          "3,5": {
+            "kind": "crusher",
+            "parity": 0
+          }
+        },
+        "lasers": {},
+        "map_type": "race",
+        "crates": {},
+        "walls": {},
+        "size": 10,
+        "enemies": {},
+        "title": "The Spawn",
+        "start": {
+          "z": 2,
+          "dir": 0,
+          "x": 2
+        },
+        "pickups": {}
+      }
+    },
+    {
+      "id": "arena_14",
+      "author": "MisterE",
+      "data": {
+        "version": 3,
+        "board": {
+          "12,20": {
+            "kind": "pit"
+          },
+          "14,1": {
+            "kind": "pit"
+          },
+          "11,17": {
+            "kind": "floor"
+          },
+          "15,4": {
+            "kind": "floor"
+          },
+          "20,5": {
+            "kind": "floor"
+          },
+          "13,13": {
+            "kind": "floor"
+          },
+          "13,10": {
+            "kind": "floor"
+          },
+          "10,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 3
+          },
+          "20,9": {
+            "kind": "floor"
+          },
+          "15,8": {
+            "kind": "floor"
+          },
+          "10,5": {
+            "kind": "floor"
+          },
+          "19,18": {
+            "kind": "floor"
+          },
+          "20,14": {
+            "kind": "floor"
+          },
+          "10,14": {
+            "kind": "floor"
+          },
+          "17,15": {
+            "kind": "floor"
+          },
+          "18,16": {
+            "kind": "floor"
+          },
+          "20,17": {
+            "kind": "floor"
+          },
+          "10,17": {
+            "kind": "floor"
+          },
+          "14,4": {
+            "kind": "floor"
+          },
+          "14,13": {
+            "kind": "floor"
+          },
+          "3,3": {
+            "kind": "checkpoint"
+          },
+          "6,3": {
+            "kind": "floor"
+          },
+          "20,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "15,5": {
+            "kind": "floor"
+          },
+          "2,3": {
+            "kind": "floor"
+          },
+          "1,3": {
+            "kind": "floor"
+          },
+          "8,3": {
+            "kind": "floor"
+          },
+          "7,3": {
+            "kind": "floor"
+          },
+          "9,3": {
+            "kind": "floor"
+          },
+          "13,7": {
+            "kind": "floor"
+          },
+          "16,15": {
+            "kind": "floor"
+          },
+          "17,4": {
+            "kind": "floor"
+          },
+          "10,20": {
+            "kind": "floor"
+          },
+          "20,20": {
+            "kind": "floor"
+          },
+          "13,17": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "9,14": {
+            "kind": "floor"
+          },
+          "5,13": {
+            "kind": "floor"
+          },
+          "6,13": {
+            "kind": "floor"
+          },
+          "3,13": {
+            "kind": "floor"
+          },
+          "4,13": {
+            "kind": "floor"
+          },
+          "1,13": {
+            "kind": "floor"
+          },
+          "2,13": {
+            "kind": "floor"
+          },
+          "2,14": {
+            "kind": "floor"
+          },
+          "1,14": {
+            "kind": "floor"
+          },
+          "5,4": {
+            "kind": "floor"
+          },
+          "6,4": {
+            "kind": "floor"
+          },
+          "3,4": {
+            "kind": "floor"
+          },
+          "4,4": {
+            "kind": "floor"
+          },
+          "9,13": {
+            "kind": "floor"
+          },
+          "2,4": {
+            "kind": "floor"
+          },
+          "7,13": {
+            "kind": "floor"
+          },
+          "8,13": {
+            "kind": "floor"
+          },
+          "6,5": {
+            "kind": "floor"
+          },
+          "5,5": {
+            "kind": "floor"
+          },
+          "4,5": {
+            "kind": "floor"
+          },
+          "3,5": {
+            "kind": "floor"
+          },
+          "9,4": {
+            "kind": "floor"
+          },
+          "1,5": {
+            "kind": "floor"
+          },
+          "4,1": {
+            "kind": "floor"
+          },
+          "8,4": {
+            "kind": "floor"
+          },
+          "2,12": {
+            "kind": "floor"
+          },
+          "1,12": {
+            "kind": "floor"
+          },
+          "4,12": {
+            "kind": "floor"
+          },
+          "3,12": {
+            "kind": "floor"
+          },
+          "1,2": {
+            "kind": "floor"
+          },
+          "2,2": {
+            "kind": "floor"
+          },
+          "7,2": {
+            "kind": "floor"
+          },
+          "8,2": {
+            "kind": "floor"
+          },
+          "9,2": {
+            "kind": "floor"
+          },
+          "13,5": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "14,2": {
+            "kind": "floor"
+          },
+          "10,3": {
+            "kind": "floor"
+          },
+          "20,3": {
+            "kind": "floor"
+          },
+          "19,12": {
+            "kind": "floor"
+          },
+          "11,7": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "11,1": {
+            "kind": "floor"
+          },
+          "6,12": {
+            "kind": "floor"
+          },
+          "5,12": {
+            "kind": "floor"
+          },
+          "8,12": {
+            "kind": "floor"
+          },
+          "7,12": {
+            "kind": "floor"
+          },
+          "10,12": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "11,4": {
+            "kind": "floor"
+          },
+          "19,6": {
+            "kind": "floor"
+          },
+          "14,5": {
+            "kind": "floor"
+          },
+          "7,8": {
+            "kind": "floor"
+          },
+          "6,8": {
+            "kind": "floor"
+          },
+          "9,8": {
+            "kind": "floor"
+          },
+          "8,8": {
+            "kind": "floor"
+          },
+          "11,3": {
+            "kind": "floor"
+          },
+          "13,3": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "14,14": {
+            "kind": "floor"
+          },
+          "1,8": {
+            "kind": "floor"
+          },
+          "20,1": {
+            "kind": "floor"
+          },
+          "3,8": {
+            "kind": "floor"
+          },
+          "2,8": {
+            "kind": "floor"
+          },
+          "5,8": {
+            "kind": "floor"
+          },
+          "4,8": {
+            "kind": "floor"
+          },
+          "9,6": {
+            "kind": "floor"
+          },
+          "8,6": {
+            "kind": "floor"
+          },
+          "8,1": {
+            "kind": "floor"
+          },
+          "9,1": {
+            "kind": "floor"
+          },
+          "4,7": {
+            "kind": "floor"
+          },
+          "5,7": {
+            "kind": "floor"
+          },
+          "2,7": {
+            "kind": "floor"
+          },
+          "10,4": {
+            "kind": "floor"
+          },
+          "1,6": {
+            "kind": "floor"
+          },
+          "7,9": {
+            "kind": "floor"
+          },
+          "19,5": {
+            "kind": "floor"
+          },
+          "9,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0,
+            "entry": 3
+          },
+          "5,6": {
+            "kind": "floor"
+          },
+          "4,6": {
+            "kind": "floor"
+          },
+          "3,6": {
+            "kind": "floor"
+          },
+          "2,6": {
+            "kind": "floor"
+          },
+          "14,18": {
+            "kind": "floor"
+          },
+          "12,8": {
+            "kind": "floor"
+          },
+          "12,3": {
+            "kind": "floor"
+          },
+          "8,7": {
+            "kind": "floor"
+          },
+          "9,7": {
+            "kind": "floor"
+          },
+          "6,7": {
+            "kind": "floor"
+          },
+          "7,7": {
+            "kind": "floor"
+          },
+          "17,7": {
+            "kind": "floor"
+          },
+          "13,4": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "11,13": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "9,19": {
+            "kind": "floor"
+          },
+          "9,10": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "6,19": {
+            "kind": "floor"
+          },
+          "19,11": {
+            "kind": "floor"
+          },
+          "8,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "5,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "6,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "3,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "4,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "11,2": {
+            "kind": "floor"
+          },
+          "19,19": {
+            "kind": "floor"
+          },
+          "16,14": {
+            "kind": "floor"
+          },
+          "18,7": {
+            "kind": "floor"
+          },
+          "2,20": {
+            "kind": "floor"
+          },
+          "1,20": {
+            "kind": "floor"
+          },
+          "12,4": {
+            "kind": "floor"
+          },
+          "1,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "2,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "12,13": {
+            "kind": "floor"
+          },
+          "7,20": {
+            "kind": "floor"
+          },
+          "6,20": {
+            "kind": "floor"
+          },
+          "5,20": {
+            "kind": "floor"
+          },
+          "4,20": {
+            "kind": "floor"
+          },
+          "19,9": {
+            "kind": "pit"
+          },
+          "12,18": {
+            "kind": "floor"
+          },
+          "18,11": {
+            "kind": "floor"
+          },
+          "14,8": {
+            "kind": "floor"
+          },
+          "20,2": {
+            "kind": "floor"
+          },
+          "10,2": {
+            "kind": "floor"
+          },
+          "18,19": {
+            "kind": "floor"
+          },
+          "20,12": {
+            "kind": "floor"
+          },
+          "19,7": {
+            "kind": "floor"
+          },
+          "18,5": {
+            "kind": "floor"
+          },
+          "15,6": {
+            "kind": "floor"
+          },
+          "17,3": {
+            "kind": "floor"
+          },
+          "18,9": {
+            "kind": "floor"
+          },
+          "19,20": {
+            "kind": "floor"
+          },
+          "16,17": {
+            "kind": "floor"
+          },
+          "18,14": {
+            "kind": "floor"
+          },
+          "11,18": {
+            "kind": "floor"
+          },
+          "1,17": {
+            "kind": "floor"
+          },
+          "17,2": {
+            "kind": "floor"
+          },
+          "14,15": {
+            "kind": "floor"
+          },
+          "15,20": {
+            "kind": "floor"
+          },
+          "17,11": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2,
+            "entry": 1
+          },
+          "6,1": {
+            "kind": "floor"
+          },
+          "11,16": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1,
+            "entry": 0
+          },
+          "13,20": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "17,19": {
+            "kind": "floor"
+          },
+          "11,20": {
+            "kind": "floor"
+          },
+          "14,12": {
+            "kind": "floor"
+          },
+          "9,20": {
+            "kind": "floor"
+          },
+          "8,20": {
+            "kind": "floor"
+          },
+          "3,20": {
+            "kind": "floor"
+          },
+          "3,2": {
+            "kind": "floor"
+          },
+          "18,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "17,1": {
+            "kind": "floor"
+          },
+          "5,19": {
+            "kind": "floor"
+          },
+          "4,18": {
+            "kind": "floor"
+          },
+          "11,10": {
+            "crate_kind": "loot",
+            "kind": "factory",
+            "schedule": {
+              "every": 3,
+              "rounds": {},
+              "phase": 0,
+              "first": 1
+            },
+            "dir": 1,
+            "pattern": "corner"
+          },
+          "13,19": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "3,1": {
+            "kind": "floor"
+          },
+          "17,8": {
+            "kind": "floor"
+          },
+          "17,9": {
+            "kind": "floor"
+          },
+          "16,6": {
+            "kind": "floor"
+          },
+          "16,3": {
+            "kind": "floor"
+          },
+          "4,2": {
+            "kind": "floor"
+          },
+          "8,19": {
+            "kind": "floor"
+          },
+          "7,19": {
+            "kind": "floor"
+          },
+          "17,14": {
+            "kind": "floor"
+          },
+          "16,19": {
+            "kind": "floor"
+          },
+          "4,19": {
+            "kind": "floor"
+          },
+          "10,18": {
+            "kind": "floor"
+          },
+          "16,11": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "16,2": {
+            "kind": "floor"
+          },
+          "3,19": {
+            "kind": "floor"
+          },
+          "2,19": {
+            "kind": "floor"
+          },
+          "10,16": {
+            "kind": "floor"
+          },
+          "20,16": {
+            "kind": "floor"
+          },
+          "1,19": {
+            "kind": "floor"
+          },
+          "20,18": {
+            "kind": "floor"
+          },
+          "13,12": {
+            "kind": "floor"
+          },
+          "18,18": {
+            "kind": "checkpoint"
+          },
+          "17,18": {
+            "kind": "floor"
+          },
+          "16,18": {
+            "kind": "floor"
+          },
+          "15,18": {
+            "kind": "floor"
+          },
+          "13,18": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "16,1": {
+            "kind": "floor"
+          },
+          "19,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "2,17": {
+            "kind": "floor"
+          },
+          "3,17": {
+            "kind": "floor"
+          },
+          "12,12": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2,
+            "entry": 1
+          },
+          "5,17": {
+            "kind": "floor"
+          },
+          "13,6": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2,
+            "entry": 1
+          },
+          "9,18": {
+            "kind": "floor"
+          },
+          "8,18": {
+            "kind": "floor"
+          },
+          "16,9": {
+            "kind": "floor"
+          },
+          "15,13": {
+            "kind": "floor"
+          },
+          "7,18": {
+            "kind": "floor"
+          },
+          "6,18": {
+            "kind": "floor"
+          },
+          "5,18": {
+            "kind": "floor"
+          },
+          "15,19": {
+            "kind": "floor"
+          },
+          "4,9": {
+            "kind": "floor"
+          },
+          "2,18": {
+            "kind": "floor"
+          },
+          "16,10": {
+            "kind": "floor"
+          },
+          "15,3": {
+            "kind": "floor"
+          },
+          "15,11": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "19,17": {
+            "kind": "floor"
+          },
+          "18,17": {
+            "kind": "floor"
+          },
+          "6,17": {
+            "kind": "floor"
+          },
+          "7,17": {
+            "kind": "floor"
+          },
+          "8,17": {
+            "kind": "floor"
+          },
+          "9,17": {
+            "kind": "floor"
+          },
+          "17,17": {
+            "kind": "floor"
+          },
+          "18,20": {
+            "kind": "floor"
+          },
+          "15,17": {
+            "kind": "floor"
+          },
+          "14,17": {
+            "kind": "floor"
+          },
+          "12,17": {
+            "kind": "floor"
+          },
+          "19,1": {
+            "kind": "floor"
+          },
+          "4,17": {
+            "kind": "floor"
+          },
+          "17,20": {
+            "kind": "floor"
+          },
+          "19,16": {
+            "kind": "floor"
+          },
+          "11,15": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "17,16": {
+            "kind": "floor"
+          },
+          "11,12": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1
+          },
+          "15,9": {
+            "kind": "floor"
+          },
+          "14,6": {
+            "kind": "floor"
+          },
+          "16,16": {
+            "kind": "floor"
+          },
+          "15,16": {
+            "kind": "floor"
+          },
+          "14,16": {
+            "kind": "floor"
+          },
+          "16,13": {
+            "kind": "floor"
+          },
+          "13,16": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0,
+            "entry": 1
+          },
+          "12,16": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "1,7": {
+            "kind": "floor"
+          },
+          "6,6": {
+            "kind": "floor"
+          },
+          "19,14": {
+            "kind": "floor"
+          },
+          "14,19": {
+            "kind": "floor"
+          },
+          "13,11": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "20,8": {
+            "kind": "floor"
+          },
+          "10,8": {
+            "kind": "floor"
+          },
+          "5,16": {
+            "kind": "floor"
+          },
+          "4,3": {
+            "kind": "floor"
+          },
+          "3,16": {
+            "kind": "floor"
+          },
+          "2,16": {
+            "kind": "floor"
+          },
+          "14,11": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "1,4": {
+            "kind": "floor"
+          },
+          "12,14": {
+            "kind": "floor"
+          },
+          "19,15": {
+            "kind": "floor"
+          },
+          "18,15": {
+            "kind": "floor"
+          },
+          "18,1": {
+            "kind": "floor"
+          },
+          "15,15": {
+            "kind": "floor"
+          },
+          "16,20": {
+            "kind": "floor"
+          },
+          "11,6": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1,
+            "entry": 2
+          },
+          "10,15": {
+            "kind": "floor"
+          },
+          "13,15": {
+            "kind": "floor"
+          },
+          "8,9": {
+            "kind": "floor"
+          },
+          "20,15": {
+            "kind": "floor"
+          },
+          "13,14": {
+            "kind": "floor"
+          },
+          "14,9": {
+            "kind": "floor"
+          },
+          "8,14": {
+            "kind": "floor"
+          },
+          "11,14": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "17,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1,
+            "entry": 2
+          },
+          "4,14": {
+            "kind": "floor"
+          },
+          "15,14": {
+            "kind": "floor"
+          },
+          "3,15": {
+            "kind": "floor"
+          },
+          "4,15": {
+            "kind": "floor"
+          },
+          "5,15": {
+            "kind": "floor"
+          },
+          "2,15": {
+            "kind": "floor"
+          },
+          "13,2": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "8,15": {
+            "kind": "floor"
+          },
+          "9,15": {
+            "kind": "floor"
+          },
+          "6,15": {
+            "kind": "floor"
+          },
+          "7,15": {
+            "kind": "floor"
+          },
+          "7,14": {
+            "kind": "floor"
+          },
+          "10,7": {
+            "kind": "floor"
+          },
+          "18,12": {
+            "kind": "floor"
+          },
+          "6,14": {
+            "kind": "floor"
+          },
+          "5,14": {
+            "kind": "floor"
+          },
+          "1,15": {
+            "kind": "floor"
+          },
+          "20,7": {
+            "kind": "floor"
+          },
+          "19,8": {
+            "kind": "floor"
+          },
+          "13,1": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "18,4": {
+            "kind": "floor"
+          },
+          "12,6": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1
+          },
+          "3,14": {
+            "kind": "floor"
+          },
+          "20,13": {
+            "kind": "floor"
+          },
+          "10,13": {
+            "kind": "floor"
+          },
+          "8,5": {
+            "kind": "floor"
+          },
+          "7,5": {
+            "kind": "floor"
+          },
+          "11,8": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "18,13": {
+            "kind": "floor"
+          },
+          "17,13": {
+            "kind": "floor"
+          },
+          "19,4": {
+            "kind": "floor"
+          },
+          "1,18": {
+            "kind": "floor"
+          },
+          "9,5": {
+            "kind": "floor"
+          },
+          "3,18": {
+            "kind": "checkpoint"
+          },
+          "14,10": {
+            "kind": "floor"
+          },
+          "7,6": {
+            "kind": "floor"
+          },
+          "2,5": {
+            "kind": "floor"
+          },
+          "12,2": {
+            "kind": "floor"
+          },
+          "15,2": {
+            "kind": "floor"
+          },
+          "11,5": {
+            "kind": "floor"
+          },
+          "20,4": {
+            "kind": "floor"
+          },
+          "12,19": {
+            "kind": "floor"
+          },
+          "2,1": {
+            "kind": "floor"
+          },
+          "9,12": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 1,
+            "entry": 0
+          },
+          "12,11": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "5,1": {
+            "kind": "floor"
+          },
+          "17,12": {
+            "kind": "floor"
+          },
+          "6,2": {
+            "kind": "floor"
+          },
+          "18,6": {
+            "kind": "floor"
+          },
+          "17,5": {
+            "kind": "floor"
+          },
+          "7,4": {
+            "kind": "floor"
+          },
+          "14,20": {
+            "kind": "floor"
+          },
+          "12,1": {
+            "kind": "floor"
+          },
+          "9,16": {
+            "kind": "floor"
+          },
+          "8,16": {
+            "kind": "floor"
+          },
+          "13,9": {
+            "kind": "floor"
+          },
+          "7,1": {
+            "kind": "floor"
+          },
+          "12,15": {
+            "kind": "floor"
+          },
+          "6,9": {
+            "kind": "floor"
+          },
+          "14,3": {
+            "kind": "floor"
+          },
+          "2,9": {
+            "kind": "floor"
+          },
+          "1,9": {
+            "kind": "floor"
+          },
+          "16,8": {
+            "kind": "floor"
+          },
+          "13,8": {
+            "kind": "floor"
+          },
+          "7,10": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3
+          },
+          "15,10": {
+            "kind": "floor"
+          },
+          "19,3": {
+            "kind": "floor"
+          },
+          "12,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 3,
+            "entry": 2
+          },
+          "19,13": {
+            "kind": "floor"
+          },
+          "1,11": {
+            "kind": "floor"
+          },
+          "2,11": {
+            "kind": "pit"
+          },
+          "17,6": {
+            "kind": "floor"
+          },
+          "12,5": {
+            "kind": "floor"
+          },
+          "19,2": {
+            "kind": "floor"
+          },
+          "11,19": {
+            "kind": "floor"
+          },
+          "11,11": {
+            "kind": "floor"
+          },
+          "8,11": {
+            "kind": "floor"
+          },
+          "9,11": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 0
+          },
+          "3,9": {
+            "kind": "floor"
+          },
+          "3,11": {
+            "kind": "floor"
+          },
+          "4,11": {
+            "kind": "floor"
+          },
+          "5,11": {
+            "kind": "floor"
+          },
+          "16,12": {
+            "kind": "floor"
+          },
+          "10,6": {
+            "kind": "floor"
+          },
+          "3,7": {
+            "kind": "floor"
+          },
+          "15,1": {
+            "kind": "floor"
+          },
+          "20,6": {
+            "kind": "floor"
+          },
+          "10,1": {
+            "kind": "floor"
+          },
+          "1,1": {
+            "kind": "floor"
+          },
+          "14,7": {
+            "kind": "floor"
+          },
+          "15,7": {
+            "kind": "floor"
+          },
+          "5,3": {
+            "kind": "floor"
+          },
+          "16,7": {
+            "kind": "floor"
+          },
+          "12,10": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 2
+          },
+          "10,10": {
+            "kind": "floor"
+          },
+          "18,8": {
+            "kind": "floor"
+          },
+          "11,9": {
+            "kind": "belt",
+            "speed": 2,
+            "dir": 3
+          },
+          "18,3": {
+            "kind": "checkpoint"
+          },
+          "6,11": {
+            "kind": "floor"
+          },
+          "7,11": {
+            "kind": "floor"
+          },
+          "12,7": {
+            "kind": "floor"
+          },
+          "16,4": {
+            "kind": "floor"
+          },
+          "5,2": {
+            "kind": "floor"
+          },
+          "10,19": {
+            "kind": "floor"
+          },
+          "20,19": {
+            "kind": "floor"
+          },
+          "5,9": {
+            "kind": "floor"
+          },
+          "18,2": {
+            "kind": "floor"
+          },
+          "10,11": {
+            "crate_kind": "loot",
+            "kind": "factory",
+            "schedule": {
+              "every": 3,
+              "rounds": {},
+              "phase": 0,
+              "first": 1
+            },
+            "dir": 3,
+            "pattern": "corner"
+          },
+          "20,11": {
+            "kind": "floor"
+          },
+          "1,16": {
+            "kind": "floor"
+          },
+          "16,5": {
+            "kind": "floor"
+          },
+          "7,16": {
+            "kind": "floor"
+          },
+          "6,16": {
+            "kind": "floor"
+          },
+          "15,12": {
+            "kind": "floor"
+          },
+          "4,16": {
+            "kind": "floor"
+          }
+        },
+        "spawners": {
+          "2,19": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 0,
+            "first": 1
+          },
+          "19,19": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 0,
+            "first": 1
+          },
+          "19,2": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 0,
+            "first": 1
+          },
+          "2,2": {
+            "chance": 50,
+            "rounds": {},
+            "every": 3,
+            "item": "random",
+            "phase": 0,
+            "first": 1
+          }
+        },
+        "pushers": [
+          {
+            "parity": 1,
+            "z": 12,
+            "dir": 0,
+            "x": 11
+          },
+          {
+            "parity": 1,
+            "z": 9,
+            "dir": 2,
+            "x": 10
+          },
+          {
+            "parity": 0,
+            "z": 11,
+            "dir": 1,
+            "x": 12
+          },
+          {
+            "parity": 0,
+            "z": 10,
+            "dir": 3,
+            "x": 9
+          },
+          {
+            "parity": 1,
+            "z": 10,
+            "dir": 0,
+            "x": 2
+          },
+          {
+            "parity": 0,
+            "z": 20,
+            "dir": 3,
+            "x": 13
+          },
+          {
+            "parity": 0,
+            "z": 10,
+            "dir": 2,
+            "x": 19
+          },
+          {
+            "parity": 0,
+            "z": 1,
+            "dir": 1,
+            "x": 13
+          }
+        ],
+        "overhead": {
+          "16,11": {
+            "kind": "crusher",
+            "parity": 0
+          },
+          "15,11": {
+            "kind": "crusher",
+            "parity": 1
+          },
+          "13,19": {
+            "kind": "crusher",
+            "parity": 0
+          },
+          "13,18": {
+            "kind": "crusher",
+            "parity": 1
+          },
+          "5,10": {
+            "kind": "crusher",
+            "parity": 1
+          },
+          "13,4": {
+            "kind": "crusher",
+            "parity": 1
+          },
+          "13,3": {
+            "kind": "crusher",
+            "parity": 0
+          },
+          "4,10": {
+            "kind": "crusher",
+            "parity": 0
+          }
+        },
+        "lasers": [
+          {
+            "power": 3,
+            "z": 3,
+            "dir": 3,
+            "x": 15
+          },
+          {
+            "power": 2,
+            "z": 13,
+            "dir": 1,
+            "x": 16
+          },
+          {
+            "power": 1,
+            "z": 18,
+            "dir": 1,
+            "x": 10
+          },
+          {
+            "power": 1,
+            "z": 9,
+            "dir": 2,
+            "x": 16
+          },
+          {
+            "power": 1,
+            "z": 3,
+            "dir": 0,
+            "x": 11
+          },
+          {
+            "power": 1,
+            "z": 14,
+            "dir": 3,
+            "x": 5
+          },
+          {
+            "power": 1,
+            "z": 14,
+            "dir": 1,
+            "x": 6
+          },
+          {
+            "power": 3,
+            "z": 3,
+            "dir": 1,
+            "x": 10
+          },
+          {
+            "power": 3,
+            "z": 3,
+            "dir": 3,
+            "x": 8
+          },
+          {
+            "power": 1,
+            "z": 13,
+            "dir": 0,
+            "x": 20
+          }
+        ],
+        "map_type": "race",
+        "crates": {},
+        "walls": {
+          "1,9,N": true,
+          "8,9,E": true,
+          "2,9,N": true,
+          "10,19,E": true,
+          "10,17,E": true,
+          "19,8,N": true,
+          "6,11,E": true,
+          "9,14,E": true,
+          "18,15,E": true,
+          "11,5,N": true,
+          "2,11,E": true,
+          "1,11,E": true,
+          "4,11,E": true,
+          "16,3,N": true,
+          "10,4,E": true,
+          "9,13,E": true,
+          "15,9,E": true,
+          "9,1,N": true,
+          "2,13,E": true,
+          "9,17,N": true,
+          "13,15,N": true,
+          "12,17,N": true,
+          "6,16,N": true,
+          "17,7,N": true,
+          "18,9,E": true,
+          "11,19,E": true,
+          "15,3,E": true,
+          "8,12,N": true,
+          "16,18,E": true,
+          "13,16,E": true,
+          "16,16,N": true,
+          "6,3,E": true,
+          "17,11,E": true,
+          "5,14,E": true,
+          "2,14,E": true,
+          "16,9,N": true,
+          "14,13,N": true,
+          "12,20,N": true,
+          "1,14,N": true,
+          "2,14,N": true,
+          "16,12,N": true,
+          "1,13,N": true,
+          "17,5,N": true,
+          "11,17,N": true,
+          "10,1,N": true,
+          "18,6,E": true,
+          "14,1,N": true,
+          "19,7,N": true,
+          "9,5,E": true,
+          "8,6,N": true,
+          "15,9,N": true,
+          "6,4,N": true,
+          "9,20,E": true,
+          "8,1,N": true,
+          "7,8,E": true,
+          "8,13,N": true,
+          "15,13,E": true,
+          "15,19,E": true,
+          "4,6,N": true,
+          "17,12,N": true,
+          "12,15,E": true,
+          "10,3,E": true,
+          "17,13,E": true,
+          "14,1,E": true,
+          "9,19,E": true,
+          "14,0,N": true,
+          "10,17,N": true,
+          "4,13,E": true,
+          "10,2,E": true,
+          "9,18,E": true,
+          "11,20,E": true,
+          "15,18,N": true,
+          "18,13,N": true,
+          "19,14,N": true,
+          "14,4,N": true,
+          "10,1,E": true,
+          "19,9,E": true,
+          "17,15,N": true,
+          "18,14,E": true,
+          "14,3,E": true,
+          "20,8,N": true,
+          "15,4,E": true,
+          "2,11,N": true,
+          "6,2,E": true,
+          "5,8,N": true,
+          "4,8,N": true,
+          "9,6,E": true,
+          "12,19,N": true,
+          "7,16,E": true,
+          "19,8,E": true,
+          "20,14,N": true
+        },
+        "size": 20,
+        "enemies": {
+          "14,7": {
+            "kind": "sentry",
+            "dir": 2
+          },
+          "13,13": {
+            "kind": "sentry",
+            "dir": 1
+          },
+          "15,15": {
+            "kind": "sentry",
+            "dir": 1
+          },
+          "6,6": {
+            "kind": "sentry",
+            "dir": 2
+          },
+          "15,6": {
+            "kind": "sentry",
+            "dir": 1
+          },
+          "6,15": {
+            "kind": "sentry",
+            "dir": 1
+          },
+          "10,8": {
+            "kind": "sentry",
+            "dir": 1
+          }
+        },
+        "title": "Extractor Floor",
+        "start": {
+          "z": 3,
+          "dir": 0,
+          "x": 3
+        },
+        "pickups": {}
+      }
+    },
+    {
+      "id": "arena_15",
+      "author": "MisterE",
+      "data": {
+        "version": 3,
+        "board": {
+          "10,9": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 1,
+            "entry": 0
+          },
+          "7,8": {
+            "kind": "floor"
+          },
+          "6,8": {
+            "kind": "pit"
+          },
+          "9,8": {
+            "kind": "floor"
+          },
+          "8,8": {
+            "kind": "pit"
+          },
+          "10,5": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "10,7": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "10,1": {
+            "kind": "floor"
+          },
+          "3,8": {
+            "kind": "pit"
+          },
+          "2,8": {
+            "kind": "floor"
+          },
+          "5,8": {
+            "kind": "pit"
+          },
+          "4,8": {
+            "kind": "floor"
+          },
+          "9,6": {
+            "kind": "floor"
+          },
+          "1,7": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "7,6": {
+            "kind": "floor"
+          },
+          "6,6": {
+            "kind": "pit"
+          },
+          "4,7": {
+            "kind": "floor"
+          },
+          "9,5": {
+            "kind": "floor"
+          },
+          "2,7": {
+            "kind": "floor"
+          },
+          "3,7": {
+            "kind": "pit"
+          },
+          "1,6": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "3,3": {
+            "kind": "pit"
+          },
+          "6,3": {
+            "kind": "pit"
+          },
+          "5,3": {
+            "kind": "pit"
+          },
+          "5,6": {
+            "kind": "pit"
+          },
+          "4,6": {
+            "kind": "floor"
+          },
+          "3,6": {
+            "kind": "rotator",
+            "turn": 1
+          },
+          "2,6": {
+            "kind": "floor"
+          },
+          "8,3": {
+            "kind": "pit"
+          },
+          "7,3": {
+            "kind": "floor"
+          },
+          "9,3": {
+            "kind": "floor"
+          },
+          "8,7": {
+            "kind": "pit"
+          },
+          "9,7": {
+            "kind": "floor"
+          },
+          "6,7": {
+            "kind": "pit"
+          },
+          "7,7": {
+            "kind": "floor"
+          },
+          "10,10": {
+            "kind": "floor"
+          },
+          "9,10": {
+            "kind": "floor"
+          },
+          "8,10": {
+            "kind": "floor"
+          },
+          "7,10": {
+            "kind": "floor"
+          },
+          "6,10": {
+            "kind": "floor"
+          },
+          "5,10": {
+            "kind": "floor"
+          },
+          "4,10": {
+            "kind": "floor"
+          },
+          "3,10": {
+            "kind": "floor"
+          },
+          "2,3": {
+            "kind": "floor"
+          },
+          "5,7": {
+            "kind": "pit"
+          },
+          "9,9": {
+            "kind": "checkpoint"
+          },
+          "8,9": {
+            "kind": "floor"
+          },
+          "7,9": {
+            "kind": "floor"
+          },
+          "6,9": {
+            "kind": "floor"
+          },
+          "1,9": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2,
+            "entry": 1
+          },
+          "2,9": {
+            "kind": "repair"
+          },
+          "3,9": {
+            "kind": "floor"
+          },
+          "5,4": {
+            "kind": "pit"
+          },
+          "6,4": {
+            "kind": "pit"
+          },
+          "3,4": {
+            "kind": "pit"
+          },
+          "4,4": {
+            "kind": "floor"
+          },
+          "1,4": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "2,4": {
+            "kind": "floor"
+          },
+          "4,9": {
+            "kind": "floor"
+          },
+          "5,9": {
+            "kind": "floor"
+          },
+          "6,5": {
+            "kind": "pit"
+          },
+          "5,5": {
+            "kind": "pit"
+          },
+          "4,5": {
+            "kind": "floor"
+          },
+          "1,1": {
+            "kind": "floor"
+          },
+          "6,1": {
+            "kind": "floor"
+          },
+          "7,1": {
+            "kind": "floor"
+          },
+          "4,1": {
+            "kind": "floor"
+          },
+          "5,1": {
+            "kind": "floor"
+          },
+          "10,6": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "4,2": {
+            "kind": "floor"
+          },
+          "5,2": {
+            "crate_kind": "steel",
+            "kind": "factory",
+            "schedule": {
+              "every": 3,
+              "rounds": {},
+              "phase": 0,
+              "first": 1
+            },
+            "dir": 0,
+            "pattern": "one"
+          },
+          "6,2": {
+            "crate_kind": "steel",
+            "kind": "factory",
+            "schedule": {
+              "every": 3,
+              "rounds": {},
+              "phase": 0,
+              "first": 1
+            },
+            "dir": 0,
+            "pattern": "one"
+          },
+          "1,3": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "1,8": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "1,2": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 3,
+            "entry": 2
+          },
+          "2,2": {
+            "kind": "checkpoint"
+          },
+          "1,10": {
+            "kind": "floor"
+          },
+          "2,10": {
+            "kind": "floor"
+          },
+          "7,4": {
+            "kind": "floor"
+          },
+          "8,4": {
+            "kind": "pit"
+          },
+          "7,2": {
+            "kind": "floor"
+          },
+          "8,2": {
+            "kind": "floor"
+          },
+          "9,2": {
+            "kind": "repair"
+          },
+          "8,1": {
+            "kind": "floor"
+          },
+          "9,4": {
+            "kind": "floor"
+          },
+          "10,4": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "2,5": {
+            "kind": "floor"
+          },
+          "1,5": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 2
+          },
+          "10,3": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "3,5": {
+            "kind": "rotator",
+            "turn": 1
+          },
+          "10,8": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0
+          },
+          "4,3": {
+            "kind": "floor"
+          },
+          "9,1": {
+            "kind": "floor"
+          },
+          "10,2": {
+            "kind": "belt",
+            "speed": 1,
+            "dir": 0,
+            "entry": 3
+          },
+          "3,2": {
+            "kind": "floor"
+          },
+          "3,1": {
+            "kind": "floor"
+          },
+          "2,1": {
+            "kind": "floor"
+          },
+          "8,5": {
+            "kind": "rotator",
+            "turn": 3
+          },
+          "7,5": {
+            "kind": "floor"
+          },
+          "8,6": {
+            "kind": "rotator",
+            "turn": 3
+          }
+        },
+        "spawners": {},
+        "pushers": {},
+        "overhead": {},
+        "lasers": [
+          {
+            "power": 1,
+            "z": 8,
+            "dir": 3,
+            "x": 7
+          },
+          {
+            "power": 1,
+            "z": 3,
+            "dir": 1,
+            "x": 4
+          }
+        ],
+        "map_type": "race",
+        "crates": {},
+        "walls": {
+          "3,8,E": true,
+          "7,3,E": true,
+          "3,3,E": true,
+          "7,8,E": true
+        },
+        "size": 10,
+        "enemies": {},
+        "title": "Birthing Floor",
+        "start": {
+          "z": 2,
+          "dir": 0,
+          "x": 2
+        },
+        "pickups": {}
+      }
+    }
+  ]
+}
