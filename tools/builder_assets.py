@@ -21,7 +21,7 @@ for size in (10,20,30):
  save('sc_map_base_'+str(size),im)
 for kind in ('pit','repair','checkpoint','start','crusher','spawner','rotator_1','rotator_3'):
  im=Image.new('RGBA',(8,8));d=ImageDraw.Draw(im)
- if kind=='pit':d.rectangle((0,0,7,7),fill='#080f19');d.line((1,0,3,0),fill='#d6ad5b')
+ if kind=='pit':d.rectangle((0,0,7,7),fill='#000000')
  elif kind=='repair':d.rectangle((3,1,4,6),fill='#9ce2bd');d.rectangle((1,3,6,4),fill='#9ce2bd')
  elif kind=='checkpoint':d.line((2,1,2,6),fill='#eee7b6');d.rectangle((3,1,6,3),fill='#edc56e')
  elif kind=='start':d.rectangle((1,1,6,6),outline='#86e1cc');d.rectangle((3,3,4,4),fill='#86e1cc')

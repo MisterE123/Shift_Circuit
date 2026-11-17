@@ -23,3 +23,5 @@ Robot destruction variants and victory/puzzle completion cues: Codex GPT-6 Astra
 Menu background and banner: original game assets and editable pixel lettering by Codex GPT-6 Astra Medium, CC0. Sources in `art/menu/`; builder in `tools/menu_brand_art.py`. The approved title banner was created using OpenAI image generation and is included under the project CC0 asset dedication. The rejected factory illustration is not shipped.
 
 Bundled race-board designs: MisterE. Seven enabled authored boards are shipped in `mods/shift_circuit_arenas/boards.json` under CC0-1.0.
+
+Factory Challenges level pack: Codex-assisted designs, reviewed and approved by the game author; CC0-1.0. Includes fifteen race arenas and thirteen puzzles, including the easier Counterflow puzzle. Rejected and unapproved proposals are not shipped.

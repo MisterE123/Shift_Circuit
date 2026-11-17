@@ -1,0 +1,389 @@
+{
+  "Cargo Umbrella": {
+    "plan": [
+      "MOVE3",
+      "STEP",
+      "BACK",
+      "RIGHT",
+      "DASH",
+      "DASH",
+      "LEFT",
+      "MOVE3"
+    ],
+    "settings": [
+      {
+        "gyro": false,
+        "brake": true,
+        "aim": 0
+      },
+      {
+        "gyro": false,
+        "aim": 0,
+        "brake": true
+      }
+    ]
+  },
+  "Two Jobs, One Crate": {
+    "plan": [
+      "STEP",
+      "LEFT",
+      "MOVE3",
+      "RIGHT",
+      "BACK",
+      "LEFT",
+      "STEP",
+      "RIGHT",
+      "MOVE3",
+      "DASH"
+    ],
+    "settings": [
+      {
+        "aim": 0,
+        "gyro": false,
+        "brake": true
+      },
+      {
+        "aim": 0,
+        "brake": true,
+        "gyro": false
+      }
+    ]
+  },
+  "Double Latch": {
+    "plan": [
+      "RIGHT",
+      "STEP",
+      "LEFT",
+      "MOVE3",
+      "UTURN",
+      "RIGHT",
+      "BACK2",
+      "LEFT",
+      "BACK2",
+      "RIGHT",
+      "BACK2"
+    ],
+    "settings": [
+      {
+        "brake": true,
+        "gyro": false,
+        "aim": 0
+      },
+      {
+        "brake": true,
+        "gyro": false,
+        "aim": 0
+      },
+      {
+        "brake": true,
+        "gyro": false,
+        "aim": 0
+      }
+    ]
+  },
+  "Rotor Contract": {
+    "plan": [
+      "DASH",
+      "MOVE3",
+      "DASH",
+      "UTURN",
+      "BACK",
+      "BACK2",
+      "MOVE3",
+      "MOVE3",
+      "BACK2",
+      "BACK",
+      "BACK2"
+    ],
+    "settings": [
+      {
+        "aim": 0,
+        "brake": true,
+        "gyro": false
+      },
+      {
+        "aim": 0,
+        "brake": true,
+        "gyro": false
+      },
+      {
+        "aim": 0,
+        "brake": true,
+        "gyro": false
+      }
+    ]
+  },
+  "Pull Before Push": {
+    "plan": [
+      "LEFT",
+      "STEP",
+      "BACK",
+      "RIGHT",
+      "STEP",
+      "LEFT",
+      "WAIT",
+      "LEFT",
+      "STEP",
+      "RIGHT",
+      "DASH",
+      "RIGHT",
+      "MOVE3",
+      "RIGHT",
+      "DASH",
+      "LEFT",
+      "STEP",
+      "LEFT",
+      "MOVE3",
+      "STEP",
+      "RIGHT",
+      "DASH"
+    ],
+    "settings": [
+      {
+        "gyro": false,
+        "brake": true,
+        "aim": 0
+      },
+      {
+        "gyro": false,
+        "brake": true,
+        "aim": 0
+      },
+      {
+        "gyro": false,
+        "brake": true,
+        "aim": 2
+      },
+      {
+        "gyro": false,
+        "brake": true,
+        "aim": 2
+      },
+      {
+        "gyro": false,
+        "brake": true,
+        "aim": 2
+      }
+    ]
+  },
+  "Patrol Metronome": {
+    "plan": [
+      "DASH",
+      "LEFT",
+      "MOVE3",
+      "WAIT",
+      "DASH",
+      "LEFT",
+      "BACK",
+      "BACK2"
+    ],
+    "settings": [
+      {
+        "brake": true,
+        "gyro": false,
+        "aim": 0
+      },
+      {
+        "brake": true,
+        "gyro": false,
+        "aim": 0
+      }
+    ]
+  },
+  "Ram Disposal": {
+    "plan": [
+      "DASH",
+      "LEFT",
+      "MOVE3",
+      "RIGHT",
+      "BACK2",
+      "STEP",
+      "MOVE3",
+      "STEP"
+    ],
+    "settings": [
+      {
+        "aim": 0,
+        "brake": true,
+        "gyro": false
+      },
+      {
+        "aim": 0,
+        "brake": true,
+        "gyro": false
+      }
+    ]
+  },
+  "Steel to Scrap": {
+    "plan": [
+      "LEFT",
+      "STEP",
+      "RIGHT",
+      "STEP",
+      "RIGHT",
+      "STEP",
+      "STEP",
+      "WAIT",
+      "DASH",
+      "DASH",
+      "BACK2",
+      "BACK2",
+      "LEFT",
+      "MOVE3",
+      "LEFT"
+    ],
+    "settings": [
+      {
+        "gyro": false,
+        "brake": true,
+        "aim": 0
+      },
+      {
+        "gyro": false,
+        "brake": true,
+        "aim": 0
+      },
+      {
+        "gyro": false,
+        "brake": true,
+        "aim": 0
+      },
+      {
+        "gyro": false,
+        "brake": true,
+        "aim": 0
+      }
+    ]
+  },
+  "Offset Clock": {
+    "plan": [
+      "RIGHT",
+      "MOVE3",
+      "LEFT",
+      "STEP",
+      "MOVE3",
+      "LEFT",
+      "BACK",
+      "LEFT",
+      "DASH",
+      "MOVE3",
+      "RIGHT",
+      "STEP",
+      "MOVE3",
+      "MOVE3"
+    ],
+    "settings": [
+      {
+        "brake": true,
+        "gyro": false,
+        "aim": 0
+      },
+      {
+        "brake": true,
+        "gyro": false,
+        "aim": 0
+      },
+      {
+        "brake": true,
+        "gyro": false,
+        "aim": 0
+      }
+    ]
+  },
+  "Power Audit": {
+    "plan": [
+      "LEFT",
+      "BACK2",
+      "MOVE3",
+      "RIGHT",
+      "STEP",
+      "MOVE3",
+      "RIGHT",
+      "DASH",
+      "STEP",
+      "RIGHT"
+    ],
+    "settings": [
+      {
+        "aim": 0,
+        "brake": true,
+        "gyro": false
+      },
+      {
+        "aim": 0,
+        "brake": true,
+        "gyro": false
+      }
+    ]
+  },
+  "Heavy Traffic": {
+    "plan": [
+      "BACK",
+      "RIGHT",
+      "MOVE3",
+      "MOVE3",
+      "MOVE3",
+      "BACK2",
+      "MOVE3",
+      "LEFT",
+      "MOVE3",
+      "MOVE3",
+      "LEFT",
+      "MOVE3",
+      "LEFT"
+    ],
+    "settings": [
+      {
+        "brake": true,
+        "gyro": false,
+        "aim": 0
+      },
+      {
+        "brake": true,
+        "gyro": false,
+        "aim": 0
+      },
+      {
+        "brake": false,
+        "gyro": false,
+        "aim": 0
+      }
+    ]
+  },
+  "Watchtower Ring": {
+    "plan": [
+      "MOVE3",
+      "STEP",
+      "BACK",
+      "MOVE3",
+      "LEFT",
+      "STEP",
+      "WAIT",
+      "BACK",
+      "RIGHT",
+      "MOVE3",
+      "LEFT",
+      "RIGHT",
+      "BACK",
+      "MOVE3",
+      "STEP"
+    ],
+    "settings": [
+      {
+        "brake": true,
+        "gyro": false,
+        "aim": 2
+      },
+      {
+        "brake": true,
+        "gyro": false,
+        "aim": 3
+      },
+      {
+        "brake": true,
+        "gyro": false,
+        "aim": 3
+      }
+    ]
+  }
+}

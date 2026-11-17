@@ -1,0 +1,5 @@
+Loader code: MIT, under the game's root LICENSE.
+Level data: CC0-1.0, under the game's LICENSE-ASSETS.md dedication.
+
+Designs: Codex-assisted, reviewed and approved by the game author.
+Counterflow is an introductory challenge, rather than a high-difficulty puzzle.

@@ -83,9 +83,10 @@ function R.blocked(s,x,z,dir)
 end
 function R.laser_source(q)local d=R.dirs[q.dir+1];return q.x-d.x*.5,q.z-d.z*.5 end
 function R.tile(s,x,z) local t=s.board[R.key(x,z)]or {kind='pit'};if t.kind=='factory'then return {kind='wall'}end;if t.kind=='trapdoor'and t.open then return {kind='pit'}end;return t end
+function R.ghosts_allowed(s)return s.mode~='puzzle' and not s.puzzle end
 function R.at(s,x,z,except,ray)
   for _,c in pairs(s.crates or {})do if c~=except and not c.down and c.x==x and c.z==z then return c end end
-  for _,b in ipairs(s.bots) do if b ~= except and not (not ray and except and not except.crate and (s.round==1 or except.ghost or b.ghost)) and not b.down and not b.finished and b.x==x and b.z==z then return b end end
+  for _,b in ipairs(s.bots) do if b ~= except and not (R.ghosts_allowed(s) and not ray and except and not except.crate and (s.round==1 or except.ghost or b.ghost)) and not b.down and not b.finished and b.x==x and b.z==z then return b end end
 end
 function R.archive_choices(b)
  R.normalize(b);local list={};local seen={}
@@ -221,6 +222,7 @@ end
 -- Every robot is intangible to other robots for the whole opening round.
 -- Thereafter ghosting ends only at a register/round boundary on an unshared square.
 function R.ghosts(s,settle)
+ if not R.ghosts_allowed(s)then for _,b in ipairs(s.bots)do b.ghost=nil end;return end
  local counts={}
  for _,b in ipairs(s.bots)do if not b.down and not b.finished then
   local k=R.key(b.x,b.z);counts[k]=(counts[k]or 0)+1
@@ -232,7 +234,7 @@ end
 function R.shared_start(s,start)
  s.start={x=start.x,z=start.z,dir=start.dir or 0}
  local count=0;for _,b in ipairs(s.bots)do if not b.enemy or b.racing then count=count+1 end end
- for _,b in ipairs(s.bots)do if not b.enemy or b.racing then b.x,b.z,b.dir=start.x,start.z,start.dir or 0;b.home={x=b.x,z=b.z,dir=b.dir};b.ghost=count>1 end end
+ for _,b in ipairs(s.bots)do if not b.enemy or b.racing then b.x,b.z,b.dir=start.x,start.z,start.dir or 0;b.home={x=b.x,z=b.z,dir=b.dir};b.ghost=R.ghosts_allowed(s)and count>1 or nil end end
 end
 function R.priority(b,slot)
  return (b.program_ids or {})[slot]or ((b.hand_ids or {})[(b.selected or {})[slot]])or 0
@@ -486,11 +488,11 @@ function R.respawn(s)
   R.resolve_drops(s)
   for _,b in ipairs(R.order(s)) do
     if b.down and not b.finished and not b.scripted then
-      -- Restore the saved square even when occupied; sharing grants ghost grace.
+      -- Races grant shared-square ghost grace; puzzles reboot on a free square.
       local best,dist;local home=b.holo_reboot or b.home
       for z=1,s.size do for x=1,s.size do
         local t=R.tile(s,x,z); local d=math.abs(x-home.x)+math.abs(z-home.z)
-        if (t.kind=='floor' or t.kind=='save' or t.kind=='station' or t.kind=='repair' or (b.holo_reboot and t.kind~='pit'and t.kind~='wall')) and (not dist or d<dist) then
+        if (t.kind=='floor' or t.kind=='save' or t.kind=='station' or t.kind=='repair' or (b.holo_reboot and t.kind~='pit'and t.kind~='wall')) and (R.ghosts_allowed(s)or not R.at(s,x,z,b,true)) and (not dist or d<dist) then
           best={x=x,z=z}; dist=d
         end
       end end

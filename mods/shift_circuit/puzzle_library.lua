@@ -74,11 +74,12 @@ Registration code generated with Codex GPT-6 Astra Medium.
   if filter then filters[n]=filter;pages[n]=1 end
   local entries=P.entries(n,filters[n]);local page=math.max(1,math.min(pages[n]or 1,math.max(1,math.ceil(#entries/4))));pages[n]=page
   local esc=core.formspec_escape;local f={'formspec_version[6]size[16,12]background[0,0;16,12;sc_setup_background.png]style_type[button;bgimg=sc_menu_button.png;bgimg_pressed=sc_menu_button_pressed.png;border=false]label[.7,.6;'..(filters[n]=='tutorial'and 'TUTORIAL'or 'PUZZLES')..']'}
-  local opening,closing=MenuUI.scroll(.6,1.5,14.8,8.1,'puzzles_scroll',math.ceil(#entries/2)*3.8-.3);f[#f+1]=opening
-  for index,e in ipairs(entries)do local x=.1+((index-1)%2)*7.5;local y=.12+math.floor((index-1)/2)*3.8
-   f[#f+1]=('background9[%s,%s;7.35,3.5;sc_ui_panel.png;false;4]'):format(x-.1,y-.12)
-   f[#f+1]=('image[%s,%s;2.7,2.7;%s]button[%s,%s;4.2,.7;play_%d;%s]textarea[%s,%s;4.2,1.65;;;%s]label[%s,%s;%s]'):format(x,y,esc(preview.texture(e.data)),x+2.9,y,index,esc(e.data.title),x+2.9,y+.85,esc((e.data.puzzle or {}).description or ''),x+2.9,y+2.5,esc(e.tutorial and 'TUTORIAL'or e.builtin and 'BUILT-IN'or e.installed and e.pack or e.status and e.status:upper()or e.private and 'PRIVATE / YOUR SAVE'or 'ENABLED'))
-   local best=store:get_int('puzzle_best:'..n..':'..e.id);if best==0 and e.id:find('pack:shift_circuit_tutorial:',1,true)==1 then best=store:get_int('puzzle_best:'..n..':'..e.id:gsub('pack:shift_circuit_tutorial:','pack:sc_tutorial:'));if best>0 then store:set_int('puzzle_best:'..n..':'..e.id,best)end end;if best>0 then f[#f+1]=('label[%s,%s;BEST: %d ROUNDS]'):format(x,y+3,best)end
+  local opening,closing=MenuUI.scroll(.6,1.5,14.8,8.1,'puzzles_scroll',math.max(0,math.ceil(#entries/2)*4.2-.2));f[#f+1]=opening
+  -- Use clipped image panels: formspec backgrounds ignore scroll-container bounds.
+  for index,e in ipairs(entries)do local x=.25+((index-1)%2)*7.5;local y=.2+math.floor((index-1)/2)*4.2
+   f[#f+1]=('image[%s,%s;7.3,4;sc_ui_panel.png;8]'):format(x-.25,y-.2)
+   f[#f+1]=('image[%s,%s;2.5,2.5;%s]button[%s,%s;4.1,.7;play_%d;%s]textarea[%s,%s;4.1,2.2;;;%s]label[%s,%s;%s]'):format(x,y,esc(preview.texture(e.data)),x+2.7,y,index,esc(e.data.title),x+2.7,y+.85,esc((e.data.puzzle or {}).description or ''),x+2.7,y+3.15,esc(e.tutorial and 'TUTORIAL'or e.builtin and 'BUILT-IN'or e.installed and e.pack or e.status and e.status:upper()or e.private and 'PRIVATE / YOUR SAVE'or 'ENABLED'))
+   local best=store:get_int('puzzle_best:'..n..':'..e.id);if best==0 and e.id:find('pack:shift_circuit_tutorial:',1,true)==1 then best=store:get_int('puzzle_best:'..n..':'..e.id:gsub('pack:shift_circuit_tutorial:','pack:sc_tutorial:'));if best>0 then store:set_int('puzzle_best:'..n..':'..e.id,best)end end;if best>0 then f[#f+1]=('label[%s,%s;BEST: %d ROUNDS]'):format(x,y+3.5,best)end
   end
   f[#f+1]=closing
   if #entries==0 then f[#f+1]='label[.8,2;No puzzles yet. Create one in the Workshop.]'end

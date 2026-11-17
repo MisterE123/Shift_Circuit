@@ -5,6 +5,18 @@ return function(core,store,room_for,leave)
  local data_path=core.get_mod_data_path and core.get_mod_data_path()
  local E={};local drafts={};local messages={}
  local catalog=core.deserialize(store:get_string('level_catalog'))or {}
+ -- One-time retirement of the unwanted authored duplicate, not its original.
+ if store:get_string('retired_loopdloop_copy_v1')~='done'then
+  local removed={}
+  for id,v in pairs(catalog)do
+   if v.author=='MisterE'and v.data and v.data.title=='LoopDLoop copy'then removed[id]=v;catalog[id]=nil end
+  end
+  if next(removed)then
+   store:set_string('retired_loopdloop_copy_backup',core.serialize(removed))
+   store:set_string('level_catalog',core.serialize(catalog))
+  end
+  store:set_string('retired_loopdloop_copy_v1','done')
+ end
  -- Retire only the bundled generated board; never alter player drafts or copies.
  local retired=core.deserialize(store:get_string('retired_generated_boards'))or {};local changed=false
  for id,v in pairs(catalog)do if v.author=='Shift Circuit'and v.data and v.data.title=='Service Yard'then retired[id]=v;catalog[id]=nil;changed=true end end
