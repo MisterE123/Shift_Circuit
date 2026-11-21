@@ -193,7 +193,7 @@ Systems=dofile(path..'/systems_visual.lua')(R,G,visual,Net)
 Health=dofile(path..'/robot_health.lua')(visual,Net)
 local function clear_preview() for _,o in ipairs(preview_beams) do if o:get_pos() then o:remove() end end;preview_beams={};preview_refresh=0 end
 local element_objects={};local edge_version=0
-local function cleanup() Active.release();element_objects={};edge_version=0;home_markers={};clear_preview();for _,o in ipairs(props) do if o:get_pos() then o:remove() end end;props={};robots={};belts={};presses={};pushers={};rotors={};pickups={} end
+local function cleanup() element_objects={};edge_version=0;home_markers={};clear_preview();for _,o in ipairs(props) do if o:get_pos() then o:remove() end end;props={};robots={};belts={};presses={};pushers={};rotors={};pickups={};Active.release() end
 -- Fixed stroke durations keep plate, rod and hydraulic audio on the same clock.
 local function piston_stroke(object,target,extending)
  local e=object and object:get_luaentity();local from=object and object:get_pos()
@@ -453,16 +453,19 @@ end
 follow_camera=function(p)
  local name=p:get_player_name();local v=players[name];if not v then return end
  local watched=watched_bot(name);if not watched and not spectating(name)then watched=humans()[1]end;local target=watched and robots[watched.id]
- if target and watched.id==name and target:get_luaentity().owner_view then target=target:get_luaentity().owner_view end
+ local actor=target and target:get_luaentity()
+ if actor and watched.id==name and actor.owner_view and actor.owner_view:get_pos()then target=actor.owner_view end
  if not target or not target:get_pos()then
   if spectating(name)and v.follow then p:set_detach();v.follow:remove();v.follow=nil;if v.return_view then p:set_fov(v.return_view.fov or 65,false,.35)end;v.return_view=nil end
   return
  end
- if v.follow and v.follow:get_pos()then v.follow:get_luaentity().follow_object=target;return end
- v.return_view={pos=vector.new(p:get_pos()),yaw=p:get_look_horizontal(),pitch=p:get_look_vertical(),fov=p:get_fov()}
+ local existing=v.follow and v.follow:get_luaentity()
+ if existing then existing.follow_object=target;return end
  local angle=v.orbit_angle or 0;local location,radius=orbit_position(target:get_pos(),angle)
  local o=visual('robot',location,{is_visible=false})
- local e=o:get_luaentity();e.follow_object=target;e.orbit_owner=name;e.orbit_angle=angle;e.orbit_target=angle;v.follow=o
+ local e=o and o:get_luaentity();if not e then return end
+ v.return_view=v.return_view or {pos=vector.new(p:get_pos()),yaw=p:get_look_horizontal(),pitch=p:get_look_vertical(),fov=p:get_fov()}
+ e.follow_object=target;e.orbit_owner=name;e.orbit_angle=angle;e.orbit_target=angle;v.follow=o
  p:set_attach(o,'',{x=0,y=0,z=0},{x=0,y=0,z=0});p:set_look_horizontal(angle);p:set_look_vertical(math.atan(8/radius));p:set_fov(60,false,.35)
 end
 restore_cameras=function(above_robot)
@@ -668,7 +671,9 @@ core.register_tool('shift_circuit:commit',{description='COMMIT / Queue five card
 local function orbit(direction)
  return function(stack,p)
   local v=players[p:get_player_name()];if v and v.follow and (spectating(p:get_player_name())or not inspecting())then
-   local e=v.follow:get_luaentity();e.orbit_target=(e.orbit_target or 0)+direction*math.pi/4;v.orbit_angle=e.orbit_target
+   local e=v.follow:get_luaentity()
+   if not e then follow_camera(p);e=v.follow and v.follow:get_luaentity()end
+   if e then e.orbit_target=(e.orbit_target or 0)+direction*math.pi/4;v.orbit_angle=e.orbit_target end
   end;return stack
  end
 end

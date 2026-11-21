@@ -16,6 +16,13 @@ Host control passes to another racer when possible, otherwise a remaining specta
 
 Camera orbit tools operate during execution; the flight camera returns above the player's robot after a round. Sounds are sent only to players in the same session. World ownership, campaign progress, records, drafts, approved boards and saved configurations persist in mod storage.
 
+## Native LuaJIT crashes
+
+If the server exits with a native fault in `libluajit`, add
+`shift_circuit_disable_jit = true` to the server's Luanti configuration and restart.
+This disables compilation in the server's main Lua state; scripts still run,
+but CPU use may increase. Leave the setting off on unaffected builds.
+
 ## Verification
 
 Automated checks cover isolation, safe allocation, human seat priority, shared editing permissions, course connectivity, saved-configuration access/approval, disconnect takeover and UI state. Native headless smoke checks exercise enclosed generation, custom boards, exports and async AI planning. Rendered UI previews are also checked. Live multi-client visual testing and sustained server load testing remain separate work.

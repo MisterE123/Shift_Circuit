@@ -305,12 +305,20 @@ local function proxy(room)
  c.register_entity=function(n,d)
   room.entity=d
   if not engine.registered_entities[n]then
-   local initial=d.initial_properties
-   engine.register_entity(n,{initial_properties=initial,on_step=function(e,dt)if e.session_step then e.session_step(e,dt)end end})
+   engine.register_entity(n,{
+    initial_properties=d.initial_properties,
+    -- Room visuals are transient. A restored copy has no live room handler.
+    on_step=function(e,dt)
+     if e.session_step then e.session_step(e,dt)else e.object:remove()end
+    end,
+   })
   end
  end
  c.add_entity=function(p,n,...)
-  local o=engine.add_entity(p,n,...);if o then o:get_luaentity().session_step=room.entity.on_step end;return o
+  local o=engine.add_entity(p,n,...)
+  local e=o and o:get_luaentity()
+  if not e then if o then o:remove()end;return end
+  e.session_step=room.entity.on_step;return o
  end
  c.register_tool=function(n,d)
   room.tools[n]=d
