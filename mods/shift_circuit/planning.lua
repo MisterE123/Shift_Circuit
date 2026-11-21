@@ -1,8 +1,8 @@
 -- Plans start at deal time, concurrently with human programming.
 return function(core,path,R,C,background)
- local epoch,pending,job=0,0,nil
+ local epoch,pending,jobs=0,0,{}
  local api={}
- function api.cancel()epoch=epoch+1;pending=0;job=nil end
+ function api.cancel()epoch=epoch+1;pending=0;jobs={} end
  function api.ready()return pending==0 end
  function api.start(state,complete)
   api.cancel();local generation=epoch
@@ -35,26 +35,44 @@ return function(core,path,R,C,background)
    pending=pending-1;if pending==0 then complete()end
   end
   if pending==0 then complete();return end
-  if background and core.handle_async then
+  local function queue_local(request)
+   jobs[#jobs+1]={bot=request.bot,accept=accept,thread=coroutine.create(function()
+    return C.plan(R,request.snapshot,request.bot,coroutine.yield)
+   end)}
+  end
+  if background then
    for _,request in ipairs(requests)do
     local b=request.bot
-    core.handle_async(function(snapshot,id,modpath)return shift_circuit_plan(snapshot,id,modpath)end,
-     function(result)accept(b,result)end,request.snapshot,b.id,path)
+    local submitted=false
+    if core.handle_async then
+     -- Send strings rather than the nested snapshot through Luanti's packed-Lua bridge.
+     submitted=pcall(function()
+      local payload=core.serialize(request.snapshot)
+      core.handle_async(function(packet,id,modpath)return shift_circuit_plan(packet,id,modpath)end,
+       function(result)
+        if generation~=epoch then return end
+        local ok,program=pcall(core.deserialize,result,true)
+        accept(b,ok and program or nil)
+       end,payload,b.id,path)
+     end)
+     if not submitted and core.log then core.log('warning','[Shift Circuit] AI worker submission failed; using time-sliced planning')end
+    end
+    if not submitted then queue_local(request)end
    end
-  elseif background then
-   job=coroutine.create(function()
-    for _,request in ipairs(requests)do accept(request.bot,C.plan(R,request.snapshot,request.bot,coroutine.yield))end
-   end)
   else
    for _,request in ipairs(requests)do accept(request.bot,C.plan(R,request.snapshot,request.bot))end
   end
  end
  function api.tick()
-  if not job then return end
   local started=core.get_us_time and core.get_us_time()or 0
   for _=1,8 do
-   local ok,err=coroutine.resume(job);if not ok then error(err)end
-   if coroutine.status(job)=='dead'then job=nil;break end
+   local job=jobs[1];if not job then return end
+   local ok,result=coroutine.resume(job.thread)
+   if not ok or coroutine.status(job.thread)=='dead'then
+    table.remove(jobs,1)
+    if not ok and core.log then core.log('warning','[Shift Circuit] Time-sliced AI planning failed; filling from dealt hand')end
+    job.accept(job.bot,ok and result or nil)
+   end
    if core.get_us_time and core.get_us_time()-started>=2500 then break end
   end
  end
