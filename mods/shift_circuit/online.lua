@@ -76,6 +76,18 @@ local function background(title)
 end
 local function button(f,x,y,w,h,key,label)f[#f+1]=('button[%s,%s;%s,%s;%s;%s]'):format(x,y,w,h,key,esc(label))end
 local function deliver(name,f,form)menu_visible[name]=true;local p=core.get_player_by_name(name);if p then local text=MenuUI.decorate(table.concat(f));local r=rooms[member[name]];if not r or r.status~='playing'then p:set_inventory_formspec(text)end;core.show_formspec(name,form or 'shift_circuit:online',text)end end
+local function create_room_menu(name, settings, error_message)
+ local f=background('CREATE ROOM')
+ f[#f+1]='label[1,2;Build any connected course within 40 x 40 squares.]'
+ f[#f+1]='checkbox[1,3;collaborative;Allow all racers to build together;'..tostring(settings.collaborative)..']'
+ f[#f+1]='checkbox[1,4.2;timer_enabled;Enable round time limit;'..tostring(settings.timer_enabled)..']'
+ f[#f+1]='field[1,5.25;4,.7;timer_seconds;Seconds per round;'..esc(settings.timer_seconds)..']'
+ f[#f+1]='field_close_on_enter[timer_seconds;false]label[1,6.35;When enabled, round one gives players double the time.]'
+ if error_message then f[#f+1]='label[1,7.25;'..esc(error_message)..']'end
+ button(f,1,8.7,4,.8,'create_cancel','BACK')
+ button(f,5.4,8.7,7.6,.8,'create_confirm','CREATE ROOM')
+ deliver(name,f)
+end
 local function preference(name)prefs[name]=prefs[name] or {board=1,bots=1,ai='hunter',campaign_enemies=1,race_enemies=0,racers=0,difficulty=2,racer_difficulty=2,board_count=1,checkpoints=3};return prefs[name]end
 local approved_choices={}
 local function course_choices(review)
@@ -207,7 +219,8 @@ room_menu=function(name,room)
  f[#f+1]='label[.8,5.65;CHECKPOINTS]'
  for i=1,9 do if host then button(f,.8+(i-1)*.77,6.05,.7,.65,'flags_'..i,(room.checkpoints or 3)==i and '['..i..']'or tostring(i))end end
  if not host then f[#f+1]='label[.8,6.4;'..(room.checkpoints or 3)..' / chosen by creator]'end
- f[#f+1]='label[.8,7.25;Humans take priority over AI racers.]label[8.65,1.65;RACERS / '..#names(room)..' OF 8]'
+ local time_label=room.round_time==false and 'OFF' or (room.round_time or 90)..' seconds'
+ f[#f+1]='label[.8,7.25;Round time limit: '..time_label..']label[8.65,1.65;RACERS / '..#names(room)..' OF 8]'
  for i,n in ipairs(names(room))do f[#f+1]=('label[8.65,%s;%s%s]'):format(2.25+(i-1)*.55,esc(n),n==room.host and ' *'or '')end
  local spectators=#names(room,true)-#names(room);f[#f+1]='label[8.65,7.4;'..spectators..' spectators / * creator]'
  f[#f+1]='textarea[.8,8.35;12.4,.65;;;'..esc(build_message[name]or (host and 'Ready? Start when everyone has joined.'or 'Waiting for the creator to start.'))..']'
@@ -400,13 +413,13 @@ local function new_room(list,solo,auto,level,solo_mode,settings)
  if #list<1 or #list>8 then return nil end
  if solo and (not solo_mode or solo_mode=='campaign')then solo_setup(list[1],'campaign',level);return nil end
  if solo_mode=='test'and not engine.get_player_privs(list[1]).server then return nil end
- next_room=next_room+1;local r={id=next_room,host=list[1],members={},spectators={},status='allocating',solo=solo,solo_mode=solo_mode or 'campaign',level=level or 1,public=auto==true,collaborative=settings and settings.collaborative==true or false,board_limit=16,bots=preference(list[1]).bots,checkpoints=3};rooms[r.id]=r
+ next_room=next_room+1;local r={id=next_room,host=list[1],members={},spectators={},status='allocating',solo=solo,solo_mode=solo_mode or 'campaign',level=level or 1,public=auto==true,collaborative=settings and settings.collaborative==true or false,board_limit=16,round_time=settings and settings.round_time,bots=preference(list[1]).bots,checkpoints=3};rooms[r.id]=r
  for _,n in ipairs(list)do r.members[n]=true;member[n]=r.id;queue[n]=nil;local f=background('PREPARING YOUR ARENA');f[#f+1]='label[1,3;Reserving an enclosed factory room...]';deliver(n,f)end
  allocate(function(o,slot)
   if not rooms[r.id]then if slot then used[slot]=nil end;return end
   if not o then for n in pairs(r.members)do member[n]=nil;show(n)end;rooms[r.id]=nil;return end
   r.origin=o;r.slot=slot
-  r.api=factory(proxy(r),{origin=o,multiplayer=not r.solo,test_lab=r.solo_mode=='test',board=1,defer_board=true,time_sliced_ai=true,ai_mode=preference(r.host).ai,is_spectator=function(n)return r.spectators[n]==true end,racer_finished=function(state,b)racer_finished(r,state,b)end,menu=show,ui=function(n,pitch,cue)Audio.click(n,pitch,cue)end,finished=function(state)finish(r,state)end})
+  r.api=factory(proxy(r),{origin=o,multiplayer=not r.solo,round_time=r.round_time,test_lab=r.solo_mode=='test',board=1,defer_board=true,time_sliced_ai=true,ai_mode=preference(r.host).ai,is_spectator=function(n)return r.spectators[n]==true end,racer_finished=function(state,b)racer_finished(r,state,b)end,menu=show,ui=function(n,pitch,cue)Audio.click(n,pitch,cue)end,finished=function(state)finish(r,state)end})
   r.callbacks.on_mods_loaded()
   r.status='loading'
  end)
@@ -518,10 +531,25 @@ core.register_on_player_receive_fields(function(p,form,f)
   return
  end
  if creation[n]and not r then
-  if f.collaborative then creation[n].collaborative=f.collaborative=='true'end
+  local settings=creation[n]
+  if f.collaborative then settings.collaborative=f.collaborative=='true'end
+  if f.timer_enabled then settings.timer_enabled=f.timer_enabled=='true'end
+  if f.timer_seconds then settings.timer_seconds=f.timer_seconds:sub(1,20)end
   if f.create_cancel then creation[n]=nil;show(n);return end
-  if f.create_confirm then local limit=16
-   local settings=creation[n];settings.limit=limit;creation[n]=nil;new_room({n},false,false,nil,nil,settings);return
+  if f.create_confirm then
+   if settings.timer_enabled then
+    local seconds=tonumber(settings.timer_seconds)
+    if not seconds or seconds<1 or seconds>3600 or seconds%1~=0 then
+     create_room_menu(n,settings,'Enter a whole number from 1 to 3600 seconds.')
+     return
+    end
+    settings.round_time=seconds
+   else
+    settings.round_time=false
+   end
+   creation[n]=nil
+   new_room({n},false,false,nil,nil,settings)
+   return
   end
   if not f.create then return end
  end
@@ -621,9 +649,9 @@ core.register_on_player_receive_fields(function(p,form,f)
  elseif f.tutorial then PuzzleLibrary.open(n,'tutorial');return
  elseif f.solo or f.continue or f.solo_race then solo_setup(n,f.solo_race and 'race' or 'campaign',f.continue and math.max(1,store:get_int('progress:'..n)) or 1);return
  elseif f.create then
-  creation[n]={limit=16,collaborative=false}
-  local f2=background('CREATE ROOM');f2[#f2+1]='label[1,2;Build any connected course within 40 x 40 squares.]checkbox[1,4;collaborative;Allow all racers to build together;false]label[1,5;Off: only you edit the course. Spectators can always view it.]'
-  button(f2,1,8.7,4,.8,'create_cancel','BACK');button(f2,5.4,8.7,7.6,.8,'create_confirm','CREATE ROOM');deliver(n,f2);return
+  creation[n]={collaborative=false,timer_enabled=true,timer_seconds='90'}
+  create_room_menu(n,creation[n])
+  return
  elseif f.queue then queue_serial=queue_serial+1;queue[n]=queue_serial
  elseif f.unqueue then queue[n]=nil
  else

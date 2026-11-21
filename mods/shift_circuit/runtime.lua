@@ -23,7 +23,7 @@ end
 local phase_times={direction_reading=.45,direction=.65,reading=.45,commands=.55,express=1.05,belts=1.05,pushers=1.05,rotators=.8,weapons=.65,lasers=.65,presses=.75}
 local execution_speed,destruction_pause=1,0
 local PROGRAM_SECONDS=90
-local function programming_seconds()return PROGRAM_SECONDS*((S.round or 1)==1 and 2 or 1)end
+local function programming_seconds()return (options.round_time or PROGRAM_SECONDS)*((S.round or 1)==1 and 2 or 1)end
 local function destroyed_puzzle_player()
  if S.mode~='puzzle'or not phase_times[phase]then return false end
  local destroyed=false;for _,b in ipairs(S.bots)do if not b.enemy and not b.finished then if not b.down then return false end;destroyed=true end end;return destroyed
@@ -74,7 +74,7 @@ local function robot_texture(b,down)
  return base..(down and '^[multiply:#694e4b' or (b.racing and '^[multiply:#8cbcff' or (b.enemy and '^[multiply:#ef8c85' or '')))..(b.ghost and not down and '^[opacity:150'or '')
 end
 local function humans(include_finished) local a={};for _,b in ipairs(S.bots) do if not b.enemy and (include_finished or not b.finished) then a[#a+1]=b end end;return a end
-local function timed_program()return options.multiplayer or #humans()>=2 end
+local function timed_program()return options.round_time~=false and (options.multiplayer or #humans()>=2) end
 local function node(n,def) def.diggable=false;def.groups={unbreakable=1};core.register_node('shift_circuit:'..n,def) end
 for _,n in ipairs({'apron','beam','pit','light'}) do node(n,{description=n,tiles={'sc_'..n..'.png'},light_source=n=='light' and 12 or 0}) end
 node('collider',{description='Tile support',light_source=12,drawtype='airlike',pointable=false,walkable=true,paramtype='light',sunlight_propagates=true})
@@ -524,7 +524,14 @@ local function update_hud(name)
  if v.hint_source~=hint then v.hint_source=hint;local lines={};local line='';for token in hint:gmatch('%S+')do local word=token;while #word>46 do if line~=''then lines[#lines+1]=line;line=''end;lines[#lines+1]=word:sub(1,46);word=word:sub(47)end;if #line+#word+1>46 then lines[#lines+1]=line;line=word else line=line==''and word or line..' '..word end end;if line~=''then lines[#lines+1]=line end;v.hint_display=table.concat(lines,'\n')end
  hud(v.puzzle_hint_bg,'text',v.hint_display~=''and 'sc_puzzle_hint.png'or '');hud(v.puzzle_hint,'text',v.hint_display)
  local remaining=phase=='program'and planning_left;local seconds=remaining and math.max(0,math.min(programming_seconds(),math.ceil(remaining)))
- hud(v.program_timer,'text',seconds and (((S.round or 1)==1 and 'sc_program_timer_first_'or 'sc_program_timer_')..seconds..'.png')or '')
+ if seconds then
+  local first_round=(S.round or 1)==1
+  local frame=math.floor(seconds/programming_seconds()*(first_round and 180 or 90)+.5)
+  local prefix=first_round and 'sc_program_timer_first_' or 'sc_program_timer_'
+  hud(v.program_timer,'text',prefix..frame..'.png')
+ else
+  hud(v.program_timer,'text','')
+ end
  hud(v.program_countdown,'text',seconds and ((seconds<=10 and 'AUTO-FILL IN 'or 'PROGRAM / ')..string.format('%d:%02d',math.floor(seconds/60),seconds%60))or '')
  hud(v.program_countdown,'number',seconds and seconds<=10 and 0xffad97 or 0xd9eee5)
  local phase_icon=({direction_reading=1,direction=1,reading=1,commands=1,express=2,belts=3,pushers=4,rotators=5,weapons=6,lasers=7,presses=8})[phase]or 0
@@ -862,7 +869,7 @@ end)
 core.register_on_joinplayer(function(p)
  local name=p:get_player_name();host=host or name
  local returning=bot(name);local reclaimed=returning and returning.disconnected and not (options.is_spectator and options.is_spectator(name))
- if reclaimed then planner.cancel();if phase=='planning_ai'and not returning.ready then phase='program';planning_left=programming_seconds()end;returning.enemy=false;returning.disconnected=nil;returning.racing=nil;returning.kind=nil;returning.difficulty=nil end
+ if reclaimed then planner.cancel();if phase=='planning_ai'and not returning.ready then phase='program';planning_left=timed_program() and programming_seconds() or nil end;returning.enemy=false;returning.disconnected=nil;returning.racing=nil;returning.kind=nil;returning.difficulty=nil end
  local v={joined=not (options.is_spectator and options.is_spectator(name))and #humans()<8,camera='fly',slots={},labels={},priorities={},gauges={}};players[name]=v
  v.hud_ids={};v.hud_texts={};local function hud(d) local id=p:hud_add(d);v.hud_ids[#v.hud_ids+1]=id;v.hud_texts[id]=d.text or '';return id end
  v.command_palette=hud({type='image',position={x=.5,y=1},offset={x=0,y=-4},alignment={x=0,y=-1},scale={x=1,y=1},text='',z_index=-10})
